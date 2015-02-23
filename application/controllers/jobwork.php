@@ -50,17 +50,17 @@ class Jobwork extends CI_Controller
         $data["quotation_list"] = $this->jobwork_model->show_jobwork_list($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
 
-	    $this->load->view('scaffolds/header');
-	    $this->load->view('scaffolds/sidebar');
-		$this->load->view('pages/quotationlist', $data);
-		$this->load->view('scaffolds/footer');
+	     $this->load->view('scaffolds/header');
+	     $this->load->view('scaffolds/sidebar');
+		   $this->load->view('pages/quotationlist', $data);
+		   $this->load->view('scaffolds/footer');
      }
      else
-		{
+		 {
 			redirect('login', 'refresh');
-		}	
+		 }	
 	 
-    }
+   }
 
     public function individual_details()
     {

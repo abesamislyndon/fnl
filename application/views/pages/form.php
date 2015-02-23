@@ -1,21 +1,19 @@
 <div id="page-wrapper" >
- <?php echo form_open_multipart('jobwork/do_add_jobwork');?>  
+ <?php echo form_open_multipart('quotation/do_add_quotation');?>  
    <div id="page-inner">
      <div class="row">
         <div class="col-lg-12">
          <div class = "confirm-div"></div>
            <div class="panel panel-default">
             <?php echo validation_errors(); ?>
-                        <div class="panel-heading">
-                           Form Details
-                        </div>
-                        <div class="panel-body">
+                <div class="panel-heading">Form Details</div>
+                    <div class="panel-body">
                             <div class="row">
+
                                 <div class="col-lg-6">
-                                   
                                         <div class="form-group">
                                             <label>Date :</label>
-                                            <input type = "text" name = "date_in" id  = "date_in" class="form-control">
+                                            <input type = "text" name = "quotation_date_in" id  = "datepicker" class="form-control">
                                         </div>
                                       <div class="form-group">
                                             <label>Company Name :</label>
@@ -52,7 +50,6 @@
                                             <label>Job Description</label>
                                             <textarea class="form-control" name = "job_description" rows="3"></textarea>
                                         </div>
-
                                 </div><!--end of coloumn 6-->
                             </div><!--end of row-->
                         </div><!--end of panel body-->
@@ -63,18 +60,14 @@
      <div class="row">
         <div class="col-lg-12">
            <div class="panel panel-default">
-                        <div class="panel-heading">
-                          JOB DETAILS
-                        </div>
-            <div class="panel-body">
-               <div class="col-md-12">
+             <div class="panel-heading">JOB DETAILS</div>
+               <div class="panel-body">
+                 <div class="col-md-12">
                   <!--   Kitchen Sink -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Summary
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">Summary</div>
+                           <div class="panel-body">
+                             <div class="table-responsive">
                                 <table id="customFields" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
@@ -99,30 +92,31 @@
                                         </tr>
                                     </tbody>
                                         <tr class = "total_info">
-                                             <td colspan = "4"></td>
-                                             <td class = "strong"><label>SUBTOTAL</label></td>
-                                             <td class = "strong"><input type = "text"  name = "sub_total" class="form-input" id = "total"></td>
-                                        </tr> 
+                                            <td colspan = "4"></td>
+                                            <td class = "strong"><label>SUBTOTAL</label></td>
+                                            <td class = "strong"><input type = "text"  name = "sub_total" class="form-input" id = "total"></td>
+                                        </tr>
+
                                          <tr>
-                                             <td colspan = "4"></td>
-                                             <td class = "strong"><label>7% GST</label></td>
-                                             <td><input type = "text"  name = "gst_total" class="form-input" id = "gst"></td>
+                                            <td colspan = "4"></td>
+                                            <td class = "strong"><label>7% GST</label></td>
+                                            <td><input type = "text"  name = "gst_total" class="form-input" id = "gst"></td>
                                         </tr>  
                                          <tr>
-                                             <td colspan = "4"></td>
-                                             <td class = "strong"><label>GRAND TOTAL</label></td>
-                                             <td><input type = "text"  name = "grand_total" class="form-input" id = "grand_total"></td>
+                                            <td colspan = "4"></td>
+                                            <td class = "strong"><label>GRAND TOTAL</label></td>
+                                            <td><input type = "text"  name = "grand_total" class="form-input" id = "grand_total"></td>
                                         </tr>
                                 </table>
                                <a href="javascript:void(0);" id="addCF" class = "add_button">+</a>
                             </div>
                         </div>
-                    </div>
+                     </div>
                      <div class = "submit_container">
                         <input type = "submit" value ="submit" name = "submit" class = "submit">
                      </div>
-                </form>
-                     <!-- End  Kitchen Sink -->
+                    </form>
+                   <!-- End  Kitchen Sink -->
                 </div>
              </div><!--end of panel body-->
           </div><!--end of panel-default-->

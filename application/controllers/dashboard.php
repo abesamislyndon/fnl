@@ -7,7 +7,6 @@ class Dashboard extends CI_Controller
 	{	
 	 if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
      {
-		
 	    $this->load->view('scaffolds/header');
 	    $this->load->view('scaffolds/sidebar');
 		$this->load->view('pages/dashboard');

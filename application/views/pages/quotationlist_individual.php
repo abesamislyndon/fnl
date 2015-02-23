@@ -13,7 +13,6 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                   
                                         <div class="form-group">
                                             <label>Date :</label>
                                             <input type = "text" name = "date_in" id  = "date_in" class="form-control" value = "<?php echo $individual->date_in ?>">

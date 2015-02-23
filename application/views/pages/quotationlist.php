@@ -18,21 +18,23 @@
                                                 <th>Tel no.</th>
                                                 <th>JobWork Description</th>
                                                  <th style = "width:7%;">Cost</th>
+                                                 <th style = "width:7%;">Print</th>
                                                 <th>ACTION</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                          <?php if (isset($quotation_list) & ($quotation_list <> NULL)) {?>  
+                                        <?php if (isset($quotation_list) & ($quotation_list <> NULL)) {?>  
                                          <?php foreach ($quotation_list as $individual):?>   
                                             <tr>
                                                 <td style = "text-align:center;"><?php echo $individual->quotation_id ?></td>
-                                                <td ><?php echo $individual->date_in?></td>
+                                                <td ><?php echo $individual->date_of_quote?></td>
                                                 <td ><?php echo $individual->company_name?></td>
                                                 <td ><?php echo $individual->address?></td>
                                                 <td ><?php echo $individual->tel_num?></td>
                                                 <td><?php echo $individual->job_description?></td>
-                                                 <td style = "color:#e53935; font-weight:bolder; font-size:10px; font-family:verdana; text-align:center;"><?php echo $individual->grand_total?></td>
-                                                <td><a href = "<?php echo base_url();?>quotation/individual_details/<?php echo $individual->quotation_id ?>" class = "link_button"><i class="fa fa-eye"></i></td>
+                                                <td style = "color:#e53935; font-weight:bolder; font-size:10px; font-family:verdana; text-align:center;"><?php echo $individual->grand_total?></td>
+                                                <td><a href = "<?php echo base_url();?>create_pdf/print_pending_quotation/<?php echo $individual->quotation_id ?>" class = "link_button" target = "_blank"><i class="fa fa-print"></i></a></td>
+                                                <td><a href = "<?php echo base_url();?>quotation/individual_details/<?php echo $individual->quotation_id ?>" class = "link_button"><i class="fa fa-eye"></i></a></td>
                                             </tr>
                                            <?php endforeach;?>
                                            <?php }?>

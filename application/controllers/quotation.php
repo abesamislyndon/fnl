@@ -64,7 +64,7 @@ class Quotation extends CI_Controller
 	    $tel_num = $this->input->post('tel_num');
 	    $fax_num = $this->input->post('fax_num');
 	    $email = $this->input->post('email');
-	    $date_in = $this->input->post('date_in');
+	    $date_in = $this->input->post('quotation_date_in');
 
 	    $term_payment = $this->input->post('term_payment');
 	    $validity_period = $this->input->post('validity_period');
@@ -121,29 +121,29 @@ class Quotation extends CI_Controller
         $config["per_page"] = 12;
         $config["uri_segment"] = 3;
         $config['full_tag_open'] = "<ul class='pagination'>";
-		$config['full_tag_close'] ="</ul>";
-		$config['num_tag_open'] = '<li>';
-		$config['num_tag_close'] = '</li>';
-		$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
-		$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
-		$config['next_tag_open'] = "<li>";
-		$config['next_tagl_close'] = "</li>";
-		$config['prev_tag_open'] = "<li>";
-		$config['prev_tagl_close'] = "</li>";
-		$config['first_tag_open'] = "<li>";
-		$config['first_tagl_close'] = "</li>";
-		$config['last_tag_open'] = "<li>";
-		$config['last_tagl_close'] = "</li>";
+    		$config['full_tag_close'] ="</ul>";
+    		$config['num_tag_open'] = '<li>';
+    		$config['num_tag_close'] = '</li>';
+    		$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+    		$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+    		$config['next_tag_open'] = "<li>";
+    		$config['next_tagl_close'] = "</li>";
+    		$config['prev_tag_open'] = "<li>";
+    		$config['prev_tagl_close'] = "</li>";
+    		$config['first_tag_open'] = "<li>";
+    		$config['first_tagl_close'] = "</li>";
+    		$config['last_tag_open'] = "<li>";
+    		$config['last_tagl_close'] = "</li>";
 
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $data["quotation_list"] = $this->quotation_model->show_quotationlist($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
 
-	    $this->load->view('scaffolds/header');
-	    $this->load->view('scaffolds/sidebar');
-		$this->load->view('pages/quotationlist', $data);
-		$this->load->view('scaffolds/footer');
+	      $this->load->view('scaffolds/header');
+	      $this->load->view('scaffolds/sidebar');
+		    $this->load->view('pages/quotationlist', $data);
+		    $this->load->view('scaffolds/footer');
      }
      else
 		{

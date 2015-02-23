@@ -6,7 +6,11 @@ class quotation_model extends CI_Model
    function add_quotation($company_name, $address, $tel_num, $fax_num, $email, $date_in, $term_payment, 
       $validity_period, $job_description,$sub_description, $sn, $quantity, $uom, $unit_price, $amount,
       $sub_total, $gst_total, $grand_total, $user_id)
-    {
+     {
+
+      $cal_date   = $date_in;
+      $format     = strtotime($cal_date);
+      $mysql_date = date('Y-m-d H:i:s', $format); 
 
      $qry = $this->db->select('company_name')->from('company')->where('company_name', $company_name)->get();
      $qry1 = $this->db->select('company_id')->from('company')->get();
@@ -17,7 +21,7 @@ class quotation_model extends CI_Model
       'tel_num' => $tel_num, 
       'fax_num' => $fax_num, 
       'email' => $email, 
-      'date_in' => $date_in,
+    
       );
 
     if ($qry->num_rows() == 0)
@@ -30,6 +34,7 @@ class quotation_model extends CI_Model
           'term_payment' =>$term_payment, 
           'validity_period' =>$validity_period, 
           'job_description' =>$job_description, 
+          'date_of_quote' => $mysql_date,
           'status' => 1  
           
           );
@@ -77,6 +82,7 @@ class quotation_model extends CI_Model
           'term_payment' =>$term_payment, 
           'validity_period' =>$validity_period, 
           'job_description' =>$job_description, 
+             'date_of_quote' => $mysql_date,
           'status' => 1 
           );
 
@@ -180,8 +186,7 @@ class quotation_model extends CI_Model
      }
        
      function show_quotation_individual($quotation_id)
-     {
-        
+     {  
         $this->db->select('*');
         $this->db->from('quotation');
         $this->db->join('company', 'company.company_id = quotation.company_id');
