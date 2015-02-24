@@ -65,24 +65,19 @@ class Quotation extends CI_Controller
 	    $fax_num = $this->input->post('fax_num');
 	    $email = $this->input->post('email');
 	    $date_in = $this->input->post('quotation_date_in');
-
 	    $term_payment = $this->input->post('term_payment');
 	    $validity_period = $this->input->post('validity_period');
 	    $job_description = $this->input->post('job_description');
-
 	    $sub_description = $this->input->post('sub_description');
 	    $sn = $this->input->post('sn');
 	    $quantity = $this->input->post('quantity');
 	    $uom = $this->input->post('uom');
 	    $unit_price = $this->input->post('unit_price');
 	    $amount = $this->input->post('amount');
-
 	    $sub_total = $this->input->post('sub_total');
 	    $gst_total = $this->input->post('gst_total');
 	    $grand_total = $this->input->post('grand_total');
-        
-        $user_id = $this->session->userdata['logged_in']['role_code'];
-
+      $user_id = $this->session->userdata['logged_in']['role_code'];
 
 	    if($this->input->post('submit'))
 	    {
