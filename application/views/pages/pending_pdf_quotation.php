@@ -11,7 +11,7 @@
     try
     {
         ////$html2pdf = new HTML2PDF('P', 'A4', 'en');
-        $html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', 10);
+        $html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', 8);
         $html2pdf->pdf->SetDisplayMode('fullpage');
     //      $html2pdf->pdf->SetProtection(array('print'), 'spipu');
         $html2pdf->writeHTML($content, isset($_GET['vuehtml']));

@@ -308,6 +308,28 @@ class quotation_model extends CI_Model
 
      }
 
+     function count_pending_quote(){
+    
+        $this->db->select('status, COUNT(status) as total');
+        $this->db->where('status', 1);
+        $this->db->from('quotation');
+        $this->db->order_by('total', 'desc');
+        $query = $this->db->get();
+        return $result = $query->result();
+
+     }
+
+      function count_pending_jobwork(){
+    
+        $this->db->select('status, COUNT(status) as total');
+        $this->db->where('status', 2);
+        $this->db->from('quotation');
+        $this->db->order_by('total', 'desc');
+        $query = $this->db->get();
+        return $result = $query->result();
+
+     }
+
     }
 /* End of file category_model.php */
 /* Location: ./application/models/crud_model.php */

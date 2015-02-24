@@ -16,7 +16,7 @@
                         <div class="panel panel-primary text-center no-boder bg-color-green">
                             <div class="panel-body">
                                <i class="fa fa-pencil-square-o fa-3x"></i>
-                                <h3>8</h3>
+                                <h3><span class = "counter"><?php foreach($count_quote as $pending_quote){ echo $pending_quote->total; } ?></span></h3>
                             </div>
                             <div class="panel-footer back-footer-green style-font">
                                 <p>PENDING QUOTATION LIST</p>
@@ -28,10 +28,10 @@
                         <div class="panel panel-primary text-center no-boder bg-color-blue">
                             <div class="panel-body">
                                 <i class="fa fa-flag-o fa-3x"></i>
-                                <h3>52,160 </h3>
+                                <h3 class = "counter"><?php foreach($count_jobwork as $pending_jobwork){ echo $pending_jobwork->total; } ?></h3>
                             </div>
                             <div class="panel-footer back-footer-blue style-font">
-                              <p>OVERDUE QUOTATION</p> 
+                              <p>ON GOING JOB WORK</p> 
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                         <div class="panel panel-primary text-center no-boder bg-color-red">
                             <div class="panel-body">
                              <i class="fa fa-archive fa-3x"></i>
-                                <h3>15,823 </h3>
+                                <h3 class = "counter">193 </h3>
                             </div>
                             <div class="panel-footer back-footer-red style-font">
                                <p>PENDING JOBWORK CHECKOUT</p> 

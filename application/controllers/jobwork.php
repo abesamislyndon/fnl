@@ -1,11 +1,13 @@
 <?php
 if (!defined('BASEPATH'))exit('No direct script access allowed');
+session_start();
 class Jobwork extends CI_Controller
 {
    function __construct()
    {
      parent::__construct();
      $this->load->model('jobwork_model');
+     $this->load->model('quotation_model');
    }
    
 	
@@ -18,7 +20,6 @@ class Jobwork extends CI_Controller
       flush();
 
    }
-
 
    public function jobwork_list()
    {
@@ -49,9 +50,11 @@ class Jobwork extends CI_Controller
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $data["quotation_list"] = $this->jobwork_model->show_jobwork_list($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
+        $data['count_quote'] = $this->quotation_model->count_pending_quote();
+        $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
 
 	     $this->load->view('scaffolds/header');
-	     $this->load->view('scaffolds/sidebar');
+	     $this->load->view('scaffolds/sidebar',$data);
 		   $this->load->view('pages/quotationlist', $data);
 		   $this->load->view('scaffolds/footer');
      }

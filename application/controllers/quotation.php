@@ -1,5 +1,6 @@
 <?php
 if (!defined('BASEPATH'))exit('No direct script access allowed');
+session_start();
 class Quotation extends CI_Controller
 {
    function __construct()
@@ -14,8 +15,8 @@ class Quotation extends CI_Controller
      {
 	    $this->load->view('scaffolds/header');
 	    $this->load->view('scaffolds/sidebar');
-		$this->load->view('pages/dashboard');
-		$this->load->view('scaffolds/footer');
+		  $this->load->view('pages/dashboard');
+		  $this->load->view('scaffolds/footer');
      }
      else
 		{
@@ -28,10 +29,13 @@ class Quotation extends CI_Controller
     {
     if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
      {
-	    $this->load->view('scaffolds/header');
-	    $this->load->view('scaffolds/sidebar');
-		$this->load->view('pages/form');
-		$this->load->view('scaffolds/footer');
+       $data['count_quote'] = $this->quotation_model->count_pending_quote();
+       $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
+
+	     $this->load->view('scaffolds/header');
+	     $this->load->view('scaffolds/sidebar', $data);
+		   $this->load->view('pages/form');
+		   $this->load->view('scaffolds/footer');
      }
      else
 		{
@@ -134,9 +138,11 @@ class Quotation extends CI_Controller
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $data["quotation_list"] = $this->quotation_model->show_quotationlist($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
+        $data['count_quote'] = $this->quotation_model->count_pending_quote();
+        $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
 
 	      $this->load->view('scaffolds/header');
-	      $this->load->view('scaffolds/sidebar');
+	      $this->load->view('scaffolds/sidebar', $data);
 		    $this->load->view('pages/quotationlist', $data);
 		    $this->load->view('scaffolds/footer');
      }
@@ -155,10 +161,11 @@ class Quotation extends CI_Controller
            $data['quotation_list_individual'] = $this->quotation_model->show_quotation_individual($quotation_id);
            $data['sub_description_individual'] = $this->quotation_model->show_subquotation_individual($quotation_id);
            $data['overall_total_details'] = $this->quotation_model->show_overall_total($quotation_id);
-
+       $data['count_quote'] = $this->quotation_model->count_pending_quote();
+        $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
 
            $this->load->view('scaffolds/header');
-	       $this->load->view('scaffolds/sidebar');
+	       $this->load->view('scaffolds/sidebar', $data);
 		   $this->load->view('pages/quotationlist_individual', $data);
 	       $this->load->view('scaffolds/footer');
        }
@@ -178,11 +185,12 @@ class Quotation extends CI_Controller
            $data['quotation_list_individual'] = $this->quotation_model->show_quotation_individual($quotation_id);
            $data['sub_description_individual'] = $this->quotation_model->show_subquotation_individual($quotation_id);
            $data['overall_total_details'] = $this->quotation_model->show_overall_total($quotation_id);
-
+           $data['count_quote'] = $this->quotation_model->count_pending_quote();
+           $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
 
            $this->load->view('scaffolds/header');
-	       $this->load->view('scaffolds/sidebar');
-		   $this->load->view('pages/quotationlist_individual_approved', $data);
+	         $this->load->view('scaffolds/sidebar', $data);
+		      $this->load->view('pages/quotationlist_individual_approved', $data);
 	       $this->load->view('scaffolds/footer');
        }
        else 
@@ -218,6 +226,7 @@ class Quotation extends CI_Controller
 
 
     }
+
 
 
    

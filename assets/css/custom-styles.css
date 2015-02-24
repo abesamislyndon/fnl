@@ -577,6 +577,20 @@ font-weight: bold;
     background: none;
     border: 1px solid #B0BEC5;
 }
+span.notification_no{
+  color:#fff !important;
+  position:absolute;
+  margin-top: -39px;
+  margin-left:190px; 
+  background:#c62828;
+  width:28px;
+  height:28px;
+  padding:4px;
+  font-size:12px; 
+  font-weight: bolder; 
+  border-radius:40px; 
+  text-align: center;
+}
 /*----------------------------------------------
     UI ELEMENTS STYLES     
 ------------------------------------------------*/
