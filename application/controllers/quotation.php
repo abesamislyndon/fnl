@@ -159,13 +159,13 @@ class Quotation extends CI_Controller
            $data['quotation_list_individual'] = $this->quotation_model->show_quotation_individual($quotation_id);
            $data['sub_description_individual'] = $this->quotation_model->show_subquotation_individual($quotation_id);
            $data['overall_total_details'] = $this->quotation_model->show_overall_total($quotation_id);
-       $data['count_quote'] = $this->quotation_model->count_pending_quote();
-        $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
+           $data['count_quote'] = $this->quotation_model->count_pending_quote();
+           $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
 
            $this->load->view('scaffolds/header');
-	       $this->load->view('scaffolds/sidebar', $data);
-		   $this->load->view('pages/quotationlist_individual', $data);
-	       $this->load->view('scaffolds/footer');
+	         $this->load->view('scaffolds/sidebar', $data);
+		       $this->load->view('pages/quotationlist_individual', $data);
+	         $this->load->view('scaffolds/footer');
        }
        else 
         {
@@ -225,10 +225,25 @@ class Quotation extends CI_Controller
            redirect('login', 'refresh');
         }
 
+     }
+
+     public function delete_sub_desc()
+     {
+      
+
+      if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
+       {    
+           $quotation_id = $this->uri->segment(3);
+           $quotation_sub_id = $this->input->post('quotation_details_id');
+           $this->quotation_model->del_sub_desc($quotation_sub_id, $quotation_id);
+        }
+        else 
+        {
+           redirect('login', 'refresh');
+        }
 
 
-
-    }
+     }
 
 
 

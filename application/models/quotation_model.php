@@ -345,6 +345,19 @@ class quotation_model extends CI_Model
      }
 
 
+     function del_sub_desc($quotation_sub_id, $quotation_id){
+      
+        $this->db->select('*');
+        $this->db->from('quotation_details');
+        $this->db->where('quotation_details_id', $quotation_sub_id);
+        $this->db->delete('quotation_details');
+
+        $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
+        redirect('quotation/individual_details/' . $quotation_id);
+
+     }
+
+
      function approved_quotation_quotation($quotation_id){
 
         $row = array(

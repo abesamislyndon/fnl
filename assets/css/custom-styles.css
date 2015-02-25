@@ -550,6 +550,18 @@ font-weight: bold;
     float: right;
     margin-right:5px; 
 }
+.link_button1{
+    padding:3px 12px;
+    border-radius:4px;
+    color:#fff;
+    text-decoration: none;
+    font-size:20px;
+    font-weight:bolder;   
+    background: #e53935; /* Old browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2089e5', endColorstr='#2b9cf2',GradientType=0 ); /* IE6-9 */
+    float: right;
+    margin-right:5px; 
+}
 
 .table-style td{
     font-size:12px; 

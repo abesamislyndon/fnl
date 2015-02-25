@@ -101,6 +101,7 @@
                                             <td><input type = "text" name = "uom[]" class="form-input" value = "<?php echo $individual->uom?>"></td>
                                             <td><input type = "text" name = "unit_price[]" class="form-input unit_price" value = "<?php echo $individual->unit_price?>"></td>
                                             <td><input type = "text"  name = "amount[]" class="form-input subtotal res"  value = "<?php echo $individual->amount?>"></td>
+                                            <td><a href = "<?php echo base_url();?>quotation/delete_sub_desc/<?php echo $individual->quotation_id ?>" class = "link_button1"><i class="fa fa-trash-o"></i></a></td>
                                         </tr>
 
 
