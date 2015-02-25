@@ -27,12 +27,28 @@ $(document).ready(function() {
   });
 });
 </script>
+<style>
+  .notice{
+    background:#f44336;
+    padding:20px;
+    text-align: center;
+    font-size:24px;
+    color:#fff;   
+}
+</style>
   
   </head>
  <body>
+<?php
+  if (!$sock = @fsockopen('www.google.com', 80, $num, $error,5)) {
+      echo '<p class = "notice"><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;you are offline kindly check your connection</p>';
+  }
+  else{
+    echo '';
+  }
+?>
+<div id="wrapper">    
 
-
-<div id="wrapper">
 <div class="user-icon"></div>
 <div class="pass-icon"></div>
 

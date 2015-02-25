@@ -78,7 +78,6 @@
                                 <table id="customFields" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-
                                             <th style = "width:10%;">SN</th>
                                             <th>Description</th>
                                             <th style = "width:10%;">Quantity</th>
@@ -88,11 +87,11 @@
                                              <th style = "width:7%;">action</th>
                                         </tr>
                                     </thead>
-
                                     <tbody>
-                               
                                       
                                       <?php foreach($sub_description_individual as $individual):?> 
+
+                            
                                        <tr id="customFields" class = "targetfields">
                                             <input type = "hidden" name = "quotation_id"   value = "<?php echo $individual->quotation_id ?>">
                                             <input type = "hidden" name = "quotation_details_id[]"   value = "<?php echo $individual->quotation_details_id ?>">
@@ -103,6 +102,7 @@
                                             <td><input type = "text" name = "unit_price[]" class="form-input unit_price" value = "<?php echo $individual->unit_price?>"></td>
                                             <td><input type = "text"  name = "amount[]" class="form-input subtotal res"  value = "<?php echo $individual->amount?>"></td>
                                         </tr>
+
 
                                         <?php endforeach; ?>   
                                     </tbody>
@@ -129,9 +129,10 @@
                         </div>
                     </div>
                      <div class = "submit_container">
-                        <input type = "submit" value ="UPDATE" name = "update" class = "submit">
-                         <input type = "submit" value ="REJECT" name = "reject" class = "submit">
-                          <input type = "submit" value ="APPROVED" name = "approved" class = "submit">
+                        <input type = "submit" value ="ADD NEW DESCRIPTION" name = "add_desc" class = "submit">
+                        <input type = "submit" value ="UPDATE INFORMATION" name = "update" class = "submit">
+                        <input type = "submit" value ="REJECT" name = "reject" class = "submit">
+                        <input type = "submit" value ="APPROVED" name = "approved" class = "submit">
                      </div>
                 </form>
                <?php endforeach; ?> 

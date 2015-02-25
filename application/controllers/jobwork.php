@@ -10,8 +10,6 @@ class Jobwork extends CI_Controller
      $this->load->model('quotation_model');
    }
    
-	
-  
    public function get_company()
    {
       $keyword = $_GET['term'];
@@ -76,9 +74,9 @@ class Jobwork extends CI_Controller
 
 
            $this->load->view('scaffolds/header');
-	       $this->load->view('scaffolds/sidebar');
-		   $this->load->view('pages/quotationlist_individual', $data);
-	       $this->load->view('scaffolds/footer');
+	         $this->load->view('scaffolds/sidebar');
+		       $this->load->view('pages/quotationlist_individual', $data);
+	         $this->load->view('scaffolds/footer');
        }
        else 
         {
@@ -99,9 +97,9 @@ class Jobwork extends CI_Controller
 
 
            $this->load->view('scaffolds/header');
-	       $this->load->view('scaffolds/sidebar');
-		   $this->load->view('pages/quotationlist_individual_approved', $data);
-	       $this->load->view('scaffolds/footer');
+	         $this->load->view('scaffolds/sidebar');
+		       $this->load->view('pages/quotationlist_individual_approved', $data);
+	         $this->load->view('scaffolds/footer');
        }
        else 
         {
@@ -141,5 +139,5 @@ class Jobwork extends CI_Controller
    
 }
 
-/* End of file dashboard.php */
-/* Location: ./application/controllers/dashboard.php */
+/* End of file jobwork.php */
+/* Location: ./application/controllers/jobwork.php */

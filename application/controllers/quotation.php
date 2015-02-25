@@ -13,17 +13,15 @@ class Quotation extends CI_Controller
 	{	
 	 if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
      {
-	    $this->load->view('scaffolds/header');
-	    $this->load->view('scaffolds/sidebar');
-		  $this->load->view('pages/dashboard');
-		  $this->load->view('scaffolds/footer');
-     }
-     else
-		{
+	      $this->load->view('scaffolds/header');
+	      $this->load->view('scaffolds/sidebar');
+		    $this->load->view('pages/dashboard');
+		    $this->load->view('scaffolds/footer');
+     }else
+		 {
 			redirect('login', 'refresh');
-		}	
-	 
-    }
+	  	}	
+	  }
 
     public function form()
     {
@@ -86,10 +84,10 @@ class Quotation extends CI_Controller
 	    if($this->input->post('submit'))
 	    {
 	    	$this->quotation_model->add_quotation($company_name, 
-            $address, $tel_num, $fax_num, $email, $date_in, 
-            $term_payment, $validity_period, $job_description, 
-            $sub_description, $sn, $quantity, $uom, $unit_price, $amount,
-            $sub_total, $gst_total, $grand_total, $user_id);
+        $address, $tel_num, $fax_num, $email, $date_in, 
+        $term_payment, $validity_period, $job_description, 
+        $sub_description, $sn, $quantity, $uom, $unit_price, $amount,
+        $sub_total, $gst_total, $grand_total, $user_id);
 	    }
 	 }
      else
@@ -190,8 +188,8 @@ class Quotation extends CI_Controller
 
            $this->load->view('scaffolds/header');
 	         $this->load->view('scaffolds/sidebar', $data);
-		      $this->load->view('pages/quotationlist_individual_approved', $data);
-	       $this->load->view('scaffolds/footer');
+		       $this->load->view('pages/quotationlist_individual_approved', $data);
+	         $this->load->view('scaffolds/footer');
        }
        else 
         {
@@ -211,7 +209,12 @@ class Quotation extends CI_Controller
   		 	{
   		 		$this->quotation_model->update_quotation_quotation($quotation_id);
   		 	}
-  		   if($this->input->post('approved'))
+        if($this->input->post('add_desc'))
+        {
+          $this->quotation_model->add_quotation_desc($quotation_id);
+        }
+
+  		  if($this->input->post('approved'))
   		 	{
   		 		$this->quotation_model->approved_quotation_quotation($quotation_id);
   		 	}

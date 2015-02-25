@@ -339,7 +339,13 @@ padding-top: 4px;
     padding-left: 37px;
 }
 
-
+.notice{
+    background:#f44336;
+    padding:20px;
+    text-align: center;
+    font-size:24px;
+    color:#fff;   
+}
 
 .nav-third-level li a {
     padding-left: 55px;
