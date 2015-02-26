@@ -95,14 +95,16 @@
                                        <tr id="customFields" class = "targetfields">
                                             <input type = "hidden" name = "quotation_id"   value = "<?php echo $individual->quotation_id ?>">
                                             <input type = "hidden" name = "quotation_details_id[]"   value = "<?php echo $individual->quotation_details_id ?>">
-                                            <td><input type = "text" name = "sn[]" class="form-input" value = "<?php echo $individual->sn?>"></td>
-                                            <td><textarea  name = "sub_description[]" class="form-input"><?php echo $individual->sub_description?></textarea></td>
+                                            <td><input type = "text" name = "sn[]" id = "sn" class="form-input sn" value = "<?php echo $individual->sn?>"></td>
+                                            <td><textarea  name = "sub_description[]" class="form-input sub_description"><?php echo $individual->sub_description?></textarea></td>
                                             <td><input type = "text" name = "quantity[]" class="form-input quantity" value = "<?php echo $individual->quantity ?>"></td>
                                             <td><input type = "text" name = "uom[]" class="form-input" value = "<?php echo $individual->uom?>"></td>
                                             <td><input type = "text" name = "unit_price[]" class="form-input unit_price" value = "<?php echo $individual->unit_price?>"></td>
                                             <td><input type = "text"  name = "amount[]" class="form-input subtotal res"  value = "<?php echo $individual->amount?>"></td>
                                             <td><a href = "<?php echo base_url();?>quotation/delete_sub_desc/<?php echo $individual->quotation_id ?>" class = "link_button1"><i class="fa fa-trash-o"></i></a></td>
                                         </tr>
+
+                                        
 
 
                                         <?php endforeach; ?>   

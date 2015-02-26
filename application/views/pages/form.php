@@ -83,8 +83,8 @@
 
                                     <tbody>
                                        <tr id="customFields" class = "targetfields">
-                                            <td><input type = "text" name = "sn[]" id = "sn" class="form-input"></td>
-                                            <td><textarea  name = "sub_description[]" id = "sub_description" class="form-input"></textarea></td>
+                                            <td><input type = "text" name = "sn[]" id = "sn" class="form-input sn"></td>
+                                            <td><textarea  name = "sub_description[]" id = "sub_description" class="form-input sub_description"></textarea></td>
                                             <td><input type = "text" name = "quantity[]" class="form-input quantity"></td>
                                             <td><input type = "text" name = "uom[]" class="form-input"></td>
                                             <td><input type = "text" name = "unit_price[]" class="form-input unit_price"></td>

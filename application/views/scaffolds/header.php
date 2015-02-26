@@ -13,16 +13,16 @@
      <script type="text/javascript">
      $(document).ready(function(){
       var FieldCount=1;  
-      $("#addCF").click(function(){
+      $("#addCF").on('click', function(event) {
          FieldCount++;
-        $("#customFields").append('<tr class = "targetfields"><input type = "hidden" name = "count[]" value = "'+ FieldCount +'"><td><input type = "text" name = "sn[]" class="form-input"><td><textarea name="sub_description[]" id="field_'+ FieldCount +'" value="" class="form-input" /></textarea></td><td><input type = "text"  name = "quantity[]" class="form-input quantity"></td><td><input type = "text" name = "uom[]"  class="form-input"></td><td><input type = "text"  name = "unit_price[]" class="form-input unit_price"></td><td><input type = "text"  name = "amount[]" class="form-input subtotal res"></td><td><a href="javascript:void(0);" class="remCF link_button1"><i class="fa fa-trash-o"></i></a></td></tr>');
+        $("#customFields").append('<tr id="customFields" class = "targetfields"><input type = "hidden" name = "count[]" value = "'+ FieldCount +'"><td><input type = "text" name = "sn[]" class="form-input sn'+ FieldCount +'"><td><textarea name="sub_description[]" id="field_'+ FieldCount +'" value="" class="form-input sub_description'+ FieldCount +'" /></textarea></td><td><input type = "text"  name = "quantity[]" class="form-input quantity"></td><td><input type = "text" name = "uom[]"  class="form-input"></td><td><input type = "text"  name = "unit_price[]" class="form-input unit_price"></td><td><input type = "text"  name = "amount[]" class="form-input subtotal res"></td><td><a href="javascript:void(0);" class="remCF link_button1"><i class="fa fa-trash-o"></i></a></td></tr>');
       });
       $("#customFields").on('click', '.remCF', function(){
         $(this).parent().parent().remove();
     });
     
 });
-     </script>
+    </script>
 
 </head>
 <body>

@@ -1,0 +1,312 @@
+<div id="page-wrapper" >
+ <?php echo form_open_multipart('quotation/do_add_quotation');?>  
+   <div id="page-inner">
+     <div class="row">
+        <div class="col-lg-12">
+         <div class = "confirm-div"></div>
+           <div class="panel panel-default">
+            <?php echo validation_errors(); ?>
+                <div class="panel-heading">Form Details</div>
+                    <div class="panel-body">
+                            <div class="row">
+
+                                <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Date :</label>
+                                            <input type = "text" name = "quotation_date_in" id  = "datepicker" class="form-control">
+                                        </div>
+                                      <div class="form-group">
+                                            <label>Company Name :</label>
+                                            <input type = "text" name = "company_name" id = "company_name" class="form-control">
+                                        </div>
+                                          <div class="form-group">
+                                            <label>Address :</label>
+                                            <input type = "text"  name = "address" id = "address" class="form-control">
+                                        </div>
+                                          <div class="form-group">
+                                            <label>Tel :</label>
+                                            <input type = "text"  name = "tel_num" id = "tel_num" class="form-control">
+                                        </div>
+                                          <div class="form-group">
+                                            <label>Fax :</label>
+                                            <input type = "text"  name = "fax_num" id = "fax_num" class="form-control">
+                                        </div>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                                <div class="col-lg-6">
+                                       <div class="form-group">
+                                            <label>Email :</label>
+                                            <input type = "text"  name = "email" id = "email" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Term of Payment :</label>
+                                            <input type = "text" name = "term_payment" class="form-control">
+                                        </div>
+                                           <div class="form-group">
+                                            <label>Validity Period :</label>
+                                            <input type = "text"  name = "validity_period" class="form-control">
+                                        </div>
+                                         <div class="form-group">
+                                            <label>Job Description</label>
+                                            <textarea class="form-control" name = "job_description" rows="3"></textarea>
+                                        </div>
+                                </div><!--end of coloumn 6-->
+                            </div><!--end of row-->
+                        </div><!--end of panel body-->
+                    </div><!--end of panel-default-->
+                </div><!--end of column 12-->
+            </div><!--end of row-->
+
+     <div class="row">
+        <div class="col-lg-12">
+           <div class="panel panel-default">
+             <div class="panel-heading">JOB DETAILS</div>
+               <div class="panel-body">
+                 <div class="col-md-12">
+                  <!--   Kitchen Sink -->
+                      <div class="panel panel-default">
+                        <div class="panel-heading">Summary</div>
+                           <div class="panel-body">
+                             <div class="table-responsive">
+                                <table id="customFields" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th style = "width:10%;">SN</th>
+                                            <th>Description</th>
+                                            <th style = "width:10%;">Quantity</th>
+                                            <th style = "width:10%;">UOM</th>
+                                            <th style = "width:10%;">Unit Price</th>
+                                            <th style = "width:10%;">Amount</th>
+                                             <th style = "width:7%;">action</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                       <tr id="customFields" class = "targetfields">
+                                            <td><input type = "text" name = "sn[]" id = "sn" class="form-input sn"></td>
+                                            <td><textarea  name = "sub_description[]" id = "sub_description" class="form-input sub_description"></textarea></td>
+                                            <td><input type = "text" name = "quantity[]" class="form-input quantity"></td>
+                                            <td><input type = "text" name = "uom[]" class="form-input"></td>
+                                            <td><input type = "text" name = "unit_price[]" class="form-input unit_price"></td>
+                                            <td><input type = "text"  name = "amount[]" class="form-input subtotal res"></td>
+                                        </tr>
+                                          <tr id="customFields" class = "targetfields add">
+                                            <td><input type = "text" name = "sn[]" id = "sn1" class="form-input sn"></td>
+                                            <td><textarea  name = "sub_description[]" id = "sub_description1" class="form-input"></textarea></td>
+                                            <td><input type = "text" name = "quantity[]" class="form-input quantity"></td>
+                                            <td><input type = "text" name = "uom[]" class="form-input"></td>
+                                            <td><input type = "text" name = "unit_price[]" class="form-input unit_price"></td>
+                                            <td><input type = "text"  name = "amount[]" class="form-input subtotal res"></td>
+                                            <td><a href="javascript:void(0);" class="remCF link_button1"><i class="fa fa-trash-o"></i></a></td>
+                                        </tr>
+                                            <tr id="customFields" class = "targetfields add">
+                                            <td><input type = "text" name = "sn[]" id = "sn2" class="form-input sn"></td>
+                                            <td><textarea  name = "sub_description[]" id = "sub_description2" class="form-input"></textarea></td>
+                                            <td><input type = "text" name = "quantity[]" class="form-input quantity"></td>
+                                            <td><input type = "text" name = "uom[]" class="form-input"></td>
+                                            <td><input type = "text" name = "unit_price[]" class="form-input unit_price"></td>
+                                            <td><input type = "text"  name = "amount[]" class="form-input subtotal res"></td>
+                                            <td><a href="javascript:void(0);" class="remCF link_button1"><i class="fa fa-trash-o"></i></a></td>
+                                        </tr>
+                                            <tr id="customFields" class = "targetfields add">
+                                            <td><input type = "text" name = "sn[]" id = "sn3" class="form-input sn"></td>
+                                            <td><textarea  name = "sub_description[]" id = "sub_description3" class="form-input"></textarea></td>
+                                            <td><input type = "text" name = "quantity[]" class="form-input quantity"></td>
+                                            <td><input type = "text" name = "uom[]" class="form-input"></td>
+                                            <td><input type = "text" name = "unit_price[]" class="form-input unit_price"></td>
+                                            <td><input type = "text"  name = "amount[]" class="form-input subtotal res"></td>
+                                            <td><a href="javascript:void(0);" class="remCF link_button1"><i class="fa fa-trash-o"></i></a></td>
+                                        </tr>
+                                            <tr id="customFields" class = "targetfields add">
+                                            <td><input type = "text" name = "sn[]" id = "sn4" class="form-input sn"></td>
+                                            <td><textarea  name = "sub_description[]" id = "sub_description4" class="form-input"></textarea></td>
+                                            <td><input type = "text" name = "quantity[]" class="form-input quantity"></td>
+                                            <td><input type = "text" name = "uom[]" class="form-input"></td>
+                                            <td><input type = "text" name = "unit_price[]" class="form-input unit_price"></td>
+                                            <td><input type = "text"  name = "amount[]" class="form-input subtotal res"></td>
+                                            <td><a href="javascript:void(0);" class="remCF link_button1"><i class="fa fa-trash-o"></i></a></td>
+                                        </tr>
+
+                                    </tbody>
+
+                                        <tr class = "total_info">
+                                            <td colspan = "4"></td>
+                                            <td class = "strong"><label>SUBTOTAL</label></td>
+                                            <td class = "strong"><input type = "text"  name = "sub_total" class="form-input" id = "total"></td>
+                                        </tr>
+
+                                         <tr>
+                                            <td colspan = "4"></td>
+                                            <td class = "strong"><label>7% GST</label></td>
+                                            <td><input type = "text"  name = "gst_total" class="form-input" id = "gst"></td>
+                                        </tr>  
+                                         <tr>
+                                            <td colspan = "4"></td>
+                                            <td class = "strong"><label>GRAND TOTAL</label></td>
+                                            <td><input type = "text"  name = "grand_total" class="form-input" id = "grand_total"></td>
+                                        </tr>
+                                </table>
+                               <a href="javascript:void(0);" id="addCF1" class = "add_button">+</a>
+                            </div>
+                        </div>
+                     </div>
+                     <div class = "submit_container">
+                        <input type = "submit" value ="submit" name = "submit" class = "submit">
+                     </div>
+                    </form>
+                   <!-- End  Kitchen Sink -->
+                </div>
+             </div><!--end of panel body-->
+          </div><!--end of panel-default-->
+        </div><!--end of column 12-->
+     </div><!--end of row-->
+   </div><!-- end of page inner-->
+</div><!--end of page-wrapper-->
+
+
+/*---------------------------------------------------------footer---------/
+
+				<footer></footer>
+            </div>
+        </div>
+    </div>
+    <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/jquery.metisMenu.js"></script>
+    <script src="<?php echo base_url();?>assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/morris/morris.js"></script>
+    <script src="<?php echo base_url();?>assets/js/custom-scripts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/js/jquery-ui-1.10.4.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.counterup.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script> 
+  <link type="text/css" href="<?php echo base_url(); ?>assets/css/css/jquery-ui-1.10.4.css" rel="stylesheet">
+ 
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+
+<script type="text/javascript">
+$(document).ready(function () 
+{
+   $(function() 
+   {
+    $("#customFields").keyup(function(event) 
+    {
+      var total = 0;
+      var res2 = 0;
+      $("#customFields .targetfields").each(function() 
+      {
+        var qty = parseFloat($(this).find(".quantity").val());
+        var rate = parseFloat($(this).find(".unit_price").val());
+        var qty1 = qty.toFixed(2);
+        var rate1 = rate.toFixed(2);
+        var subtotal =  qty1 * rate1;
+        var res = parseFloat($(this).find(".res").val());
+        var res1 = subtotal;
+    
+        $(this).find(".subtotal").val(subtotal.toFixed(2));
+        if(!isNaN(subtotal))
+        total+=subtotal; 
+        gst =   (( 7 * total) / 100 );
+        grand_total = gst + total;
+        
+        if(!isNaN(res))
+        res2+=res1;
+      });
+
+      $(this).find("#total").val(total.toFixed(2));       
+      $(this).find("#gst").val(gst.toFixed(2));  
+      $(this).find("#grand_total").val(grand_total.toFixed(2));
+      $(this).find(".totalColumn").val(res2.toFixed(2));
+    });
+   });
+ });
+</script>
+
+ <script type="text/javascript"> 
+  $(document).ready(function(){
+   $('confirm.div').hide();
+    <?php if($this->session->flashdata('msg')){ ?>
+    $('.confirm-div').html('<?php echo "<p>"."&nbsp;&nbsp;&nbsp;".$this->session->flashdata('msg');"</p>" ?>').fadeIn( "slow").fadeOut(4500);
+    });
+    <?php } ?>
+ </script>
+
+ <script type="text/javascript"> 
+                jQuery(document).ready(function(){
+                    $('#company_name').autocomplete({
+                               source:'<?php echo base_url();?>jobwork/get_company', minLength:1,
+                      select:function(evt, ui)
+                       {
+                        this.form.address.value = ui.item.address;
+                        this.form.tel_num.value = ui.item.tel_num;
+                        this.form.fax_num.value = ui.item.fax_num;
+                        this.form.email.value = ui.item.email;
+                      }
+                });
+                });
+        </script> 
+
+ <script type="text/javascript"> 
+                jQuery(document).ready(function(){
+                    $('#sn').autocomplete({
+                               source:'<?php echo base_url();?>description/get_description', minLength:1,
+                      select:function(evt, ui)
+                       {
+                        this.form.sub_description.value = ui.item.sub_description;
+                      }
+                });
+                    $('#sn1').autocomplete({
+                        source:'<?php echo base_url();?>description/get_description', minLength:1,
+                      select:function(evt, ui)
+                       {
+                        this.form.sub_description1.value = ui.item.sub_description;
+                      }
+                });
+                  $('#sn2').autocomplete({
+                        source:'<?php echo base_url();?>description/get_description', minLength:1,
+                      select:function(evt, ui)
+                       {
+                        this.form.sub_description2.value = ui.item.sub_description;
+                      }
+                });
+              $('#sn3').autocomplete({
+                        source:'<?php echo base_url();?>description/get_description', minLength:1,
+                      select:function(evt, ui)
+                       {
+                        this.form.sub_description3.value = ui.item.sub_description;
+                      }
+                });
+                $('#sn4').autocomplete({
+                        source:'<?php echo base_url();?>description/get_description', minLength:1,
+                      select:function(evt, ui)
+                       {
+                        this.form.sub_description4.value = ui.item.sub_description;
+                      }
+                });
+                });
+        </script> 
+
+
+<script>
+    jQuery(document).ready(function( $ ) {
+        $('.counter').counterUp({
+            delay: 10,
+            time: 1000
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $('.add').hide();
+    $('#addCF1').on('click',function(){
+    $('.add:hidden:first').show();
+    });
+
+  </script>
+
+
+</body>
+</html>
