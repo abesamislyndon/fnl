@@ -81,6 +81,18 @@ $(document).ready(function ()
                 });
                 });
         </script> 
+
+ <script type="text/javascript"> 
+                jQuery(document).ready(function(){
+                    $('#sn').autocomplete({
+                               source:'<?php echo base_url();?>description/get_description', minLength:1,
+                      select:function(evt, ui)
+                       {
+                        this.form.sub_description.value = ui.item.sub_description;
+                      }
+                });
+                });
+        </script> 
 <script>
     jQuery(document).ready(function( $ ) {
         $('.counter').counterUp({

@@ -339,7 +339,6 @@ class quotation_model extends CI_Model
           
         }
     
-        
         $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
         redirect('quotation/individual_details/' . $quotation_id);
      }
