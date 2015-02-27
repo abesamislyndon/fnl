@@ -10,9 +10,9 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <script src="<?php echo base_url();?>assets/js/jquery-1.10.2.js"></script>
     <script>
-      $(document).ready(function(){
-           var FieldCount=1;  
-           var autocomp_opt = {
+     $(document).ready(function(){
+            var FieldCount=1;  
+            var autocomp_opt = {
                source: "<?php echo base_url();?>description/get_description",
                minLength:1,
                select:function(evt, ui)
@@ -21,7 +21,7 @@
                 }
               };
 
-            var autocomp_opt1 = {
+             var autocomp_opt1 = {
                source: "<?php echo base_url();?>description/get_description",
                minLength:1,
                select:function(evt, ui)
@@ -30,8 +30,7 @@
                 }
               };
 
-
-            var autocomp_opt2 = {
+             var autocomp_opt2 = {
                source: "<?php echo base_url();?>description/get_description",
                minLength:1,
                select:function(evt, ui)
@@ -39,9 +38,42 @@
                     this.form.sub_description3.value = ui.item.sub_description;
                 }
               };
-    
-           
-            $(document).on("keydown", ".sn", function () { 
+             var autocomp_opt3 = {
+               source: "<?php echo base_url();?>description/get_description",
+               minLength:1,
+               select:function(evt, ui)
+               {
+                    this.form.sub_description4.value = ui.item.sub_description;
+                }
+              };
+
+             var autocomp_opt4 = {
+               source: "<?php echo base_url();?>description/get_description",
+               minLength:1,
+               select:function(evt, ui)
+               {
+                    this.form.sub_description5.value = ui.item.sub_description;
+                }
+              };
+
+             var autocomp_opt5 = {
+               source: "<?php echo base_url();?>description/get_description",
+               minLength:1,
+               select:function(evt, ui)
+               {
+                    this.form.sub_description6.value = ui.item.sub_description;
+                }
+              };
+             var autocomp_opt6 = {
+               source: "<?php echo base_url();?>description/get_description",
+               minLength:1,
+               select:function(evt, ui)
+               {
+                    this.form.sub_description7.value = ui.item.sub_description;
+                }
+              };
+     
+             $(document).on("keydown", ".sn", function () { 
              $(this).autocomplete(autocomp_opt);
              });
 
@@ -49,23 +81,37 @@
               $(this).autocomplete(autocomp_opt1);
              });
 
-            $(document).on("keydown", ".sn3", function () { 
+             $(document).on("keydown", ".sn3", function () { 
               $(this).autocomplete(autocomp_opt2);
              });
 
-       
-        
-           $(".add_button").click(function (e) { //on add input button click
+              $(document).on("keydown", ".sn4", function () { 
+              $(this).autocomplete(autocomp_opt3);
+             });
+
+             $(document).on("keydown", ".sn5", function () { 
+              $(this).autocomplete(autocomp_opt4);
+             });
+
+              $(document).on("keydown", ".sn6", function () { 
+              $(this).autocomplete(autocomp_opt5);
+             });
+
+             $(document).on("keydown", ".sn7", function () { 
+              $(this).autocomplete(autocomp_opt6);
+             });
+
+            $(".add_button").click(function (e) { //on add input button click
               FieldCount++;
               e.preventDefault();
-            $("#customFields").append('<tr id="customFields" class = "targetfields"><input type = "hidden" name = "count[]" value = "'+ FieldCount +'"><td><input type = "text" name = "sn[]" class="form-input sn'+ FieldCount +' id = field_'+ FieldCount +'"><td><textarea name="sub_description[]" id="sub_description'+ FieldCount +'" value="" class="form-input sub_description'+ FieldCount +'" /></textarea></td><td><input type = "text"  name = "quantity[]" class="form-input quantity"></td><td><input type = "text" name = "uom[]"  class="form-input"></td><td><input type = "text"  name = "unit_price[]" class="form-input unit_price"></td><td><input type = "text"  name = "amount[]" class="form-input subtotal res"></td><td><a href="javascript:void(0);" class="remCF link_button1"><i class="fa fa-trash-o"></i></a></td></tr>');
-           });
-           $("#customFields").on('click', '.remCF', function(){
+             $("#customFields").append('<tr id="customFields" class = "targetfields"><input type = "hidden" name = "count[]" value = "'+ FieldCount +'"><td><input type = "text" name = "sn[]" class="form-input sn'+ FieldCount +' id = field_'+ FieldCount +'"><td><textarea name="sub_description[]" id="sub_description'+ FieldCount +'" value="" class="form-input sub_description'+ FieldCount +'" /></textarea></td><td><input type = "text"  name = "quantity[]" class="form-input quantity"></td><td><input type = "text" name = "uom[]"  class="form-input"></td><td><input type = "text"  name = "unit_price[]" class="form-input unit_price"></td><td><input type = "text"  name = "amount[]" class="form-input subtotal res"></td><td><a href="javascript:void(0);" class="remCF link_button1"><i class="fa fa-trash-o"></i></a></td></tr>');
+            });
+            $("#customFields").on('click', '.remCF', function(){
               $(this).parent().parent().remove();
-             });
+            });
       });
-    </script>
 
+    </script>
 </head>
 <body>
     <?php

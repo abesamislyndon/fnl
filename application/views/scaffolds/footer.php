@@ -80,50 +80,8 @@ $(document).ready(function ()
                       }
                 });
                 });
-        </script> 
-                });
-<!--
- <script type="text/javascript"> 
-                jQuery(document).ready(function(){
-                    $('.sn').autocomplete({
-                               source:'<?php echo base_url();?>description/get_description', minLength:1,
-                      select:function(evt, ui)
-                       {
-                        this.form.sub_description.value = ui.item.sub_description;
-                      }
-                  });
-                    $('.sn1').autocomplete({
-                        source:'<?php echo base_url();?>description/get_description', minLength:1,
-                      select:function(evt, ui)
-                       {
-                        this.form.sub_description1.value = ui.item.sub_description;
-                      }
-                });
-                  $('.sn2').autocomplete({
-                        source:'<?php echo base_url();?>description/get_description', minLength:1,
-                      select:function(evt, ui)
-                       {
-                        this.form.sub_description2.value = ui.item.sub_description;
-                      }
-                });
-              $('.sn3').autocomplete({
-                        source:'<?php echo base_url();?>description/get_description', minLength:1,
-                      select:function(evt, ui)
-                       {
-                        this.form.sub_description3.value = ui.item.sub_description;
-                      }
-                });
-                $('.sn4').autocomplete({
-                        source:'<?php echo base_url();?>description/get_description', minLength:1,
-                      select:function(evt, ui)
-                       {
-                        this.form.sub_description4.value = ui.item.sub_description;
-                      }
-                });
-                });
-        </script> 
--->
-
+ </script> 
+            
 <script>
     jQuery(document).ready(function( $ ) {
         $('.counter').counterUp({
@@ -133,13 +91,6 @@ $(document).ready(function ()
     });
 </script>
 
-<script type="text/javascript">
-    $('.add').hide();
-    $('#addCF1').on('click',function(){
-    $('.add:hidden:first').show();
-    });
-
-  </script>
 
 
 </body>
