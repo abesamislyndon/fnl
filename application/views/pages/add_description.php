@@ -19,7 +19,7 @@
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Job Description</label>
-                                            <textarea class="form-control" name = "description_details" id = "description_details" rows="3"></textarea>
+                                            <textarea class="form-control" name = "sub_description" rows="3"></textarea>
                                         </div>
                                 </div><!--end of coloumn 6-->
                             </div><!--end of row-->

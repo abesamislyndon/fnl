@@ -7,6 +7,7 @@
     <script src="<?php echo base_url();?>assets/js/morris/raphael-2.1.0.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/morris/morris.js"></script>
     <script src="<?php echo base_url();?>assets/js/custom-scripts.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/js/jquery-ui-1.10.4.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.counterup.min.js"></script>
@@ -61,7 +62,7 @@ $(document).ready(function ()
   $(document).ready(function(){
    $('confirm.div').hide();
     <?php if($this->session->flashdata('msg')){ ?>
-    $('.confirm-div').html('<?php echo "<p>"."&nbsp;&nbsp;&nbsp;".$this->session->flashdata('msg');"</p>" ?>').fadeIn( "slow").fadeOut(4500);
+    $('.confirm-div').html('<?php echo "<p "."&nbsp;&nbsp;&nbsp;".$this->session->flashdata('msg');"</p>" ?>').fadeIn( "slow").fadeOut(4500);
     });
     <?php } ?>
  </script>
@@ -80,38 +81,39 @@ $(document).ready(function ()
                 });
                 });
         </script> 
-
+                });
+<!--
  <script type="text/javascript"> 
                 jQuery(document).ready(function(){
-                    $('#sn').autocomplete({
+                    $('.sn').autocomplete({
                                source:'<?php echo base_url();?>description/get_description', minLength:1,
                       select:function(evt, ui)
                        {
                         this.form.sub_description.value = ui.item.sub_description;
                       }
-                });
-                    $('#sn1').autocomplete({
+                  });
+                    $('.sn1').autocomplete({
                         source:'<?php echo base_url();?>description/get_description', minLength:1,
                       select:function(evt, ui)
                        {
                         this.form.sub_description1.value = ui.item.sub_description;
                       }
                 });
-                  $('#sn2').autocomplete({
+                  $('.sn2').autocomplete({
                         source:'<?php echo base_url();?>description/get_description', minLength:1,
                       select:function(evt, ui)
                        {
                         this.form.sub_description2.value = ui.item.sub_description;
                       }
                 });
-              $('#sn3').autocomplete({
+              $('.sn3').autocomplete({
                         source:'<?php echo base_url();?>description/get_description', minLength:1,
                       select:function(evt, ui)
                        {
                         this.form.sub_description3.value = ui.item.sub_description;
                       }
                 });
-                $('#sn4').autocomplete({
+                $('.sn4').autocomplete({
                         source:'<?php echo base_url();?>description/get_description', minLength:1,
                       select:function(evt, ui)
                        {
@@ -120,7 +122,7 @@ $(document).ready(function ()
                 });
                 });
         </script> 
-
+-->
 
 <script>
     jQuery(document).ready(function( $ ) {

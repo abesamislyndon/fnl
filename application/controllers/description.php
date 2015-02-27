@@ -54,8 +54,6 @@ class Description extends CI_Controller
         }   
      }
 
-
-
     public function  get_description()
     {   
      if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
