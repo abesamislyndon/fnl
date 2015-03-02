@@ -31,6 +31,7 @@
                                             <label>Fax :</label>
                                             <input type = "text"  name = "fax_num" id = "fax_num" class="form-control">
                                         </div>
+                                        
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
