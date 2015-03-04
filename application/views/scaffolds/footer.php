@@ -7,7 +7,7 @@
     <script src="<?php echo base_url();?>assets/js/morris/raphael-2.1.0.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/morris/morris.js"></script>
     <script src="<?php echo base_url();?>assets/js/custom-scripts.js"></script>
-
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/js/jquery-ui-1.10.4.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.counterup.min.js"></script>
@@ -90,8 +90,5 @@ $(document).ready(function ()
         });
     });
 </script>
-
-
-
 </body>
 </html>

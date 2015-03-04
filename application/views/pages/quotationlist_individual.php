@@ -8,7 +8,14 @@
            <div class="panel panel-default">
             <?php echo validation_errors(); ?>
                         <div class="panel-heading">
-                           Form Details
+                           <h4>DETAILS</h4> 
+                           <ul class = "upper-mini-menu">
+                            <li><span class = "print1">QUOTATION # <?php echo $individual->quotation_id?></span></li>
+                               <li>
+                                <a href = "<?php echo base_url();?>create_pdf/print_pending_quotation/<?php echo $individual->quotation_id ?>" class = "print" target = "_blank"><i class="fa fa-print"></i></a>
+                            </li>
+                               
+                           </ul>
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -88,10 +95,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      
                                       <?php foreach($sub_description_individual as $individual):?> 
-
-                            
                                        <tr id="customFields" class = "targetfields">
                                             <input type = "hidden" name = "quotation_id"   value = "<?php echo $individual->quotation_id ?>">
                                             <input type = "hidden" name = "quotation_details_id[]"   value = "<?php echo $individual->quotation_details_id ?>">
@@ -101,15 +105,11 @@
                                             <td><input type = "text" name = "uom[]" class="form-input" value = "<?php echo $individual->uom?>"></td>
                                             <td><input type = "text" name = "unit_price[]" class="form-input unit_price" value = "<?php echo $individual->unit_price?>"></td>
                                             <td><input type = "text"  name = "amount[]" class="form-input subtotal res"  value = "<?php echo $individual->amount?>"></td>
-                                            <td><a href = "<?php echo base_url();?>quotation/delete_sub_desc/<?php echo $individual->quotation_id ?>" class = "link_button1"><i class="fa fa-trash-o"></i></a></td>
+                                            <td><a id="simpleConfirm" href="<?php echo base_url(); ?>quotation/delete_sub_desc/<?php echo $individual->quotation_id ?>/<?php echo $individual->quotation_details_id ?>" class="link_button1" onclick="return confirm('Are your sure? If yes After delete please click UPDATE INFORMATION BUTTON')"><i class="fa fa-trash-o"></i></a></td>
                                         </tr>
-
-                                        
-
-
                                         <?php endforeach; ?>   
                                     </tbody>
-                                <?php foreach($overall_total_details as $individual): ?>
+                                  <?php foreach($overall_total_details as $individual): ?>
                                        <tr>
                                              <td colspan = "4"></td>
                                              <td class = "strong">SUBTOTAL</td>

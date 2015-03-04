@@ -6,7 +6,7 @@ class quotation_model extends CI_Model
    function add_quotation($company_name, $address, $tel_num, $fax_num, $email, $date_in, $term_payment, 
       $validity_period, $job_description,$sub_description, $sn, $quantity, $uom, $unit_price, $amount,
       $sub_total, $gst_total, $grand_total, $user_id)
-     {
+   {
 
       $cal_date   = $date_in;
       $format     = strtotime($cal_date);
@@ -24,8 +24,7 @@ class quotation_model extends CI_Model
     
       );
 
-    if ($qry->num_rows() == 0)
-     {
+    if($qry->num_rows() == 0){
         $this->db->insert('company', $row); 
         $company_id = $this->db->insert_id();
 
@@ -65,11 +64,10 @@ class quotation_model extends CI_Model
           'grand_total' =>$grand_total, 
           );
 
-           $this->db->insert('quotation_quote_total', $row5);  
+          $this->db->insert('quotation_quote_total', $row5);  
 
      }
-     else
-     {
+     else{
 
          $this->db->select('*');
          $this->db->where('company_name', $company_name);
@@ -255,8 +253,7 @@ class quotation_model extends CI_Model
        {
          $q = $this->db->select('quotation_details_id')->from('quotation_details')->where('quotation_details_id', $quotation_details_id[$i])->get();
          
-
-           $row = array(
+         $row = array(
             'sn'=>$sn[$i],
             'sub_description'=>$sub_description[$i],
             'quantity'=>$quantity[$i],
@@ -311,6 +308,12 @@ class quotation_model extends CI_Model
       $unit_price = $this->input->post('unit_price');
       $amount = $this->input->post('amount');
 
+      $sub_description = $this->input->post('sub_description1');
+      $sn = $this->input->post('sn1');
+      $quantity = $this->input->post('quantity1');
+      $uom = $this->input->post('uom1');
+      $unit_price = $this->input->post('unit_price1');
+
       $sub_total = $this->input->post('sub_total');
       $gst_total = $this->input->post('gst_total');
       $grand_total = $this->input->post('grand_total');
@@ -331,26 +334,34 @@ class quotation_model extends CI_Model
                 'amount'=>$amount[$i]
               );
         
-            if($q->num_rows() == 0 ) 
-             {
                 $this->db->where('quotation_id', $quotation_id);
-                $this->db->insert('quotation_details', $row1);
-             } 
+                $this->db->insert('quotation_details', $row1);   
           
         }
+
+          $row5 = array(
+          'quotation_id' =>$quotation_id, 
+          'sub_total' =>$sub_total, 
+          'gst_total' =>$gst_total, 
+          'grand_total' =>$grand_total, 
+          );
+
+          $this->db->where('quotation_id', $quotation_id);
+          $this->db->update('quotation_quote_total', $row5);  
+
+
+
     
-        $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
-        redirect('quotation/individual_details/' . $quotation_id);
+         $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
+         redirect('quotation/individual_details/' . $quotation_id);
      }
 
 
-     function del_sub_desc($quotation_sub_id, $quotation_id){
-      
-        $this->db->select('*');
-        $this->db->from('quotation_details');
-        $this->db->where('quotation_details_id', $quotation_sub_id);
-        $this->db->delete('quotation_details');
+      function del_sub_desc($quotation_sub_id, $quotation_id){
 
+        $this->db->where('quotation_details_id',$quotation_sub_id);
+        $this->db->delete('quotation_details');
+     
         $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
         redirect('quotation/individual_details/' . $quotation_id);
 

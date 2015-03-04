@@ -162,7 +162,7 @@ class Quotation extends CI_Controller
            $data['count_quote'] = $this->quotation_model->count_pending_quote();
            $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
 
-           $this->load->view('scaffolds/header');
+           $this->load->view('scaffolds/header2');
 	         $this->load->view('scaffolds/sidebar', $data);
 		       $this->load->view('pages/quotationlist_individual', $data);
 	         $this->load->view('scaffolds/footer');
@@ -219,6 +219,13 @@ class Quotation extends CI_Controller
   		 		$this->quotation_model->approved_quotation_quotation($quotation_id);
   		 	}
 
+        if($this->input->post('delete_sub'))
+        {
+           $quotation_id =  $this->input->post('quotation_id');
+           $quotation_sub_id = $this->input->post('quotation_details_id');
+           $this->quotation_model->del_sub_desc($quotation_sub_id, $quotation_id);
+        }
+
          }
         else 
         {
@@ -228,14 +235,13 @@ class Quotation extends CI_Controller
      }
 
      public function delete_sub_desc()
-     {
-      
-
+     { 
       if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
        {    
-           $quotation_id = $this->uri->segment(3);
-           $quotation_sub_id = $this->input->post('quotation_details_id');
+           $quotation_id =  $this->uri->segment(3);
+           $quotation_sub_id =  $this->uri->segment(4);
            $this->quotation_model->del_sub_desc($quotation_sub_id, $quotation_id);
+
         }
         else 
         {
