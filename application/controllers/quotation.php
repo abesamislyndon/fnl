@@ -26,7 +26,8 @@ class Quotation extends CI_Controller
         if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
             $data['count_quote']   = $this->quotation_model->count_pending_quote();
             $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
-            $data['overdue']       = $this->quotation_model->overdue();
+            $data['overdue']        = $this->quotation_model->count_overdue();
+            $data['service_report']        = $this->quotation_model->count_service_report();
             
             $this->load->view('scaffolds/header');
             $this->load->view('scaffolds/sidebar', $data);
@@ -41,7 +42,8 @@ class Quotation extends CI_Controller
     public function form_surveyor()
     {
         if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '2') {
-            $this->load->view('scaffolds/header');
+        
+            $this->load->view('scaffolds/header_onsite');
             $this->load->view('pages/form_surveyor');
             $this->load->view('scaffolds/footer');
         } else {
@@ -122,7 +124,8 @@ class Quotation extends CI_Controller
             $data["links"]          = $this->pagination->create_links();
             $data['count_quote']    = $this->quotation_model->count_pending_quote();
             $data['count_jobwork']  = $this->quotation_model->count_pending_jobwork();
-            $data['overdue']        = $this->quotation_model->overdue();
+            $data['overdue']        = $this->quotation_model->count_overdue();
+            $data['service_report']        = $this->quotation_model->count_service_report();
             
             $this->load->view('scaffolds/header');
             $this->load->view('scaffolds/sidebar', $data);
@@ -143,7 +146,8 @@ class Quotation extends CI_Controller
             $data['overall_total_details']      = $this->quotation_model->show_overall_total($quotation_id);
             $data['count_quote']                = $this->quotation_model->count_pending_quote();
             $data['count_jobwork']              = $this->quotation_model->count_pending_jobwork();
-            $data['overdue']                    = $this->quotation_model->overdue();
+             $data['overdue']        = $this->quotation_model->count_overdue();
+            $data['service_report']        = $this->quotation_model->count_service_report();
             
             $this->load->view('scaffolds/header2');
             $this->load->view('scaffolds/sidebar', $data);
@@ -165,7 +169,8 @@ class Quotation extends CI_Controller
             $data['overall_total_details']      = $this->quotation_model->show_overall_total($quotation_id);
             $data['count_quote']                = $this->quotation_model->count_pending_quote();
             $data['count_jobwork']              = $this->quotation_model->count_pending_jobwork();
-            $data['overdue']                    = $this->quotation_model->overdue();
+            $data['overdue']        = $this->quotation_model->count_overdue();
+            $data['service_report']        = $this->quotation_model->count_service_report();
             
             $this->load->view('scaffolds/header');
             $this->load->view('scaffolds/sidebar', $data);
@@ -191,7 +196,7 @@ class Quotation extends CI_Controller
             }
             
             if ($this->input->post('approved')) {
-                $this->quotation_model->approved_quotation_quotation($quotation_id);
+                $this->quotation_model->approved_quotation($quotation_id);
             }
             
             if ($this->input->post('delete_sub')) {
@@ -251,7 +256,8 @@ class Quotation extends CI_Controller
             $data["links"]          = $this->pagination->create_links();
             $data['count_quote']    = $this->quotation_model->count_pending_quote();
             $data['count_jobwork']  = $this->quotation_model->count_pending_jobwork();
-            $data['overdue']        = $this->quotation_model->overdue();
+            $data['overdue']        = $this->quotation_model->count_overdue();
+            $data['service_report']        = $this->quotation_model->count_service_report();
             
             $this->load->view('scaffolds/header');
             $this->load->view('scaffolds/sidebar', $data);

@@ -49,15 +49,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Term of Payment :</label>
-                                            <input type = "text" name = "term_payment" class="form-control" value = "<?php echo $individual->term_payment ?>">
+                                            <input type = "text" name = "term_payment" class="form-control red" value = "<?php echo $individual->term_payment ?>">
                                         </div>
                                            <div class="form-group">
                                             <label>Validity Period :</label>
-                                            <input type = "text"  name = "validity_period" class="form-control" value = "<?php echo $individual->validity_period ?>">
+                                            <input type = "text"  name = "validity_period" class="form-control red " value = "<?php echo $individual->validity_period ?>">
                                         </div>
                                          <div class="form-group">
                                             <label>Job Description</label>
-                                            <textarea class="form-control" name = "job_description" rows="3"><?php echo $individual->job_description ?></textarea>
+                                            <textarea class="form-control red" name = "job_description" rows="3"><?php echo $individual->job_description ?></textarea>
                                         </div>
 
                                 </div><!--end of coloumn 6-->

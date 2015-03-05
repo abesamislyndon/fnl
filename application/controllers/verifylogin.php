@@ -29,7 +29,7 @@ class VerifyLogin extends CI_Controller
               }
            if($this->session->userdata['logged_in']['role_code'] == '2')
               {
-                redirect(base_url('jobwork/form_surveyor'), 'refresh');
+                redirect(base_url('quotation/form_surveyor'), 'refresh');
               }  
       
           }

@@ -19,7 +19,8 @@ class Description extends CI_Controller
            
         $data['count_quote'] = $this->quotation_model->count_pending_quote();
         $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
-         $data['overdue'] = $this->quotation_model->overdue();
+        $data['overdue'] = $this->quotation_model->count_overdue();
+        $data['service_report']        = $this->quotation_model->count_service_report();
         
         $this->load->view('scaffolds/header');
         $this->load->view('scaffolds/sidebar',$data);
@@ -56,7 +57,7 @@ class Description extends CI_Controller
 
     public function  get_description()
     {   
-     if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
+     if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1' or $this->session->userdata['logged_in']['role_code'] == '2')
      {    
         $keyword = $_GET['term'];
         $data = $this->description_model->do_get_description($keyword);

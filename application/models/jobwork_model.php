@@ -43,6 +43,7 @@ class jobwork_model extends CI_Model
         $this->db->from('quotation');
         $this->db->join('company', 'company.company_id = quotation.company_id');
         $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
+        $this->db->join('jobwork', 'jobwork.quotation_id = quotation.quotation_id ');
         $this->db->where('status', 2);
         $this->db->limit($limit, $start);
         $query = $this->db->get();

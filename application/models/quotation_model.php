@@ -352,7 +352,7 @@ class quotation_model extends CI_Model
         
     }
       
-    function approved_quotation_quotation($quotation_id)
+    function approved_quotation($quotation_id)
     {    
         $row = array(
             'status' => 2
@@ -362,6 +362,12 @@ class quotation_model extends CI_Model
         $this->db->from('quotation');
         $this->db->where('quotation_id', $quotation_id);
         $this->db->update('quotation', $row);
+ 
+        $row1 = array(
+            'quotation_id' => $quotation_id
+        );
+        $this->db->insert('jobwork', $row1);
+
         
         $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
         redirect('quotation/individual_details_approved/' . $quotation_id);
@@ -381,8 +387,7 @@ class quotation_model extends CI_Model
     }
     
     function count_pending_jobwork()
-    {
-        
+    {    
         $this->db->select('status, COUNT(status) as total');
         $this->db->where('status', 2);
         $this->db->from('quotation');
@@ -390,6 +395,27 @@ class quotation_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result();
         
+    }
+
+    function count_overdue()
+    {
+        $this->db->select('status, COUNT(status) as total');
+        $this->db->where('status', 1);
+        $this->db->where("date_of_quote < DATE_SUB(NOW() ,INTERVAL 2 DAY )", NULL, FALSE);
+        $this->db->from('quotation');
+        $this->db->order_by('total', 'desc');
+        $query = $this->db->get();
+        return $result = $query->result();
+    }
+    function count_service_report()
+    {
+        $this->db->select('status, COUNT(status) as total');
+        $this->db->where('status', 3);
+        $this->db->where("date_of_quote < DATE_SUB(NOW() ,INTERVAL 2 DAY )", NULL, FALSE);
+        $this->db->from('quotation');
+        $this->db->order_by('total', 'desc');
+        $query = $this->db->get();
+        return $result = $query->result();
     }
 
     function show_overdue_quotation_list($limit, $start){
@@ -411,18 +437,25 @@ class quotation_model extends CI_Model
         return false; 
     }
         
-    function overdue()
-    {
-        $this->db->select('status, COUNT(status) as total');
-        $this->db->where('status', 1);
-        $this->db->where("date_of_quote < DATE_SUB(NOW() ,INTERVAL 2 DAY )", NULL, FALSE);
-        $this->db->from('quotation');
-        $this->db->order_by('total', 'desc');
-        $query = $this->db->get();
-        return $result = $query->result();
-        
-    }
 
+    function show_service_report_list($limit, $start){
+        
+        $this->db->from('quotation');
+        $this->db->join('company', 'company.company_id = quotation.company_id');
+        $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
+        $this->db->where('status', 3);
+        $this->db->limit($limit, $start);
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false; 
+     }
+      
     
 }
 /* End of file quotation_model.php */

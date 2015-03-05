@@ -42,7 +42,7 @@ LOGIN FORM
 *******************/
 
 .login-form {
-  width: 300px;
+  width: 350px;
   margin: 0 auto;
   position: relative;
   z-index:5;
@@ -80,23 +80,21 @@ CONTENT
 *******************/
 
 .login-form .content {
-  padding: 0 30px 25px 30px;
+  padding: 0 40px 25px 4  0px;
 }
 
 /* Input field */
 .login-form .content .input {
-  width: 188px;
-  padding: 15px 25px;
-  
+  width: 100%;
+  padding: 15px 8px;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #9d9e9e;
-  
   background: #fff;
   border: 1px solid #fff;
   border-radius: 5px;
-
+  margin-left:-5px;  
 }
 
 /* Second input field */

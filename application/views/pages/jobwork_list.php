@@ -1,9 +1,10 @@
 <div id="page-wrapper" >
    <div id="page-inner">
         <div class="col-md-12 col-sm-12 col-xs-12">
+
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                              OVERDUE QUOTATION
+                              JOBWORK LIST
                             </div> 
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -11,6 +12,7 @@
                                         <thead>
                                             <tr>
                                                 <th style = "width:8%;">Quotation #</th>
+                                                <th style = "width:8%;">Jobwork #</th>
                                                 <th style = "width:7%;">Date</th>
                                                 <th>Company Name</th>
                                                 <th>Address</th>
@@ -22,10 +24,11 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php if (isset($overdue_list) & ($overdue_list <> NULL)) {?>  
-                                         <?php foreach ($overdue_list as $individual):?>   
+                                        <?php if (isset($jobwork_list) & ($jobwork_list <> NULL)) {?>  
+                                         <?php foreach ($jobwork_list as $individual):?>   
                                             <tr>
                                                 <td style = "text-align:center;"><?php echo $individual->quotation_id ?></td>
+                                                <td style = "text-align:center;"><?php echo $individual->jobwork_id ?></td>
                                                 <td ><?php echo $individual->date_of_quote?></td>
                                                 <td ><?php echo $individual->company_name?></td>
                                                 <td ><?php echo $individual->address?></td>

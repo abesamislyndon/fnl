@@ -3,7 +3,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                              OVERDUE QUOTATION
+                              SERVICE REPORT LIST
                             </div> 
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -22,8 +22,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php if (isset($overdue_list) & ($overdue_list <> NULL)) {?>  
-                                         <?php foreach ($overdue_list as $individual):?>   
+                                        <?php if (isset($SR_list) & ($SR_list <> NULL)) {?>  
+                                         <?php foreach ($SR_list as $individual):?>   
                                             <tr>
                                                 <td style = "text-align:center;"><?php echo $individual->quotation_id ?></td>
                                                 <td ><?php echo $individual->date_of_quote?></td>

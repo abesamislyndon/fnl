@@ -7,7 +7,6 @@
     <link href="<?php echo base_url();?>assets/css/font-awesome.css" rel="stylesheet" />
     <link href="<?php echo base_url();?>assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
     <link href="<?php echo base_url();?>assets/css/custom-styles.css" rel="stylesheet" />
-    <link type="text/css" href="<?php echo base_url(); ?>assets/css/css/jquery-ui-1.10.4.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <script src="<?php echo base_url();?>assets/js/jquery-1.10.2.js"></script>
     <script>
@@ -105,7 +104,7 @@
             $(".add_button").click(function (e) { //on add input button click
               FieldCount++;
               e.preventDefault();
-             $("#customFields").append('<tr id="customFields" class = "targetfields"><input type = "hidden" name = "count[]" value = "'+ FieldCount +'"><td><input type = "text" name = "sn1[]" class="form-input sn'+ FieldCount +' id = field_'+ FieldCount +'"><td><textarea name="sub_description1[]" id="sub_description'+ FieldCount +'" value="" class="form-input sub sub_description'+ FieldCount +'" /></textarea></td><td><input type = "text"  name = "quantity1[]" class="form-input quantity"></td><td><input type = "text" name = "uom1[]"  class="form-input"></td><td><input type = "text"  name = "unit_price1[]" class="form-input unit_price"></td><td><input type = "text"  name = "amount1[]" class="form-input subtotal res"></td><td><a href="javascript:void(0);" class="remCF link_button1"><i class="fa fa-trash-o"></i></a></td></tr>');
+             $("#customFields").append('<tr id="customFields" class = "targetfields"><input type = "hidden" name = "count[]" value = "'+ FieldCount +'"><td><input type = "text" name = "sn[]" class="form-input sn'+ FieldCount +' id = field_'+ FieldCount +'"><td><textarea name="sub_description[]" id="sub_description'+ FieldCount +'" value="" class="form-input sub sub_description'+ FieldCount +'" /></textarea></td><td><input type = "text"  name = "quantity[]" class="form-input quantity"></td><td><input type = "text" name = "uom[]"  class="form-input"></td><td><input type = "text"  name = "unit_price[]" class="form-input unit_price"></td><td><input type = "text"  name = "amount[]" class="form-input subtotal res"></td><td><a href="javascript:void(0);" class="remCF link_button1"><i class="fa fa-trash-o"></i></a></td></tr>');
             });
             $("#customFields").on('click', '.remCF', function(){
               $(this).parent().parent().remove();
@@ -113,7 +112,6 @@
       });
 
     </script>
-
 </head>
 <body>
     <?php

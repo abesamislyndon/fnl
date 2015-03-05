@@ -46,15 +46,16 @@ class Jobwork extends CI_Controller
 
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $data["quotation_list"] = $this->jobwork_model->show_jobwork_list($config["per_page"], $page);
+        $data["jobwork_list"] = $this->jobwork_model->show_jobwork_list($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
         $data['count_quote'] = $this->quotation_model->count_pending_quote();
         $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
-        $data['overdue'] = $this->quotation_model->overdue();
+        $data['overdue'] = $this->quotation_model->count_overdue();
+        $data['service_report']        = $this->quotation_model->count_service_report();
 
 	     $this->load->view('scaffolds/header');
 	     $this->load->view('scaffolds/sidebar',$data);
-		   $this->load->view('pages/quotationlist', $data);
+		   $this->load->view('pages/jobwork_list', $data);
 		   $this->load->view('scaffolds/footer');
      }
      else

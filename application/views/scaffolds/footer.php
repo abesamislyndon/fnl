@@ -7,12 +7,10 @@
     <script src="<?php echo base_url();?>assets/js/morris/raphael-2.1.0.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/morris/morris.js"></script>
     <script src="<?php echo base_url();?>assets/js/custom-scripts.js"></script>
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/js/jquery-ui-1.10.4.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.counterup.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script> 
-  <link type="text/css" href="<?php echo base_url(); ?>assets/css/css/jquery-ui-1.10.4.css" rel="stylesheet">
  
   <script>
   $(function() {
@@ -90,5 +88,44 @@ $(document).ready(function ()
         });
     });
 </script>
+
+<script>
+  $(document).ready(function() {
+    current_page = document.location.href
+    if (current_page.match(/dashboard/)) 
+    {
+    $("ul#main-menu li:eq(0)").addClass('selected');
+    } 
+    else if (current_page.match(/quotationlist/)) 
+    {
+    $("ul#main-menuli:eq(1)").addClass('selected');
+    }
+    else if (current_page.match(/overdue_quotation_list/)) 
+     {
+     $("ul#main-menu li:eq(2)").addClass('selected');
+    } 
+    else if (current_page.match(/jobwork_list/)) 
+    {
+      $("ul#main-menu li:eq(3)").addClass('selected');
+    } 
+    else if (current_page.match(/service_report_list/)) 
+    {
+    $("ul#main-menu li:eq(4)").addClass('selected');
+    }  
+    else if (current_page.match(/quotation/)) 
+    {
+    $("ul#main-menu li:eq(5)").addClass('selected');
+    } 
+    else if (current_page.match(/form/)) 
+    {
+    $("ul#main-menu li:eq(6)").addClass('selected');
+    } 
+
+   else { // don't mark any nav links as selected
+      $("ul#navigation li").removeClass('selected');
+};
+});
+</script>
+
 </body>
 </html>
