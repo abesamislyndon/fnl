@@ -50,6 +50,7 @@ class Jobwork extends CI_Controller
         $data["links"] = $this->pagination->create_links();
         $data['count_quote'] = $this->quotation_model->count_pending_quote();
         $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
+        $data['overdue'] = $this->quotation_model->overdue();
 
 	     $this->load->view('scaffolds/header');
 	     $this->load->view('scaffolds/sidebar',$data);
