@@ -65,19 +65,19 @@ class Jobwork extends CI_Controller
 	 
    }
 
-    public function individual_details()
+    public function individual_details_with_jobwork()
     {
       if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
         { 
            $quotation_id = $this->uri->segment(3);
-           $data['quotation_list_individual'] = $this->quotation_model->show_quotation_individual($quotation_id);
+           $data['quotation_list_individual'] = $this->quotation_model->show_quotation_individual_jobwork($quotation_id);
            $data['sub_description_individual'] = $this->quotation_model->show_subquotation_individual($quotation_id);
            $data['overall_total_details'] = $this->quotation_model->show_overall_total($quotation_id);
 
 
            $this->load->view('scaffolds/header');
 	         $this->load->view('scaffolds/sidebar');
-		       $this->load->view('pages/quotationlist_individual', $data);
+		       $this->load->view('pages/jobwork_individual', $data);
 	         $this->load->view('scaffolds/footer');
        }
        else 

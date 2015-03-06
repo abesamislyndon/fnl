@@ -29,7 +29,21 @@ public function print_pending_quotation()
            redirect('login', 'refresh');
         }
 }
-
+public function print_joborder()
+{
+    if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
+       {
+         $id = $this->uri->segment(3);
+         $data['quote_details'] = $this->quotation_model->show_quotation_individual_jobwork($id);
+         $data['sub_desc'] = $this->quotation_model->show_subquotation_individual($id);
+         $data['total'] = $this->quotation_model->show_overall_total($id);
+         $this->load->view('pages/jobwork_pdf_details', $data);
+        }
+   else 
+        {
+           redirect('login', 'refresh');
+        }
+}
   
 }
 /* End of file create_pdf.php */

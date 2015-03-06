@@ -187,6 +187,19 @@ class quotation_model extends CI_Model
         $result = $q->result();
         return $result;
     }
+    function show_quotation_individual_jobwork($quotation_id)
+    {
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->join('company', 'company.company_id = quotation.company_id');
+        $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
+        $this->db->join('jobwork', 'jobwork.quotation_id = quotation.quotation_id');
+        $this->db->where('quotation_details.quotation_id', $quotation_id);
+        $this->db->group_by('quotation.quotation_id');
+        $q      = $this->db->get();
+        $result = $q->result();
+        return $result;
+    }
     
     function show_subquotation_individual($quotation_id)
     {
