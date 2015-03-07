@@ -264,23 +264,32 @@ class quotation_model extends CI_Model
                 'unit_price' => $unit_price[$i],
                 'amount' => $amount[$i]
             );
-            
-            $row2 = array(
-                'sub_total' => $sub_total,
-                'gst_total' => $gst_total,
-                'grand_total' => $grand_total
-            );
+    
+     
             
             
             if ($q->num_rows() > 0) {
                 $this->db->from('quotation_details');
                 $this->db->join('quotation_quote_total', 'quotation_details.quotation_id = quotation_quote_total.quotation_id');
+                $this->db->join('quotation', 'quotation.quotation_id = quotation_details.quotation_id');
                 $this->db->where('quotation_details_id', $quotation_details_id[$i]);
                 $this->db->update('quotation_details', $row);
-                $this->db->update('quotation_quote_total', $row2);
             }
+        
+         $row2 = array('sub_total' => $sub_total,'gst_total' => $gst_total,'grand_total' => $grand_total);
+         $this->db->where('quotation_id', $quotation_id);
+         $this->db->update('quotation_quote_total', $row2);
+         
+
+         $row3 = array('job_description' =>  $job_description,'validity_period' => $validity_period,'term_payment' => $term_payment);
+         $this->db->where('quotation_id', $quotation_id);
+         $this->db->update('quotation', $row3);
+         
             
         }
+
+
+            
         
         $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
         redirect('quotation/individual_details/' . $quotation_id);
