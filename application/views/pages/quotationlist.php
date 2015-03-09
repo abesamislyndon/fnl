@@ -32,7 +32,14 @@
                                                 <td ><?php echo $individual->address?></td>
                                                 <td ><?php echo $individual->tel_num?></td>
                                                 <td><?php echo $individual->job_description?></td>
-                                                <td style = "color:#e53935; font-weight:bolder; font-size:10px; font-family:verdana; text-align:center;"><?php echo $individual->grand_total?></td>
+                                                <?php
+                                                  $CI =& get_instance();
+                                                  $CI->load->model('quotation_model');
+                                                  $result = $CI->quotation_model->total1($individual->quotation_id);
+                                                ?>
+                                                <?php foreach ($result as $individual1):?>   
+                                                <td style = "color:#e53935; font-weight:bolder; font-size:10px; font-family:verdana; text-align:center;"><?php  $sub = $individual1->total; $sub = $individual1->total; $percentage = 7; $gst = ($percentage / 100) * $sub; echo $sub + $gst;  ?></td>
+                                                <?php endforeach;?>
                                                 <td><a href = "<?php echo base_url();?>create_pdf/print_pending_quotation/<?php echo $individual->quotation_id ?>" class = "link_button" target = "_blank"><i class="fa fa-print"></i></a></td>
                                                 <td><a href = "<?php echo base_url();?>quotation/individual_details/<?php echo $individual->quotation_id ?>" class = "link_button"><i class="fa fa-eye"></i></a></td>
                                             </tr>

@@ -49,14 +49,21 @@
         position: absolute;
         color:red;
     }
+    h2{
+        text-align:right;
+        margin-top:17px;  
+        position: absolute;
+        color:red;
+        font-size:17px; 
+    }
 
 
 </style>
   <?php 
      if(!empty($quote_details) ) {
      foreach($quote_details as $details): ?>  
-    <h4>QUOTATION:&nbsp;&nbsp;<?php echo $details->quotation_id;?></h4>
-    <h4>QUOTATION:&nbsp;&nbsp;<?php echo $details->jobwork_id;?></h4> 
+    <h4>QUOTATION #:&nbsp;&nbsp;<?php echo $details->quotation_id;?></h4>
+    <h2>JOB WORK #:&nbsp;&nbsp;<?php echo $details->jobwork_id;?></h2> 
     <span><b>Company name:</b>&nbsp;&nbsp;<?php echo $details->company_name;?></span><br>
     <span><b>Address:&nbsp;</b>&nbsp;&nbsp;<?php echo $details->address;?></span><br>
     <span><b>Contact #:&nbsp;</b>&nbsp;&nbsp;<?php echo $details->tel_num;?></span><br>

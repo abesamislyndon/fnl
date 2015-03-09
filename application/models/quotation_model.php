@@ -162,7 +162,9 @@ class quotation_model extends CI_Model
         $this->db->from('quotation');
         $this->db->join('company', 'company.company_id = quotation.company_id');
         $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
+        $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
         $this->db->where('status', 1);
+        $this->db->group_by('quotation.quotation_id');
         $this->db->limit($limit, $start);
         $query = $this->db->get();
         
@@ -194,6 +196,31 @@ class quotation_model extends CI_Model
         $this->db->join('company', 'company.company_id = quotation.company_id');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
         $this->db->join('jobwork', 'jobwork.quotation_id = quotation.quotation_id');
+        $this->db->where('quotation_details.quotation_id', $quotation_id);
+        $this->db->group_by('quotation.quotation_id');
+        $q      = $this->db->get();
+        $result = $q->result();
+        return $result;
+    }
+     function total($quotation_id)
+    {
+        $this->db->select('SUM(amount) as total', FALSE);
+        $this->db->from('quotation');
+        $this->db->join('company', 'company.company_id = quotation.company_id');
+        $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
+        $this->db->join('jobwork', 'jobwork.quotation_id = quotation.quotation_id');
+        $this->db->where('quotation_details.quotation_id', $quotation_id);
+        $this->db->group_by('quotation.quotation_id');
+        $q      = $this->db->get();
+        $result = $q->result();
+        return $result;
+    }
+      function total1($quotation_id)
+    {
+        $this->db->select('SUM(amount) as total', FALSE);
+        $this->db->from('quotation');
+        $this->db->join('company', 'company.company_id = quotation.company_id');
+        $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
         $this->db->where('quotation_details.quotation_id', $quotation_id);
         $this->db->group_by('quotation.quotation_id');
         $q      = $this->db->get();
