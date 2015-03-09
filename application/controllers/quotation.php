@@ -28,6 +28,7 @@ class Quotation extends CI_Controller
             $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
             $data['overdue']        = $this->quotation_model->count_overdue();
             $data['service_report']        = $this->quotation_model->count_service_report();
+            $data['job_complete']        = $this->quotation_model->count_complete_jobwork();
             
             $this->load->view('scaffolds/header');
             $this->load->view('scaffolds/sidebar', $data);
@@ -128,6 +129,7 @@ class Quotation extends CI_Controller
             $data['overdue']        = $this->quotation_model->count_overdue();
             $data['service_report']        = $this->quotation_model->count_service_report();
             //$data['total1']        = $this->quotation_model->total1(2);
+            $data['job_complete']        = $this->quotation_model->count_complete_jobwork();
             
             $this->load->view('scaffolds/header');
             $this->load->view('scaffolds/sidebar', $data);
@@ -139,8 +141,8 @@ class Quotation extends CI_Controller
         
     }
     
-    public function individual_details()
-    {
+    public function individual_details(){
+
         if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
             $quotation_id                       = $this->uri->segment(3);
             $data['quotation_list_individual']  = $this->quotation_model->show_quotation_individual($quotation_id);
@@ -151,6 +153,8 @@ class Quotation extends CI_Controller
             $data['count_jobwork']              = $this->quotation_model->count_pending_jobwork();
             $data['overdue']        = $this->quotation_model->count_overdue();
             $data['service_report']        = $this->quotation_model->count_service_report();
+            $data['job_complete']        = $this->quotation_model->count_complete_jobwork();
+            $data['quotation_individual'] = $this->quotation_model->show_quotation_individual_jobwork($quotation_id);
             
             $this->load->view('scaffolds/header2');
             $this->load->view('scaffolds/sidebar', $data);
@@ -162,8 +166,8 @@ class Quotation extends CI_Controller
         
     }
 
-        public function individual_details_with_jobwork()
-    {
+    public function individual_details_with_jobwork(){
+
         if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
             $quotation_id                       = $this->uri->segment(3);
             $data['quotation_list_individual']  = $this->quotation_model->show_quotation_individual_jobwork($quotation_id);
@@ -174,6 +178,7 @@ class Quotation extends CI_Controller
             $data['count_jobwork']              = $this->quotation_model->count_pending_jobwork();
             $data['overdue']        = $this->quotation_model->count_overdue();
             $data['service_report']        = $this->quotation_model->count_service_report();
+            $data['job_complete']        = $this->quotation_model->count_complete_jobwork();
             
             $this->load->view('scaffolds/header2');
             $this->load->view('scaffolds/sidebar', $data);
@@ -186,8 +191,8 @@ class Quotation extends CI_Controller
     }
     
     
-    public function individual_details_approved()
-    {
+    public function individual_details_approved(){
+
         if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
             $quotation_id                       = $this->uri->segment(3);
             $data['quotation_list_individual']  = $this->quotation_model->show_quotation_individual($quotation_id);
@@ -197,6 +202,7 @@ class Quotation extends CI_Controller
             $data['count_jobwork']              = $this->quotation_model->count_pending_jobwork();
             $data['overdue']        = $this->quotation_model->count_overdue();
             $data['service_report']        = $this->quotation_model->count_service_report();
+            $data['job_complete']        = $this->quotation_model->count_complete_jobwork();
             
             $this->load->view('scaffolds/header');
             $this->load->view('scaffolds/sidebar', $data);
@@ -208,11 +214,12 @@ class Quotation extends CI_Controller
         
     }
     
-    public function process_quotation_quotation()
-    {
+    public function process_quotation_quotation(){
+
         if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
             
             $quotation_id = $this->input->post('quotation_id');
+            $jobwork_id = $this->input->post('jobwork_id');
             
             if ($this->input->post('update')) {
                 $this->quotation_model->update_quotation_quotation($quotation_id);
@@ -223,6 +230,16 @@ class Quotation extends CI_Controller
             
             if ($this->input->post('approved')) {
                 $this->quotation_model->approved_quotation($quotation_id);
+            }
+
+            if ($this->input->post('complete')) {
+                $this->quotation_model->jobwork_complete($quotation_id,  $jobwork_id);
+            }
+             if ($this->input->post('reject')) {
+                $this->quotation_model->reject_quotation($quotation_id, $jobwork_id);
+            }
+              if ($this->input->post('checkout')) {
+                $this->quotation_model->checkout_jobwork($quotation_id, $jobwork_id);
             }
             
             if ($this->input->post('delete_sub')) {
@@ -237,8 +254,8 @@ class Quotation extends CI_Controller
         
     }
     
-    public function delete_sub_desc()
-    {
+    public function delete_sub_desc(){
+
         if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
             $quotation_id     = $this->uri->segment(3);
             $quotation_sub_id = $this->uri->segment(4);
@@ -254,6 +271,7 @@ class Quotation extends CI_Controller
 
 
     public function overdue_quotation_list(){
+           
            if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
 
             $config                     = array();
@@ -284,6 +302,7 @@ class Quotation extends CI_Controller
             $data['count_jobwork']  = $this->quotation_model->count_pending_jobwork();
             $data['overdue']        = $this->quotation_model->count_overdue();
             $data['service_report']        = $this->quotation_model->count_service_report();
+            $data['job_complete']        = $this->quotation_model->count_complete_jobwork();
             
             $this->load->view('scaffolds/header');
             $this->load->view('scaffolds/sidebar', $data);

@@ -183,6 +183,7 @@ class quotation_model extends CI_Model
         $this->db->from('quotation');
         $this->db->join('company', 'company.company_id = quotation.company_id');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
+       // $this->db->join('jobwork', 'jobwork.quotation_id = quotation.quotation_id');
         $this->db->where('quotation_details.quotation_id', $quotation_id);
         $this->db->group_by('quotation.quotation_id');
         $q      = $this->db->get();
@@ -228,8 +229,8 @@ class quotation_model extends CI_Model
         return $result;
     }
     
-    function show_subquotation_individual($quotation_id)
-    {
+    function show_subquotation_individual($quotation_id){
+
         $this->db->select('*');
         $this->db->from('quotation');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
@@ -240,8 +241,8 @@ class quotation_model extends CI_Model
         
     }
     
-    function show_overall_total($quotation_id)
-    {
+    function show_overall_total($quotation_id){
+
         $this->db->select('*');
         $this->db->from('quotation');
         $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id');
@@ -252,8 +253,7 @@ class quotation_model extends CI_Model
     }
     
     /*---  update submitted quotation for quotation -----*/
-    function update_quotation_quotation($quotation_id)
-    {
+    function update_quotation_quotation($quotation_id){
         
         $quotation_details_id = $this->input->post('quotation_details_id');
         $company_name         = $this->input->post('company_name');
@@ -307,23 +307,18 @@ class quotation_model extends CI_Model
          $this->db->where('quotation_id', $quotation_id);
          $this->db->update('quotation_quote_total', $row2);
          
-
          $row3 = array('job_description' =>  $job_description,'validity_period' => $validity_period,'term_payment' => $term_payment);
          $this->db->where('quotation_id', $quotation_id);
          $this->db->update('quotation', $row3);
          
             
         }
-
-
-            
-        
-        $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
-        redirect('quotation/individual_details/' . $quotation_id);
+  
+      $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
+      redirect('quotation/individual_details/' . $quotation_id);
     }
      
-    function add_quotation_desc($quotation_id)
-    {
+    function add_quotation_desc($quotation_id){
         
         $quotation_details_id = $this->input->post('quotation_details_id');
         $company_name         = $this->input->post('company_name');
@@ -390,9 +385,8 @@ class quotation_model extends CI_Model
     }
     
     
-    function del_sub_desc($quotation_sub_id, $quotation_id)
-    {
-        
+    function del_sub_desc($quotation_sub_id, $quotation_id){
+
         $this->db->where('quotation_details_id', $quotation_sub_id);
         $this->db->delete('quotation_details');
         
@@ -401,8 +395,8 @@ class quotation_model extends CI_Model
         
     }
       
-    function approved_quotation($quotation_id)
-    {    
+    function approved_quotation($quotation_id){
+
         $row = array(
             'status' => 2
         );
@@ -416,15 +410,78 @@ class quotation_model extends CI_Model
             'quotation_id' => $quotation_id
         );
         $this->db->insert('jobwork', $row1);
-
         
         $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
         redirect('quotation/individual_details_approved/' . $quotation_id);
         
     }
+
+    function reject_quotation($quotation_id, $jobwork_id){    
+
+        $row = array(
+            'status' => 4
+        );
+        
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->where('quotation_id', $quotation_id);
+        $this->db->update('quotation', $row);
+ 
+        $row1 = array(
+            'quotation_id' => $quotation_id,
+            'jobwork_id' => $jobwork_id
+        );
+        $this->db->insert('job_complete', $row1);
+
+        $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
+        redirect('quotation/individual_details_approved/' . $quotation_id);
+        
+    }
+
+        function checkout_jobwork($quotation_id, $jobwork_id){    
+
+        $row = array(
+            'status' => 5
+        );
+        
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->where('quotation_id', $quotation_id);
+        $this->db->update('quotation', $row);
+ 
+        $row1 = array(
+            'quotation_id' => $quotation_id,
+            'jobwork_id' => $jobwork_id
+        );
+        $this->db->insert('service_report', $row1);
+
+        $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
+        redirect('quotation/individual_details_approved/' . $quotation_id);
+        
+    }
+
+    function jobwork_complete($quotation_id, $jobwork_id){    
+        $row = array(
+            'status' => 3
+        );
+        
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->where('quotation_id', $quotation_id);
+        $this->db->update('quotation', $row);
+
+        $row1 = array(
+            'quotation_id' => $quotation_id,
+            'jobwork_id' => $jobwork_id
+        );
+        $this->db->insert('job_complete', $row1);
+
+        $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
+        redirect('quotation/individual_details_approved/' . $quotation_id);
+        
+    }
     
-    function count_pending_quote()
-    {
+    function count_pending_quote(){
         
         $this->db->select('status, COUNT(status) as total');
         $this->db->where('status', 1);
@@ -435,8 +492,8 @@ class quotation_model extends CI_Model
         
     }
     
-    function count_pending_jobwork()
-    {    
+    function count_pending_jobwork(){
+
         $this->db->select('status, COUNT(status) as total');
         $this->db->where('status', 2);
         $this->db->from('quotation');
@@ -446,8 +503,20 @@ class quotation_model extends CI_Model
         
     }
 
-    function count_overdue()
-    {
+    function count_complete_jobwork(){
+
+        $this->db->select('status, COUNT(status) as total');
+        $this->db->where('status', 3);
+        $this->db->or_where('status', 4);
+        $this->db->from('quotation');
+        $this->db->order_by('total', 'desc');
+        $query = $this->db->get();
+        return $result = $query->result();
+        
+    }
+
+    function count_overdue(){
+
         $this->db->select('status, COUNT(status) as total');
         $this->db->where('status', 1);
         $this->db->where("date_of_quote < DATE_SUB(NOW() ,INTERVAL 2 DAY )", NULL, FALSE);
@@ -456,11 +525,11 @@ class quotation_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result();
     }
-    function count_service_report()
-    {
+
+    function count_service_report(){
+
         $this->db->select('status, COUNT(status) as total');
         $this->db->where('status', 3);
-        $this->db->where("date_of_quote < DATE_SUB(NOW() ,INTERVAL 2 DAY )", NULL, FALSE);
         $this->db->from('quotation');
         $this->db->order_by('total', 'desc');
         $query = $this->db->get();
@@ -488,11 +557,11 @@ class quotation_model extends CI_Model
         
 
     function show_service_report_list($limit, $start){
-        
+    
         $this->db->from('quotation');
         $this->db->join('company', 'company.company_id = quotation.company_id');
-        $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
         $this->db->where('status', 3);
+        $this->db->or_where('status', 4);
         $this->db->limit($limit, $start);
         $query = $this->db->get();
         

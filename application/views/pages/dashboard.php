@@ -50,7 +50,7 @@
                 <div class="panel panel-primary text-center no-boder bg-color-red">
                     <div class="panel-body">
                      <i class="fa fa-archive fa-3x"></i>
-                        <h3 class = "counter"><?php foreach($service_report as $pending_sr){ echo $pending_sr->total; } ?></h3>
+                        <h3 class = "counter"><?php foreach($job_complete as $complete_jobwork){ echo $complete_jobwork->total; } ?></h3>
                     </div>
                     <div class="panel-footer back-footer-red style-font">
                        <p>PENDING SERVICE OUT</p> 

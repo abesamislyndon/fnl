@@ -99,6 +99,9 @@
                                        <tr id="customFields" class = "targetfields">
                                             <input type = "hidden" name = "quotation_id"   value = "<?php echo $individual->quotation_id ?>"> 
                                             <input type = "hidden" name = "quotation_details_id[]"   value = "<?php echo $individual->quotation_details_id ?>">
+                                            <?php foreach($quotation_list_individuald:?>
+                                             <input type = "hidden" name = "jobwork_id"   value = "<?php echo $individual->jobwork_id ?>">
+                                            <?php endforeach; ?>   
                                             <td><input type = "text" name = "sn[]" id = "sn" class="form-input sn" value = "<?php echo $individual->sn?>"></td>
                                             <td><textarea  name = "sub_description[]" class="form-input sub_description"><?php echo $individual->sub_description?></textarea></td>
                                             <td><input type = "text" name = "quantity[]" class="form-input quantity" value = "<?php echo $individual->quantity ?>"></td>
@@ -132,10 +135,7 @@
                         </div>
                     </div>
                      <div class = "submit_container">
-                        <input type = "submit" value ="ADD NEW DESCRIPTION" name = "add_desc" class = "submit">
-                        <input type = "submit" value ="UPDATE INFORMATION" name = "update" class = "submit">
-                        <input type = "submit" value ="REJECT" name = "reject" class = "submit">
-                        <input type = "submit" value ="APPROVED" name = "approved" class = "submit">
+                        <input type = "submit" value ="CHECKOUT" name = "checkout" class = "submit">
                      </div>
                 </form>
                <?php endforeach; ?> 

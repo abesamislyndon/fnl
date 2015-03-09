@@ -21,6 +21,7 @@ class Description extends CI_Controller
         $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
         $data['overdue'] = $this->quotation_model->count_overdue();
         $data['service_report']        = $this->quotation_model->count_service_report();
+        $data['job_complete']        = $this->quotation_model->count_complete_jobwork();
         
         $this->load->view('scaffolds/header');
         $this->load->view('scaffolds/sidebar',$data);

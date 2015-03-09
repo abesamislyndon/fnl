@@ -70,6 +70,21 @@ class jobwork_model extends CI_Model
         $result = $q->result();
         return $result;
     }
+
+    function checkout_individual($quotation_id)
+    {
+        
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->join('company', 'company.company_id = quotation.company_id');
+        $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
+        $this->db->join('job_complete', 'job_complete.quotation_id = quotation.quotation_id');
+        $this->db->where('quotation_details.quotation_id', $quotation_id);
+        $this->db->group_by('quotation.quotation_id');
+        $q      = $this->db->get();
+        $result = $q->result();
+        return $result;
+    }
     
     function show_subquotation_individual($quotation_id)
     {
@@ -176,6 +191,8 @@ class jobwork_model extends CI_Model
         redirect('quotation/individual_details_approved/' . $quotation_id);
         
     }
+
+
     
 }
 /* End of file jobwork_model.php */
