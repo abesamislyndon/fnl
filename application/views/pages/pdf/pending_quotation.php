@@ -88,7 +88,41 @@
         </tbody>
     </table>
 
-    <table cellspacing="0" style=" text-align:left; font-size:8pt;padding:4px;border-collapse:collapse;">
+
+ <table cellspacing="0" style="width: 100%;text-align: center; font-size: 9pt;padding:4px;margin-top:-6px;margin-left:90px;border-collapse: collapse;">
+        <?php foreach($total as $quotation_subtotal) : ?>  
+        <tr style="font-size: 8pt;">
+        <td style="width: 8%; border: none;">&nbsp;</td>
+        <td style="width: 59%; border: none;">&nbsp;</td>
+        <td style="background-color:#e9e6e6; width: 0%; height:1px;border: solid 1px black;font-weight:bold;font-size:10pt;font-style:italic;border-collapse: collapse;"><b>SUB TOTAL</b></td>
+        <td style="background-color:#e9e6e6; width: 10%; border: solid 1px black;font-size:10pt;font-style:italic;border-collapse: collapse;"><b><?php echo number_format($quotation_subtotal->sub_total, 2) ?></b></td>
+        </tr>
+        <?php endforeach; ?>    
+        <tr>
+        <td colspan="2" align="left">
+        <span style="font-size: 8pt; font-weight: normal;">
+        </span>
+        </td>
+        <td style="background-color:#e9e6e6; border: solid 1px black;font-weight:bold;font-size:10pt;font-style:italic; " align="center"><b>7% GST</b></td>
+        <td style="background-color:#e9e6e6; border: solid 1px black;font-weight:bold;font-size:10pt;font-style:italic; " align="center"><b><?php echo number_format($quotation_subtotal->gst_total, 2) ?></b></td>
+        </tr>
+        <tr>
+        <td colspan="2" align="left">
+        <span style="font-size: 8pt; font-weight: normal;">
+        </span>
+        </td>
+        <td style="background-color:#ccc; border: solid 1px black;font-weight:bold;  font-size:13px;" align="center"><b>TOTAL SGD</b></td>
+        <td style="background-color:#ccc; border: solid 1px black;font-size:13px;" align="center"><b><?php echo number_format($quotation_subtotal->grand_total, 2) ?></b></td>
+        </tr>
+        <tr>
+        <td colspan="4">&nbsp;</td>
+        </tr>
+        <tr>
+        <td colspan="4">&nbsp;</td>
+        </tr>
+        </table>
+
+    <table cellspacing="0" style=" text-align:left; font-size:8pt;padding:4px;border-collapse:collapse;margin-top:-135px;">
         <tr><td>TERMS AND CONDITION:</td></tr>
         <tr><td>1. Any Variation or Additional work contrary to the above quoted shall be quoted and charge separately:</td></tr>
         <tr><td>2. Quotation valid period 7 days</td></tr>

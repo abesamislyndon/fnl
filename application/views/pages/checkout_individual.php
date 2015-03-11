@@ -11,6 +11,7 @@
                            <h4>DETAILS</h4> 
                            <ul class = "upper-mini-menu">
                             <li><span class = "print1">QUOTATION # <?php echo $individual->quotation_id?></span></li>
+                              <li><span class = "print1">JOB ORDER # <?php echo $individual->jobwork_id?>&nbsp;&nbsp;&nbsp;&nbsp;|</span></li>
                                <li>
                                 <a href = "<?php echo base_url();?>create_pdf/print_pending_quotation/<?php echo $individual->quotation_id ?>" class = "print" target = "_blank"><i class="fa fa-print"></i></a>
                             </li>
@@ -99,8 +100,8 @@
                                        <tr id="customFields" class = "targetfields">
                                             <input type = "hidden" name = "quotation_id"   value = "<?php echo $individual->quotation_id ?>"> 
                                             <input type = "hidden" name = "quotation_details_id[]"   value = "<?php echo $individual->quotation_details_id ?>">
-                                            <?php foreach($quotation_list_individuald:?>
-                                             <input type = "hidden" name = "jobwork_id"   value = "<?php echo $individual->jobwork_id ?>">
+                                            <?php foreach($quotation_list_individual as $individual1):?>
+                                             <input type = "hidden" name = "jobwork_id"   value = "<?php echo $individual1->jobwork_id ?>">
                                             <?php endforeach; ?>   
                                             <td><input type = "text" name = "sn[]" id = "sn" class="form-input sn" value = "<?php echo $individual->sn?>"></td>
                                             <td><textarea  name = "sub_description[]" class="form-input sub_description"><?php echo $individual->sub_description?></textarea></td>
@@ -113,20 +114,20 @@
                                         <?php endforeach; ?>   
                                     </tbody>
                                   <?php foreach($total1 as $individual): ?>
-                                       <tr>
+                                         <tr>
                                              <td colspan = "4"></td>
                                              <td class = "strong">SUBTOTAL</td>
-                                             <td class = "strong"><input type = "text"  name = "sub_total" class="form-input" id = "total" value = "<?php echo $individual->total ?>"></td>
+                                             <td class = "strong"><input type = "text"  name = "sub_total" class="form-input" id = "total" value = "<?php $sub =  $individual->total;  echo number_format((float)$sub, 2, '.',''); ?>"></td>
                                         </tr> 
                                          <tr>
                                              <td colspan = "4"></td>
                                              <td class = "strong">7% GST</td>
-                                             <td><input type = "text"  name = "gst_total" class="form-input" id = "gst" value = "<?php  $sub = $individual->total; $percentage = 7; $gst = ($percentage / 100) * $sub; echo $gst; ?>"></td>
+                                             <td><input type = "text"  name = "gst_total" class="form-input" id = "gst" value = "<?php  $sub = $individual->total; $percentage = 7; $gst = ($percentage / 100) * $sub; echo number_format((float)$gst, 2, '.',''); ?>"></td>
                                         </tr>  
                                          <tr>
                                              <td colspan = "4"></td>
                                              <td class = "strong"><label></label>GRAND TOTAL</td>
-                                             <td><input type = "text"  name = "grand_total" class="form-input" id = "grand_total" value = "<?php  $sub = $individual->total; $sub = $individual->total; $percentage = 7; $gst = ($percentage / 100) * $sub; echo $sub + $gst;  ?>"></td>
+                                             <td><input type = "text"  name = "grand_total" class="form-input" id = "grand_total" value = "<?php  $sub = $individual->total; $sub = $individual->total; $percentage = 7; $gst = ($percentage / 100) * $sub; $final = $sub + $gst; echo number_format((float)$final, 2, '.', '');   ?>"></td>
                                         </tr>
                                    <?php endforeach; ?> 
                                 </table>

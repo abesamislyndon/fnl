@@ -85,7 +85,7 @@ CONTENT
 
 /* Input field */
 .login-form .content .input {
-  width: 100%;
+  width: 85%;
   padding: 15px 8px;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 400;
@@ -94,12 +94,13 @@ CONTENT
   background: #fff;
   border: 1px solid #fff;
   border-radius: 5px;
-  margin-left:-5px;  
+  margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 /* Second input field */
 .login-form .content .password, .login-form .content .pass-icon {
-  margin-top: 25px;
+  margin-top: 10px;
 }
 
 .login-form .content .input:hover {

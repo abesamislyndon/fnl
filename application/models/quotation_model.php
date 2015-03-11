@@ -53,6 +53,7 @@ class quotation_model extends CI_Model
                     'amount' => $amount[$i]
                 );
             }
+
             $this->db->insert_batch('quotation_details', $row4);
             
             $row5 = array(
@@ -349,7 +350,7 @@ class quotation_model extends CI_Model
         $sub_total   = $this->input->post('sub_total');
         $gst_total   = $this->input->post('gst_total');
         $grand_total = $this->input->post('grand_total');
-        
+            
         
         $row_count = count($sub_description);
         
@@ -560,6 +561,7 @@ class quotation_model extends CI_Model
     
         $this->db->from('quotation');
         $this->db->join('company', 'company.company_id = quotation.company_id');
+         $this->db->join('jobwork', 'jobwork.quotation_id = quotation.quotation_id ');
         $this->db->where('status', 3);
         $this->db->or_where('status', 4);
         $this->db->limit($limit, $start);
@@ -573,6 +575,7 @@ class quotation_model extends CI_Model
         }
         return false; 
      }
+
       
     
 }

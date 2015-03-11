@@ -113,17 +113,17 @@
                                        <tr>
                                              <td colspan = "4"></td>
                                              <td class = "strong">SUBTOTAL</td>
-                                             <td class = "strong"><input type = "text"  name = "sub_total" class="form-input" id = "total" value = "<?php echo $individual->total ?>"></td>
+                                             <td class = "strong"><input type = "text"  name = "sub_total" class="form-input" id = "total" value = "<?php $sub =  $individual->total;  echo number_format((float)$sub, 2, '.',''); ?>"></td>
                                         </tr> 
                                          <tr>
                                              <td colspan = "4"></td>
                                              <td class = "strong">7% GST</td>
-                                             <td><input type = "text"  name = "gst_total" class="form-input" id = "gst" value = "<?php  $sub = $individual->total; $percentage = 7; $gst = ($percentage / 100) * $sub; echo $gst; ?>"></td>
+                                             <td><input type = "text"  name = "gst_total" class="form-input" id = "gst" value = "<?php  $sub = $individual->total; $percentage = 7; $gst = ($percentage / 100) * $sub; echo number_format((float)$gst, 2, '.',''); ?>"></td>
                                         </tr>  
                                          <tr>
                                              <td colspan = "4"></td>
                                              <td class = "strong"><label></label>GRAND TOTAL</td>
-                                             <td><input type = "text"  name = "grand_total" class="form-input" id = "grand_total" value = "<?php  $sub = $individual->total; $sub = $individual->total; $percentage = 7; $gst = ($percentage / 100) * $sub; echo $sub + $gst;  ?>"></td>
+                                             <td><input type = "text"  name = "grand_total" class="form-input" id = "grand_total" value = "<?php  $sub = $individual->total; $sub = $individual->total; $percentage = 7; $gst = ($percentage / 100) * $sub; $final = $sub + $gst; echo number_format((float)$final, 2, '.', '');   ?>"></td>
                                         </tr>
                                    <?php endforeach; ?> 
                                 </table>
