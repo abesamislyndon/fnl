@@ -1,7 +1,6 @@
 <div id="page-wrapper" >
    <div id="page-inner">
         <div class="col-md-12 col-sm-12 col-xs-12">
-
                         <div class="panel panel-default">
                             <div class="panel-heading">
                               JOBWORK LIST
@@ -43,7 +42,7 @@
                                                 <td style = "color:#e53935; font-weight:bolder; font-size:10px; font-family:verdana; text-align:center;"><?php  $sub = $individual1->total; $sub = $individual1->total; $percentage = 7; $gst = ($percentage / 100) * $sub; $final = $sub + $gst; echo number_format((float)$final, 2, '.', '');   ?></td>
                                                 <?php endforeach;?>
                                                 <td><a href = "<?php echo base_url();?>create_pdf/print_joborder/<?php echo $individual->quotation_id ?>" class = "link_button" target = "_blank"><i class="fa fa-print"></i></a></td>
-                                                <td><a href = "<?php echo base_url();?>create_pdf/print_joborder/<?php echo $individual->quotation_id ?>" class = "link_button"><i class="fa fa-eye"></i></a></td>
+                                                <td><a href = "<?php echo base_url();?>quotation/individual_details_with_jobwork/<?php echo $individual->quotation_id ?>" class = "link_button"><i class="fa fa-eye"></i></a></td>
                                             </tr>
                                            <?php endforeach;?>
                                            <?php }?>

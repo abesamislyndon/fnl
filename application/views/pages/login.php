@@ -67,7 +67,7 @@ $(document).ready(function() {
     <input type="submit" name="login" value="LOGIN" class="button" />
     </div>
 </form>
-<span class = "login-span">F & L REINSTATEMENT PTE LTD</span>
+<span class = "login-span">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F & L REINSTATEMENT PTE LTD</span>
 </div>
 <div class="gradient"></div>
 

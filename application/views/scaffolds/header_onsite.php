@@ -7,10 +7,10 @@
     <link href="<?php echo base_url();?>assets/css/font-awesome.css" rel="stylesheet" />
     <link href="<?php echo base_url();?>assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
     <link href="<?php echo base_url();?>assets/css/custom-styles.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo base_url(); ?>assets/css/css/jquery-ui-1.10.4.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <script src="<?php echo base_url();?>assets/js/jquery-1.10.2.js"></script>
-    <script>
-     $(document).ready(function(){
+    <script>     $(document).ready(function(){
             var FieldCount=1;  
             var autocomp_opt = {
                source: "<?php echo base_url();?>description/get_description",
@@ -141,11 +141,6 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
                         <li><a href="<?php echo base_url();?>login/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                     </ul>
                     <!-- /.dropdown-user -->
