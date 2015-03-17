@@ -44,6 +44,22 @@ public function print_joborder()
            redirect('login', 'refresh');
         }
 }
+
+public function service_report()
+{
+    if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
+       {
+        $id = $this->uri->segment(3);
+         $data['quote_details'] = $this->jobwork_model->show_service_report($id);
+         $data['sub_desc'] = $this->quotation_model->show_subquotation_individual($id);
+         $data['total'] = $this->quotation_model->show_overall_total($id);
+         $this->load->view('pages/sr_pdf_details', $data);
+        }
+   else 
+        {
+           redirect('login', 'refresh');
+        }
+}
   
 }
 /* End of file create_pdf.php */

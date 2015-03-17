@@ -1,5 +1,5 @@
 <div id="page-wrapper" >
- <?php echo form_open_multipart('quotation/process_quotation_quotation');?>  
+ <?php echo form_open_multipart('quotation/process_jobwork');?>  
  <?php foreach($quotation_list_individual as $individual):?>
    <div id="page-inner">
      <div class="row">
@@ -10,11 +10,11 @@
                         <div class="panel-heading">
                            <h4>DETAILS</h4> 
                            <ul class = "upper-mini-menu">
-                            <li><span class = "print1">QUOTATION # <?php echo $individual->quotation_id?></span></li>
-                              <li><span class = "print1">JOB ORDER # <?php echo $individual->jobwork_id?>&nbsp;&nbsp;&nbsp;&nbsp;|</span></li>
-                               <li>
+                              <li><span class = "print1">SERVICE REPORT # <?php echo $individual->service_report_id?>&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+                              <li><span class = "print1">QUOTATION # <?php echo $individual->quotation_id?>&nbsp;&nbsp;&nbsp;&nbsp;|</span></li>
+                              <li>
                                 <a href = "<?php echo base_url();?>create_pdf/print_pending_quotation/<?php echo $individual->quotation_id ?>" class = "print" target = "_blank"><i class="fa fa-print"></i></a>
-                            </li>
+                              </li>
                                
                            </ul>
                         </div>
@@ -22,8 +22,8 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Date :</label>
-                                            <input type = "text" name = "date_in" id  = "date_in" class="form-control" value = "<?php echo $individual->date_in ?>">
+                                            <label>Date of Quote:</label>
+                                            <input type = "text" name = "date_in" id  = "datepicker" class="form-control" value = "<?php echo $individual->date_of_quote ?>">
                                         </div>
                                       <div class="form-group">
                                             <label>Company Name :</label>
@@ -59,6 +59,11 @@
                                          <div class="form-group">
                                             <label>Job Description</label>
                                             <textarea class="form-control red" name = "job_description" rows="3"><?php echo $individual->job_description ?></textarea>
+                                        </div>
+
+                                             <div class="form-group">
+                                            <label>SALES EXECUTIVE</label>
+                                            <input type = "text"  name = "sales_exe" class="form-control red" value = "<?php echo $individual->sales_exe?> " required/>
                                         </div>
 
                                 </div><!--end of coloumn 6-->
@@ -136,6 +141,7 @@
                         </div>
                     </div>
                      <div class = "submit_container">
+                        <input type = "submit" value ="UPDATE INFORMATION" name = "update1" class = "submit">
                         <input type = "submit" value ="CHECKOUT" name = "checkout" class = "submit">
                      </div>
                 </form>

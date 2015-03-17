@@ -10,15 +10,13 @@ class Checkout extends CI_Controller
      $this->load->model('quotation_model');
    }
    
-
-
   public function individual_details(){
 
         if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
             $quotation_id                       = $this->uri->segment(3);
             $data['quotation_list_individual']  = $this->jobwork_model->checkout_individual($quotation_id);
             $data['sub_description_individual'] = $this->quotation_model->show_subquotation_individual($quotation_id);
-           //$data['overall_total_details']      = $this->quotation_model->show_overall_total($quotation_id);
+        
             $data['total1']      = $this->quotation_model->total1($quotation_id);
             $data['count_quote']                = $this->quotation_model->count_pending_quote();
             $data['count_jobwork']              = $this->quotation_model->count_pending_jobwork();

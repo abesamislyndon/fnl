@@ -93,8 +93,7 @@ class Quotation extends CI_Controller
         flush();
         
     }
-    
-    
+      
     public function quotationlist()
     {
         if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
@@ -156,7 +155,7 @@ class Quotation extends CI_Controller
             $data['job_complete']        = $this->quotation_model->count_complete_jobwork();
             $data['quotation_individual'] = $this->quotation_model->show_quotation_individual_jobwork($quotation_id);
             
-            $this->load->view('scaffolds/header2');
+            $this->load->view('scaffolds/header2' );
             $this->load->view('scaffolds/sidebar', $data);
             $this->load->view('pages/quotationlist_individual', $data);
             $this->load->view('scaffolds/footer');
@@ -189,7 +188,29 @@ class Quotation extends CI_Controller
         }
         
     }
-    
+        public function jobwork_complete_success(){
+
+        if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
+            $quotation_id                       = $this->uri->segment(3);
+            $data['quotation_list_individual']  = $this->quotation_model->show_jobwork_with_sales_exe($quotation_id);
+            $data['sub_description_individual'] = $this->quotation_model->show_subquotation_individual($quotation_id);
+            $data['overall_total_details']      = $this->quotation_model->show_overall_total($quotation_id);
+            $data['total']      = $this->quotation_model->total($quotation_id);
+            $data['count_quote']                = $this->quotation_model->count_pending_quote();
+            $data['count_jobwork']              = $this->quotation_model->count_pending_jobwork();
+            $data['overdue']        = $this->quotation_model->count_overdue();
+            $data['service_report']        = $this->quotation_model->count_service_report();
+            $data['job_complete']        = $this->quotation_model->count_complete_jobwork();
+            
+            $this->load->view('scaffolds/header2');
+            $this->load->view('scaffolds/sidebar', $data);
+            $this->load->view('pages/jobwork_complete_success', $data);
+            $this->load->view('scaffolds/footer');
+        } else {
+            redirect('login', 'refresh');
+        }
+        
+    }
     
     public function individual_details_approved(){
 
@@ -220,9 +241,12 @@ class Quotation extends CI_Controller
             
             $quotation_id = $this->input->post('quotation_id');
             $jobwork_id = $this->input->post('jobwork_id');
-            
+            $sales_exe = $this->input->post('sales_exe');
+            $date_in = $this->input->post('date_in');
+
+
             if ($this->input->post('update')) {
-                $this->quotation_model->update_quotation_quotation($quotation_id);
+                $this->quotation_model->update_quotation_quotation($quotation_id, $date_in);
             }
             if ($this->input->post('add_desc')) {
                 $this->quotation_model->add_quotation_desc($quotation_id);
@@ -233,12 +257,51 @@ class Quotation extends CI_Controller
             }
 
             if ($this->input->post('complete')) {
-                $this->quotation_model->jobwork_complete($quotation_id,  $jobwork_id);
+                $this->quotation_model->jobwork_complete($quotation_id,  $jobwork_id, $sales_exe);
             }
-             if ($this->input->post('reject')) {
+            if ($this->input->post('reject')) {
                 $this->quotation_model->reject_quotation($quotation_id, $jobwork_id);
             }
               if ($this->input->post('checkout')) {
+                $this->quotation_model->checkout_jobwork($quotation_id, $jobwork_id);
+            }
+            
+            if ($this->input->post('delete_sub')) {
+                $quotation_id     = $this->input->post('quotation_id');
+                $quotation_sub_id = $this->input->post('quotation_details_id');
+                $this->quotation_model->del_sub_desc($quotation_sub_id, $quotation_id);
+            }
+            
+        } else {
+            redirect('login', 'refresh');
+        }
+        
+    }
+
+    public function process_jobwork(){
+
+        if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
+            
+            $quotation_id = $this->input->post('quotation_id');
+            $jobwork_id = $this->input->post('jobwork_id');
+            $sales_exe = $this->input->post('sales_exe');
+            $date_in = $this->input->post('date_in');
+
+            if ($this->input->post('update1')) {
+                $this->quotation_model->update_jobwork_checkout($quotation_id, $date_in, $sales_exe);
+            }
+            if ($this->input->post('add_desc')) {
+                $this->quotation_model->add_quotation_desc($quotation_id);
+            }
+            
+            if ($this->input->post('approved')) {
+                $this->quotation_model->approved_quotation($quotation_id);
+            }
+
+            if ($this->input->post('complete')) {
+                $this->quotation_model->jobwork_complete($quotation_id,  $jobwork_id, $sales_exe);
+            }
+            if ($this->input->post('checkout')) {
                 $this->quotation_model->checkout_jobwork($quotation_id, $jobwork_id);
             }
             

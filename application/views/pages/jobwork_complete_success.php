@@ -1,5 +1,5 @@
 <div id="page-wrapper" >
- <?php echo form_open_multipart('quotation/process_quotation_quotation');?>  
+ <?php echo form_open_multipart('quotation/process_jobwork');?>  
  <?php foreach($quotation_list_individual as $individual):?>
    <div id="page-inner">
      <div class="row">
@@ -11,8 +11,9 @@
                            <h4>DETAILS</h4> 
                            <ul class = "upper-mini-menu">
                             <li><span class = "print1">QUOTATION # <?php echo $individual->quotation_id?></span></li>
+                              <li><span class = "print1">JOB ORDER # <?php echo $individual->jobwork_id?>&nbsp;&nbsp;&nbsp;&nbsp;|</span></li>
                                <li>
-                                <a href = "<?php echo base_url();?>create_pdf/print_pending_quotation/<?php echo $individual->quotation_id ?>" class = "print" target = "_blank"><i class="fa fa-print"></i></a>
+                                <a href = "<?php echo base_url();?>create_pdf/print_joborder/<?php echo $individual->quotation_id ?>" class = "print" target = "_blank"><i class="fa fa-print"></i></a>
                             </li>
                                
                            </ul>
@@ -21,10 +22,10 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Date :</label>
+                                            <label>Date of Quotation:</label>
                                             <input type = "text" name = "date_in" id  = "datepicker" class="form-control" value = "<?php echo $individual->date_of_quote ?>">
                                         </div>
-                                        <div class="form-group">
+                                      <div class="form-group">
                                             <label>Company Name :</label>
                                             <input type = "text" name = "company_name" id = "company_name" class="form-control" value = "<?php echo $individual->company_name ?>">
                                         </div>
@@ -40,26 +41,29 @@
                                             <label>Fax :</label>
                                             <input type = "text"  name = "fax_num" id = "fax_num" class="form-control" value = "<?php echo $individual->fax_num ?>">
                                         </div>
-                                </div>
+                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
-                                <div class="col-lg-6">
+                                 <div class="col-lg-6">
                                        <div class="form-group">
                                             <label>Email :</label>
                                             <input type = "text"  name = "email" id = "email" class="form-control" value = "<?php echo $individual->email ?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Term of Payment :</label>
-                                            <input type = "text" name = "term_payment" class="form-control red" value = "<?php echo $individual->term_payment ?>">
+                                            <input type = "text" name = "term_payment" class="form-control" value = "<?php echo $individual->term_payment ?>">
                                         </div>
                                            <div class="form-group">
                                             <label>Validity Period :</label>
-                                            <input type = "text"  name = "validity_period" class="form-control red " value = "<?php echo $individual->validity_period ?>">
+                                            <input type = "text"  name = "validity_period" class="form-control" value = "<?php echo $individual->validity_period ?>">
                                         </div>
                                          <div class="form-group">
                                             <label>Job Description</label>
-                                            <textarea class="form-control red" name = "job_description" rows="3"><?php echo $individual->job_description ?></textarea>
+                                            <textarea class="form-control" name = "job_description" rows="3"><?php echo $individual->job_description ?></textarea>
                                         </div>
-
+                                            <div class="form-group">
+                                            <label>SALES EXECUTIVE</label>
+                                            <input type = "text"  name = "sales_exe" class="form-control red" value = "<?php echo $individual->sales_exe ?>" required/>
+                                        </div>
                                 </div><!--end of coloumn 6-->
                             </div><!--end of row-->
                         </div><!--end of panel body-->
@@ -97,7 +101,10 @@
                                     <tbody>
                                       <?php foreach($sub_description_individual as $individual):?> 
                                        <tr id="customFields" class = "targetfields">
-                                            <input type = "hidden" name = "quotation_id"   value = "<?php echo $individual->quotation_id ?>"> 
+                                            <input type = "hidden" name = "quotation_id"   value = "<?php echo $individual->quotation_id ?>">
+                                             <?php foreach($quotation_list_individual as $individual1):?>
+                                             <input type = "hidden" name = "jobwork_id"   value = "<?php echo $individual1->jobwork_id ?>">
+                                            <?php endforeach; ?>   
                                             <input type = "hidden" name = "quotation_details_id[]"   value = "<?php echo $individual->quotation_details_id ?>">
                                             <td><input type = "text" name = "sn[]" id = "sn" class="form-input sn" value = "<?php echo $individual->sn?>"></td>
                                             <td><textarea  name = "sub_description[]" class="form-input sub_description"><?php echo $individual->sub_description?></textarea></td>
@@ -109,8 +116,8 @@
                                         </tr>
                                         <?php endforeach; ?>   
                                     </tbody>
-                                  <?php foreach($total1 as $individual): ?>
-                                       <tr>
+                                  <?php foreach($total as $individual): ?>
+                                         <tr>
                                              <td colspan = "4"></td>
                                              <td class = "strong">SUBTOTAL</td>
                                              <td class = "strong"><input type = "text"  name = "sub_total" class="form-input" id = "total" value = "<?php $sub =  $individual->total;  echo number_format((float)$sub, 2, '.',''); ?>"></td>
@@ -133,9 +140,6 @@
                     </div>
                      <div class = "submit_container">
                         <input type = "submit" value ="ADD NEW DESCRIPTION" name = "add_desc" class = "submit">
-                        <input type = "submit" value ="UPDATE INFORMATION" name = "update" class = "submit">
-                        <input type = "submit" value ="REJECT" name = "reject" class = "submit">
-                        <input type = "submit" value ="APPROVED" name = "approved" class = "submit">
                      </div>
                 </form>
                <?php endforeach; ?> 

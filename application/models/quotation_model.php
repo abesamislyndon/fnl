@@ -198,12 +198,29 @@ class quotation_model extends CI_Model
         $this->db->join('company', 'company.company_id = quotation.company_id');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
         $this->db->join('jobwork', 'jobwork.quotation_id = quotation.quotation_id');
+       // $this->db->join('job_complete', 'job_complete.quotation_id = quotation.quotation_id');
         $this->db->where('quotation_details.quotation_id', $quotation_id);
         $this->db->group_by('quotation.quotation_id');
         $q      = $this->db->get();
         $result = $q->result();
         return $result;
     }
+
+     function show_jobwork_with_sales_exe($quotation_id)
+    {
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->join('company', 'company.company_id = quotation.company_id');
+        $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
+        $this->db->join('jobwork', 'jobwork.quotation_id = quotation.quotation_id');
+        $this->db->join('job_complete', 'job_complete.quotation_id = quotation.quotation_id');
+        $this->db->where('quotation_details.quotation_id', $quotation_id);
+        $this->db->group_by('quotation.quotation_id');
+        $q      = $this->db->get();
+        $result = $q->result();
+        return $result;
+    }
+
      function total($quotation_id)
     {
         $this->db->select('SUM(amount) as total', FALSE);
@@ -254,7 +271,7 @@ class quotation_model extends CI_Model
     }
     
     /*---  update submitted quotation for quotation -----*/
-    function update_quotation_quotation($quotation_id){
+    function update_quotation_quotation($quotation_id, $date_in){
         
         $quotation_details_id = $this->input->post('quotation_details_id');
         $company_name         = $this->input->post('company_name');
@@ -262,7 +279,8 @@ class quotation_model extends CI_Model
         $tel_num              = $this->input->post('tel_num');
         $fax_num              = $this->input->post('fax_num');
         $email                = $this->input->post('email');
-        $date_in              = $this->input->post('date_in');
+     //   $date_in              = $this->input->post('date_in');
+     
         
         $term_payment    = $this->input->post('term_payment');
         $validity_period = $this->input->post('validity_period');
@@ -304,11 +322,26 @@ class quotation_model extends CI_Model
                 $this->db->update('quotation_details', $row);
             }
         
-         $row2 = array('sub_total' => $sub_total,'gst_total' => $gst_total,'grand_total' => $grand_total);
+         $row2 = array(
+            'sub_total' => $sub_total,
+            'gst_total' => $gst_total,
+            'grand_total' => $grand_total);
+
          $this->db->where('quotation_id', $quotation_id);
          $this->db->update('quotation_quote_total', $row2);
          
-         $row3 = array('job_description' =>  $job_description,'validity_period' => $validity_period,'term_payment' => $term_payment);
+         
+        $cal_date   = $date_in;
+        $format     = strtotime($cal_date);
+        $mysql_date = date('Y-m-d H:i:s', $format);
+
+         $row3 = array(
+            'job_description' =>  $job_description,
+            'validity_period' => $validity_period,
+            'date_of_quote'=>$mysql_date,
+            'term_payment' =>$term_payment
+            );
+         
          $this->db->where('quotation_id', $quotation_id);
          $this->db->update('quotation', $row3);
          
@@ -318,7 +351,173 @@ class quotation_model extends CI_Model
       $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
       redirect('quotation/individual_details/' . $quotation_id);
     }
+
+    /*---  update submitted quotation for quotation -----*/
+    function update_jobwork($quotation_id, $date_in, $sales_exe){
+        
+        $quotation_details_id = $this->input->post('quotation_details_id');
+        $company_name         = $this->input->post('company_name');
+        $address              = $this->input->post('address');
+        $tel_num              = $this->input->post('tel_num');
+        $fax_num              = $this->input->post('fax_num');
+        $email                = $this->input->post('email');
+    
+        $term_payment    = $this->input->post('term_payment');
+        $validity_period = $this->input->post('validity_period');
+        $job_description = $this->input->post('job_description');
+        
+        $sub_description = $this->input->post('sub_description');
+        $sn              = $this->input->post('sn');
+        $quantity        = $this->input->post('quantity');
+        $uom             = $this->input->post('uom');
+        $unit_price      = $this->input->post('unit_price');
+        $amount          = $this->input->post('amount');
+        
+        $sub_total   = $this->input->post('sub_total');
+        $gst_total   = $this->input->post('gst_total');
+        $grand_total = $this->input->post('grand_total');
+        
+        $row_count = count($sub_description);
+        
+        for ($i = 0; $i < $row_count; $i++) {
+            $q = $this->db->select('quotation_details_id')->from('quotation_details')->where('quotation_details_id', $quotation_details_id[$i])->get();
+            
+            $row = array(
+                'sn' => $sn[$i],
+                'sub_description' => $sub_description[$i],
+                'quantity' => $quantity[$i],
+                'uom' => $uom[$i],
+                'unit_price' => $unit_price[$i],
+                'amount' => $amount[$i]
+            );
+    
+            if ($q->num_rows() > 0) {
+                $this->db->from('quotation_details');
+                $this->db->join('quotation_quote_total', 'quotation_details.quotation_id = quotation_quote_total.quotation_id');
+                $this->db->join('quotation', 'quotation.quotation_id = quotation_details.quotation_id');
+                $this->db->where('quotation_details_id', $quotation_details_id[$i]);
+                $this->db->update('quotation_details', $row);
+            }
+        
+         $row2 = array(
+            'sub_total' => $sub_total,
+            'gst_total' => $gst_total,
+            'grand_total' => $grand_total);
+
+         $this->db->where('quotation_id', $quotation_id);
+         $this->db->update('quotation_quote_total', $row2);
+         
+         $cal_date   = $date_in;
+         $format     = strtotime($cal_date);
+         $mysql_date = date('Y-m-d H:i:s', $format);
+
+         $row3 = array(
+            'job_description' =>  $job_description,
+            'validity_period' => $validity_period,
+            'date_of_quote'=>$mysql_date,
+            'term_payment' =>$term_payment
+            );
+         
+         $this->db->where('quotation_id', $quotation_id);
+         $this->db->update('quotation', $row3);
+
+         $row4 = array(
+            'sales_exe' =>  $sales_exe,
+            );
+         
+         $this->db->where('quotation_id', $quotation_id);
+         $this->db->update('job_complete', $row4);
+         
+        }
+  
+      $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
+      redirect('quotation/individual_details_with_jobwork/' . $quotation_id);
+    }
      
+
+function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
+        
+        $quotation_details_id = $this->input->post('quotation_details_id');
+        $company_name         = $this->input->post('company_name');
+        $address              = $this->input->post('address');
+        $tel_num              = $this->input->post('tel_num');
+        $fax_num              = $this->input->post('fax_num');
+        $email                = $this->input->post('email');
+    
+        $term_payment    = $this->input->post('term_payment');
+        $validity_period = $this->input->post('validity_period');
+        $job_description = $this->input->post('job_description');
+        
+        $sub_description = $this->input->post('sub_description');
+        $sn              = $this->input->post('sn');
+        $quantity        = $this->input->post('quantity');
+        $uom             = $this->input->post('uom');
+        $unit_price      = $this->input->post('unit_price');
+        $amount          = $this->input->post('amount');
+        
+        $sub_total   = $this->input->post('sub_total');
+        $gst_total   = $this->input->post('gst_total');
+        $grand_total = $this->input->post('grand_total');
+        
+        $row_count = count($sub_description);
+        
+        for ($i = 0; $i < $row_count; $i++) {
+            $q = $this->db->select('quotation_details_id')->from('quotation_details')->where('quotation_details_id', $quotation_details_id[$i])->get();
+            
+            $row = array(
+                'sn' => $sn[$i],
+                'sub_description' => $sub_description[$i],
+                'quantity' => $quantity[$i],
+                'uom' => $uom[$i],
+                'unit_price' => $unit_price[$i],
+                'amount' => $amount[$i]
+            );
+    
+            if ($q->num_rows() > 0) {
+                $this->db->from('quotation_details');
+                $this->db->join('quotation_quote_total', 'quotation_details.quotation_id = quotation_quote_total.quotation_id');
+                $this->db->join('quotation', 'quotation.quotation_id = quotation_details.quotation_id');
+                $this->db->where('quotation_details_id', $quotation_details_id[$i]);
+                $this->db->update('quotation_details', $row);
+            }
+        
+         $row2 = array(
+            'sub_total' => $sub_total,
+            'gst_total' => $gst_total,
+            'grand_total' => $grand_total);
+
+         $this->db->where('quotation_id', $quotation_id);
+         $this->db->update('quotation_quote_total', $row2);
+         
+         $cal_date   = $date_in;
+         $format     = strtotime($cal_date);
+         $mysql_date = date('Y-m-d H:i:s', $format);
+
+         $row3 = array(
+            'job_description' =>  $job_description,
+            'validity_period' => $validity_period,
+            'date_of_quote'=>$mysql_date,
+            'term_payment' =>$term_payment
+            );
+         
+         $this->db->where('quotation_id', $quotation_id);
+         $this->db->update('quotation', $row3);
+
+         $row4 = array(
+            'sales_exe' =>  $sales_exe,
+            );
+         
+         $this->db->where('quotation_id', $quotation_id);
+         $this->db->update('job_complete', $row4);
+         
+        }
+  
+      $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
+      redirect('checkout/individual_details/' . $quotation_id);
+    }
+
+
+
     function add_quotation_desc($quotation_id){
         
         $quotation_details_id = $this->input->post('quotation_details_id');
@@ -460,8 +659,29 @@ class quotation_model extends CI_Model
         redirect('quotation/individual_details_approved/' . $quotation_id);
         
     }
+       function checkout_jobwork_update($quotation_id, $jobwork_id){    
 
-    function jobwork_complete($quotation_id, $jobwork_id){    
+        $row = array(
+            'status' => 5
+        );
+        
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->where('quotation_id', $quotation_id);
+        $this->db->update('quotation', $row);
+ 
+        $row1 = array(
+            'quotation_id' => $quotation_id,
+            'jobwork_id' => $jobwork_id
+        );
+        $this->db->insert('service_report', $row1);
+
+        $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
+        redirect('quotation/individual_details_approved/' . $quotation_id);
+        
+    }
+
+    function jobwork_complete($quotation_id, $jobwork_id, $sales_exe){    
         $row = array(
             'status' => 3
         );
@@ -473,12 +693,14 @@ class quotation_model extends CI_Model
 
         $row1 = array(
             'quotation_id' => $quotation_id,
-            'jobwork_id' => $jobwork_id
+            'jobwork_id' => $jobwork_id,
+            'sales_exe' => $sales_exe    
         );
         $this->db->insert('job_complete', $row1);
+        $this->db->insert('service_report', $row1);
 
         $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
-        redirect('quotation/individual_details_approved/' . $quotation_id);
+        redirect('quotation/jobwork_complete_success/' . $quotation_id);
         
     }
     
@@ -561,7 +783,8 @@ class quotation_model extends CI_Model
     
         $this->db->from('quotation');
         $this->db->join('company', 'company.company_id = quotation.company_id');
-         $this->db->join('jobwork', 'jobwork.quotation_id = quotation.quotation_id ');
+        $this->db->join('jobwork', 'jobwork.quotation_id = quotation.quotation_id ');
+        $this->db->join('service_report', 'service_report.quotation_id = quotation.quotation_id');
         $this->db->where('status', 3);
         $this->db->or_where('status', 4);
         $this->db->limit($limit, $start);

@@ -79,6 +79,7 @@ class jobwork_model extends CI_Model
         $this->db->join('company', 'company.company_id = quotation.company_id');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
         $this->db->join('job_complete', 'job_complete.quotation_id = quotation.quotation_id');
+        $this->db->join('service_report', 'service_report.quotation_id = quotation.quotation_id');
         $this->db->where('quotation_details.quotation_id', $quotation_id);
         $this->db->group_by('quotation.quotation_id');
         $q      = $this->db->get();
@@ -192,6 +193,20 @@ class jobwork_model extends CI_Model
         
     }
 
+
+ function show_service_report($id)
+    {
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->join('company', 'company.company_id = quotation.company_id');
+        $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
+        $this->db->join('service_report', 'service_report.quotation_id = quotation.quotation_id');
+        $this->db->where('service_report.quotation_id', $id);
+        $this->db->group_by('quotation.quotation_id');
+        $q      = $this->db->get();
+        $result = $q->result();
+        return $result;
+    }
 
     
 }
