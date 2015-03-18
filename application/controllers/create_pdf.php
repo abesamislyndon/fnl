@@ -60,6 +60,22 @@ public function service_report()
            redirect('login', 'refresh');
         }
 }
+
+public function invoice_details()
+{
+    if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
+       {
+         $id = $this->uri->segment(3);
+         $data['quote_details'] = $this->quotation_model->show_invoice_details($id);
+         $data['sub_desc'] = $this->quotation_model->show_subquotation_individual($id);
+         $data['total'] = $this->quotation_model->show_overall_total($id);
+         $this->load->view('pages/invoice_details', $data);
+        }
+   else 
+        {
+           redirect('login', 'refresh');
+        }
+}
   
 }
 /* End of file create_pdf.php */

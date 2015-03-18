@@ -47,7 +47,6 @@ class Description extends CI_Controller
 
             $this->description_model->add_description($sn, $sub_description);
 
-
         }
         
     
@@ -71,14 +70,7 @@ class Description extends CI_Controller
 
    }        
      
-
-
-
-
-
-
-
   }  
 
-/* End of file verifylogin.php */
-/* Location: ./application/controllers/verifylogin.php */
+/* End of file description.php */
+/* Location: ./application/controllers/description.php */

@@ -184,13 +184,30 @@ class quotation_model extends CI_Model
         $this->db->from('quotation');
         $this->db->join('company', 'company.company_id = quotation.company_id');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
-       // $this->db->join('jobwork', 'jobwork.quotation_id = quotation.quotation_id');
+       // $this->db->join('invoice', 'invoice.quotation_id = quotation.quotation_id');
+        //$this->db->join('service_report', 'service_report.quotation_id = quotation.quotation_id');
         $this->db->where('quotation_details.quotation_id', $quotation_id);
         $this->db->group_by('quotation.quotation_id');
         $q      = $this->db->get();
         $result = $q->result();
         return $result;
     }
+
+        function show_invoice_details($quotation_id)
+    {
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->join('company', 'company.company_id = quotation.company_id');
+        $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
+        $this->db->join('invoice', 'invoice.quotation_id = quotation.quotation_id');
+        $this->db->join('service_report', 'service_report.quotation_id = quotation.quotation_id');
+        $this->db->where('quotation_details.quotation_id', $quotation_id);
+        $this->db->group_by('quotation.quotation_id');
+        $q      = $this->db->get();
+        $result = $q->result();
+        return $result;
+    }
+
     function show_quotation_individual_jobwork($quotation_id)
     {
         $this->db->select('*');
@@ -198,7 +215,7 @@ class quotation_model extends CI_Model
         $this->db->join('company', 'company.company_id = quotation.company_id');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
         $this->db->join('jobwork', 'jobwork.quotation_id = quotation.quotation_id');
-       // $this->db->join('job_complete', 'job_complete.quotation_id = quotation.quotation_id');
+      //  $this->db->join('invoice', 'invoice.quotation_id = quotation.quotation_id');
         $this->db->where('quotation_details.quotation_id', $quotation_id);
         $this->db->group_by('quotation.quotation_id');
         $q      = $this->db->get();
@@ -655,8 +672,16 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         );
         $this->db->insert('service_report', $row1);
 
+
+        $row2 = array(
+            'quotation_id' => $quotation_id,
+            'jobwork_id' => $jobwork_id,
+        );
+        $this->db->insert('invoice', $row2);
+
+
         $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
-        redirect('quotation/individual_details_approved/' . $quotation_id);
+        redirect('checkout/check_out_invoice/' . $quotation_id);
         
     }
        function checkout_jobwork_update($quotation_id, $jobwork_id){    
@@ -675,6 +700,12 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
             'jobwork_id' => $jobwork_id
         );
         $this->db->insert('service_report', $row1);
+
+            $row2 = array(
+            'quotation_id' => $quotation_id,
+            'jobwork_id' => $jobwork_id
+        );
+        $this->db->insert('invoice', $row2);
 
         $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
         redirect('quotation/individual_details_approved/' . $quotation_id);
@@ -799,8 +830,6 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         return false; 
      }
 
-      
-    
 }
 /* End of file quotation_model.php */
 /* Location: ./application/models/quotation_model.php */
