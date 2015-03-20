@@ -286,6 +286,7 @@ class Quotation extends CI_Controller
             $jobwork_id = $this->input->post('jobwork_id');
             $sales_exe = $this->input->post('sales_exe');
             $date_in = $this->input->post('date_in');
+            $status = $this->input->post('status');
 
             if ($this->input->post('update1')) {
                 $this->quotation_model->update_jobwork_checkout($quotation_id, $date_in, $sales_exe);
@@ -302,7 +303,7 @@ class Quotation extends CI_Controller
                 $this->quotation_model->jobwork_complete($quotation_id,  $jobwork_id, $sales_exe);
             }
             if ($this->input->post('checkout')) {
-                $this->quotation_model->checkout_jobwork($quotation_id, $jobwork_id);
+                $this->quotation_model->checkout_jobwork($quotation_id, $jobwork_id, $status);
             }
             
             if ($this->input->post('delete_sub')) {

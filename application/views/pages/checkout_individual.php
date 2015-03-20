@@ -11,11 +11,7 @@
                            <h4>DETAILS</h4> 
                            <ul class = "upper-mini-menu">
                               <li><span class = "print1">SERVICE REPORT # <?php echo $individual->service_report_id?>&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
-                              <li><span class = "print1">QUOTATION # <?php echo $individual->quotation_id?>&nbsp;&nbsp;&nbsp;&nbsp;|</span></li>
-                              <li>
-                                <a href = "<?php echo base_url();?>create_pdf/print_pending_quotation/<?php echo $individual->quotation_id ?>" class = "print" target = "_blank"><i class="fa fa-print"></i></a>
-                              </li>
-                               
+                              <li><span class = "print1">QUOTATION # <?php echo $individual->quotation_id?>&nbsp;&nbsp;&nbsp;&nbsp;|</span></li>       
                            </ul>
                         </div>
                         <div class="panel-body">
@@ -104,6 +100,7 @@
                                       <?php foreach($sub_description_individual as $individual):?> 
                                        <tr id="customFields" class = "targetfields">
                                             <input type = "hidden" name = "quotation_id"   value = "<?php echo $individual->quotation_id ?>"> 
+                                             <input type = "hidden" name = "status"   value = "<?php echo $individual->status ?>"> 
                                             <input type = "hidden" name = "quotation_details_id[]"   value = "<?php echo $individual->quotation_details_id ?>">
                                             <?php foreach($quotation_list_individual as $individual1):?>
                                              <input type = "hidden" name = "jobwork_id"   value = "<?php echo $individual1->jobwork_id ?>">

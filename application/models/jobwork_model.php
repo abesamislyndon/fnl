@@ -36,7 +36,6 @@ class jobwork_model extends CI_Model
         return $this->db->count_all("quotation");
     }
     
-    
     function show_jobwork_list($limit, $start)
     {
         
@@ -78,7 +77,7 @@ class jobwork_model extends CI_Model
         $this->db->from('quotation');
         $this->db->join('company', 'company.company_id = quotation.company_id');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
-        $this->db->join('job_complete', 'job_complete.quotation_id = quotation.quotation_id');
+       // $this->db->join('job_complete', 'job_complete.quotation_id = quotation.quotation_id');
         $this->db->join('service_report', 'service_report.quotation_id = quotation.quotation_id');
         $this->db->where('quotation_details.quotation_id', $quotation_id);
         $this->db->group_by('quotation.quotation_id');

@@ -562,6 +562,7 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         $quantity        = $this->input->post('quantity1');
         $uom             = $this->input->post('uom1');
         $unit_price      = $this->input->post('unit_price1');
+        $amount          = $this->input->post('amount1');
         
         $sub_total   = $this->input->post('sub_total');
         $gst_total   = $this->input->post('gst_total');
@@ -577,8 +578,8 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
                 'sn' => $sn[$i],
                 'sub_description' => $sub_description[$i],
                 'quantity' => $quantity[$i],
-                'uom' => $uom[$i],
                 'unit_price' => $unit_price[$i],
+                'uom' => $uom[$i],   
                 'amount' => $amount[$i]
             );
             
@@ -643,19 +644,22 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         $this->db->from('quotation');
         $this->db->where('quotation_id', $quotation_id);
         $this->db->update('quotation', $row);
- 
+        
+        $sales_exe = "none";
+
         $row1 = array(
             'quotation_id' => $quotation_id,
-            'jobwork_id' => $jobwork_id
+            'jobwork_id' =>0,
+            'sales_exe' => $sales_exe    
         );
-        $this->db->insert('job_complete', $row1);
+        $this->db->insert('service_report', $row1);
 
         $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
-        redirect('quotation/individual_details_approved/' . $quotation_id);
+        redirect('service_report/service_report_list/' );
         
     }
 
-        function checkout_jobwork($quotation_id, $jobwork_id){    
+        function checkout_jobwork($quotation_id, $jobwork_id, $status){    
 
         $row = array(
             'status' => 5
@@ -679,10 +683,14 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         );
         $this->db->insert('invoice', $row2);
 
-
-        $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
-        redirect('checkout/check_out_invoice/' . $quotation_id);
-        
+        if ($status == '3') {
+             $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
+             redirect('checkout/check_out_invoice/' . $quotation_id);
+        }else{
+             $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
+            redirect('checkout/check_out_reject/'. $quotation_id);
+      }
+    
     }
        function checkout_jobwork_update($quotation_id, $jobwork_id){    
 
@@ -812,12 +820,13 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
 
     function show_service_report_list($limit, $start){
     
+        $this->db->select('*');
         $this->db->from('quotation');
         $this->db->join('company', 'company.company_id = quotation.company_id');
-        $this->db->join('jobwork', 'jobwork.quotation_id = quotation.quotation_id ');
+      //  $this->db->join('jobwork', 'jobwork.quotation_id = quotation.quotation_id ');
         $this->db->join('service_report', 'service_report.quotation_id = quotation.quotation_id');
-        $this->db->where('status', 3);
-        $this->db->or_where('status', 4);
+        $this->db->where('quotation.status', 3);
+        $this->db->or_where('quotation.status', 4);
         $this->db->limit($limit, $start);
         $query = $this->db->get();
         
