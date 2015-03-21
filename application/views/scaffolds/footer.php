@@ -79,6 +79,7 @@ $(document).ready(function ()
                 });
                 });
  </script> 
+
             
 <script>
     jQuery(document).ready(function( $ ) {
@@ -126,6 +127,28 @@ $(document).ready(function ()
 };
 });
 </script>
+
+ <script type="text/javascript">
+      jQuery(document).ready(function($) {
+    
+            $('form').submit(function(e){
+                e.preventDefault();
+                makeAjaxRequest();
+                return false;
+            });
+
+            function makeAjaxRequest(){
+                $.ajax({
+                    url: '<?php echo base_url();?>search',
+                    type: 'get',
+                    data: {name: $('input#search').val()},
+                    success: function(response) {
+                        $('table#resultTable tbody').html(response);
+                    }
+                });
+            }
+      }); 
+    </script>
 
 
 </body>

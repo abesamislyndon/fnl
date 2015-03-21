@@ -76,6 +76,21 @@ body {
     margin-left:250px;
     margin-top:19px;  
 }
+.search{
+    width:80%;
+    height:40px; 
+    border:1px solid #ccc;
+}
+.button{
+    position:absolute;
+    display: inline;
+      height:40px;
+      margin-left:-1px;
+      margin-top:0px; 
+}
+.result-search{
+        margin-top: 20px;
+}
 
 h1, .h1, h2, .h2, h3, .h3 {
 margin-top: 7px;

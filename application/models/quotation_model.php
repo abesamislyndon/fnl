@@ -839,6 +839,19 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         return false; 
      }
 
+  function get_search(){
+
+$search_input = $this->input->post('name');
+
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->join('company', 'company.company_id = quotation.company_id');
+        $this->db->where('quotation.quotation_id', $search_input);
+        $query = $this->db->get();
+        return $result = $query->result(); 
+
+     }
+
 }
 /* End of file quotation_model.php */
 /* Location: ./application/models/quotation_model.php */

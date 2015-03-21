@@ -1,31 +1,43 @@
 <div id="page-wrapper" >
+
    <div id="page-inner">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                              SERVICE REPORT LIST
-                            </div> 
-                            <div class="panel-body">
-                                <div class="table-responsive">
+     <div class="row">
+        <div class="col-lg-12">
+         <div class = "confirm-div"></div>
+           <div class="panel panel-default">
+            <?php echo validation_errors(); ?>
+                <div class="panel-heading">Search - Company, Jobwork, Quotation, Invoice</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                 <form class="form-search">
+                                    <div class="input-append">
+                                        <input type="text" class="span2 search" id = "search" name = "search_input">
+                                        <button type="submit" class="button" >Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="result-search">
+                                    <h5>Result</h5>
+                       <form class="form-horizontal" role="form" method="get">
+                            <div class="table-responsive" id = "resultTable">
                                     <table class="table table-striped table-bordered table-hover table-style">
                                         <thead>
-                                            <tr> 
-                                                <th style = "width:8%;">SR #</th>
+                                            <tr>
                                                 <th style = "width:8%;">Quotation #</th>
                                                 <th style = "width:8%;">Jobwork #</th>
-                                                <th style = "width:10%;">Remarks</th>
-                                                <th style = "width:7%;">Date of Quote</th>
+                                                <th style = "width:7%;">Date</th>
                                                 <th>Company Name</th>
                                                 <th>Address</th>
                                                 <th>Tel no.</th>
                                                 <th>JobWork Description</th>
                                                  <th style = "width:7%;">Cost</th>
-                                                 <th style = "width:7%;">Service Report</th>
+                                                 <th style = "width:7%;">Print</th>
                                                 <th>ACTION</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                         <?php if (isset($SR_list) & ($SR_list <> NULL)) {?>  
                                           <?php foreach ($SR_list as $individual):?>   
                                             <tr>
                                                 <td style = "text-align:center;"><?php echo $individual->service_report_id ?></td>
@@ -37,28 +49,25 @@
                                                 <td ><?php echo $individual->address?></td>
                                                 <td ><?php echo $individual->tel_num?></td>
                                                 <td><?php echo $individual->job_description?></td>
-                                                <?php
-                                                  $CI =& get_instance();
-                                                  $CI->load->model('quotation_model');
-                                                  $result = $CI->quotation_model->total1($individual->quotation_id);
-                                                 ?>
-                                                <?php foreach ($result as $individual1):?>   
-                                                <td style = "color:#e53935; font-weight:bolder; font-size:10px; font-family:verdana; text-align:center;"><?php  $sub = $individual1->total; $sub = $individual1->total; $percentage = 7; $gst = ($percentage / 100) * $sub; $final = $sub + $gst; echo number_format((float)$final, 2, '.', '');;  ?></td>
-                                                <?php endforeach;?>
                                                 <td><a href = "<?php echo base_url();?>create_pdf/service_report/<?php echo $individual->quotation_id ?>" class = "link_button" target = "_blank"><i class="fa fa-print"></i></a></td>
                                                 <td><a href = "<?php echo base_url();?>checkout/individual_details/<?php echo $individual->quotation_id ?>" class = "link_button"><i class="fa fa-eye"></i></a></td>
                                                </tr>
                                            <?php endforeach;?>
-                                           <?php }?>
                                         </tbody>
                                     </table>
-                                </div><!--table-responsive-->
-                            </div><!--panel-body-->
-                        </div><!--end is panel-default-->
-                    </div>
-            <div class = "col-md-12 pagination"><p class = "pagination_con"><?php echo $links; ?></p></div>
-      </div><!-- end of page inner-->
+
+                                </div>
+
+
+                                </div>
+                            </div>
+                    
+                        </div><!--end of row-->
+                    </form>
+                </div><!--end of panel body-->
+            </div><!--end of panel-default-->
+         </div><!--end of column 12-->
+      </div><!--end of row-->
+   </div><!-- end of page inner-->
 </div><!--end of page-wrapper-->
-
-
 

@@ -9,6 +9,7 @@
                     <li><a href="<?php echo base_url()?>service_report/service_report_list"><i class="fa fa-fw fa-file"></i>Checkout List</a><span class = "notification_no"><?php foreach($job_complete as $complete_jobwork){ echo $complete_jobwork->total; } ?></span></li>
                     <li><a href="<?php echo base_url()?>quotation/form"><i class="fa fa-fw fa-file"></i>Quotation Form</a></li>
                     <li><a href="<?php echo base_url()?>description"><i class="fa fa-fw fa-file"></i>Add New Description</a></li>
+                    <li><a href="<?php echo base_url()?>search"><i class="fa fa-search"></i>Search</a></li>
                     <li>
                         <a href="#"><i class="fa fa-sitemap"></i>Manage User<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
