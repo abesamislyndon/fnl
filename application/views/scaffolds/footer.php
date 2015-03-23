@@ -79,7 +79,6 @@ $(document).ready(function ()
                 });
                 });
  </script> 
-
             
 <script>
     jQuery(document).ready(function( $ ) {
@@ -128,10 +127,9 @@ $(document).ready(function ()
 });
 </script>
 
- <script type="text/javascript">
+  <script type="text/javascript">
       jQuery(document).ready(function($) {
-    
-            $('form').submit(function(e){
+            $('form#process').submit(function(e){
                 e.preventDefault();
                 makeAjaxRequest();
                 return false;
@@ -139,17 +137,15 @@ $(document).ready(function ()
 
             function makeAjaxRequest(){
                 $.ajax({
-                    url: '<?php echo base_url();?>search',
+                    url: '<?php echo base_url();?>search/get_result',
                     type: 'get',
                     data: {name: $('input#search').val()},
                     success: function(response) {
-                        $('table#resultTable tbody').html(response);
+                       $('table#resultTable tbody').html(response);
                     }
                 });
             }
       }); 
     </script>
-
-
-</body>
+  </body>
 </html>

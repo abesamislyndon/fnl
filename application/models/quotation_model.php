@@ -839,18 +839,22 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         return false; 
      }
 
-  function get_search(){
 
-$search_input = $this->input->post('name');
 
+    function fetch_search($quotation_id){
+    
         $this->db->select('*');
         $this->db->from('quotation');
         $this->db->join('company', 'company.company_id = quotation.company_id');
-        $this->db->where('quotation.quotation_id', $search_input);
+        $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
+        $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
+        $this->db->like('quotation.quotation_id', $quotation_id);
+        $this->db->where('status', 5);
         $query = $this->db->get();
-        return $result = $query->result(); 
+        return $result = $query->result();
 
-     }
+
+   } 
 
 }
 /* End of file quotation_model.php */
