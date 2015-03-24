@@ -12,9 +12,9 @@
                       <li>
                         <a href="#"><i class="fa fa-sitemap"></i>Search<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="<?php echo base_url()?>search">by Quotation #</a></li>
-                            <li><a href="#">by Company</a></li>
-                            <li><a href="#">by Service report</a></li>
+                            <li><a href="<?php echo base_url()?>search/quotation_search">by Quotation #</a></li>
+                            <li><a href="<?php echo base_url()?>search/company_search">by Company</a></li>
+                            <li><a href="<?php echo base_url()?>search/sr_search">by Service report</a></li>
                         </ul>
                     </li>
                     <li>

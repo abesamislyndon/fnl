@@ -615,8 +615,11 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
       
     function approved_quotation($quotation_id){
 
+        $remarks = 'approved';
+
         $row = array(
-            'status' => 2
+            'status' => 2,
+            'remarks'=>$remarks
         );
         
         $this->db->select('*');
@@ -636,21 +639,27 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
 
     function reject_quotation($quotation_id, $jobwork_id){    
 
+        
+        $sales_exe = "none";
+        $remarks = 'reject';
+      
         $row = array(
-            'status' => 4
+            'status' => 4,
+            'remarks'=>$remarks
         );
         
         $this->db->select('*');
         $this->db->from('quotation');
         $this->db->where('quotation_id', $quotation_id);
         $this->db->update('quotation', $row);
-        
-        $sales_exe = "none";
+
 
         $row1 = array(
             'quotation_id' => $quotation_id,
-            'jobwork_id' =>0,
-            'sales_exe' => $sales_exe    
+            'jobwork_id' => 0,
+            'sales_exe' => $sales_exe,   
+            'remarks'=> $remarks,
+           // 'sr_date' => $sr_date
         );
         $this->db->insert('service_report', $row1);
 
@@ -839,7 +848,9 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         return false; 
      }
 
-
+/*
+   ----------------------- search functions ------------------------------
+*/
 
     function fetch_search($quotation_id){
     
@@ -849,12 +860,39 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
         $this->db->like('quotation.quotation_id', $quotation_id);
+     //   $this->db->where('status', 5);
+        $query = $this->db->get();
+        return $result = $query->result();
+   } 
+
+
+    function fetch_search_company($company_name){
+    
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->join('company', 'company.company_id = quotation.company_id');
+        $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
+        $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
+        $this->db->like('company.company_name', $company_name);
         $this->db->where('status', 5);
         $query = $this->db->get();
         return $result = $query->result();
-
-
    } 
+
+   function fetch_search_sr($service_report){
+    
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->join('company', 'company.company_id = quotation.company_id');
+        $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
+        $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
+        $this->db->join('service_report', 'service_report.quotation_id = quotation.quotation_id');
+        $this->db->like('service_report.service_report_id', $service_report)->group_by('service_report.quotation_id');
+        $this->db->where('status', 5);
+        $query = $this->db->get();
+        return $result = $query->result();
+   } 
+
 
 }
 /* End of file quotation_model.php */

@@ -79,6 +79,13 @@ $(document).ready(function ()
                 });
                 });
  </script> 
+  <script type="text/javascript"> 
+                jQuery(document).ready(function(){
+                    $('#search').autocomplete({
+                               source:'<?php echo base_url();?>jobwork/get_company', minLength:1,
+                });
+                });
+ </script> 
             
 <script>
     jQuery(document).ready(function( $ ) {
@@ -137,7 +144,47 @@ $(document).ready(function ()
 
             function makeAjaxRequest(){
                 $.ajax({
-                    url: '<?php echo base_url();?>search/get_result',
+                    url: '<?php echo base_url();?>search/get_result_quotation',
+                    type: 'get',
+                    data: {name: $('input#search').val()},
+                    success: function(response) {
+                       $('table#resultTable tbody').html(response);
+                    }
+                });
+            }
+      }); 
+    </script>
+      <script type="text/javascript">
+      jQuery(document).ready(function($) {
+            $('form#process_company').submit(function(e){
+                e.preventDefault();
+                makeAjaxRequest();
+                return false;
+            });
+
+            function makeAjaxRequest(){
+                $.ajax({
+                    url: '<?php echo base_url();?>search/get_result_company',
+                    type: 'get',
+                    data: {name: $('input#search').val()},
+                    success: function(response) {
+                       $('table#resultTable tbody').html(response);
+                    }
+                });
+            }
+      }); 
+    </script>
+          <script type="text/javascript">
+      jQuery(document).ready(function($) {
+            $('form#process_sr').submit(function(e){
+                e.preventDefault();
+                makeAjaxRequest();
+                return false;
+            });
+
+            function makeAjaxRequest(){
+                $.ajax({
+                    url: '<?php echo base_url();?>search/get_result_sr',
                     type: 'get',
                     data: {name: $('input#search').val()},
                     success: function(response) {
