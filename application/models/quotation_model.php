@@ -790,7 +790,7 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
 
         $this->db->select('status, COUNT(status) as total');
         $this->db->where('status', 1);
-        $this->db->where("date_of_quote < DATE_SUB(NOW() ,INTERVAL 2 DAY )", NULL, FALSE);
+        $this->db->where("date_of_quote < DATE_SUB(NOW() ,INTERVAL 7 DAY )", NULL, FALSE);
         $this->db->from('quotation');
         $this->db->order_by('total', 'desc');
         $query = $this->db->get();
@@ -813,11 +813,11 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         $this->db->join('company', 'company.company_id = quotation.company_id');
         $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
         $this->db->where('status', 1);
-        $this->db->where("date_of_quote < DATE_SUB(NOW() ,INTERVAL 2 DAY )", NULL, FALSE);
+        $this->db->where("date_of_quote < DATE_SUB(NOW() ,INTERVAL 7 DAY )", NULL, FALSE);
         $this->db->limit($limit, $start);
         $query = $this->db->get();
         
-        if ($query->num_rows() > 0) {
+        if ($query->num_rows() > 0) { 
             foreach ($query->result() as $row) {
                 $data[] = $row;
             }

@@ -81,6 +81,11 @@ body {
     height:40px; 
     border:1px solid #ccc;
 }
+.search1{
+    width:40%;
+    height:40px; 
+    border:1px solid #ccc;
+}
 .button{
     position:absolute;
     display: inline;
@@ -779,6 +784,16 @@ font-size: 19px;
 }
 
 }
+
+.ui-datepicker {
+    background: #ECEFF1 !important;
+    border: 1px solid #555;
+    color: #37474F;
+    -webkit-box-shadow: 3px 6px 5px 0px rgba(0,0,0,0.35);
+-moz-box-shadow: 3px 6px 5px 0px rgba(0,0,0,0.35);
+box-shadow: 3px 6px 5px 0px rgba(0,0,0,0.35);
+}
+
 
 
 

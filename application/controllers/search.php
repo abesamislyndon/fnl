@@ -142,10 +142,7 @@ class Search extends CI_Controller
                 $data['service_report']        = $this->quotation_model->count_service_report();
                 //$data['total1']        = $this->quotation_model->total1(2);
                 $data['job_complete']        = $this->quotation_model->count_complete_jobwork();
-
-
-
-                
+        
                 $this->load->view('scaffolds/header');
                 $this->load->view('scaffolds/sidebar', $data);
                 $this->load->view('pages/search_sr', $data);

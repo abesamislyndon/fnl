@@ -8,17 +8,24 @@
                     <li><a href="<?php echo base_url()?>jobwork/jobwork_list"><i class="fa fa-fw fa-file"></i>Job Work List</a><span class = "notification_no"><?php foreach($count_jobwork as $pending_jobwork){ echo $pending_jobwork->total; } ?></span></li>
                     <li><a href="<?php echo base_url()?>service_report/service_report_list"><i class="fa fa-fw fa-file"></i>Checkout List</a><span class = "notification_no"><?php foreach($job_complete as $complete_jobwork){ echo $complete_jobwork->total; } ?></span></li>
                     <li><a href="<?php echo base_url()?>quotation/form"><i class="fa fa-fw fa-file"></i>Quotation Form</a></li>
-                    <li><a href="<?php echo base_url()?>description"><i class="fa fa-fw fa-file"></i>Add New Description</a></li>
+                    <li><a href="<?php echo base_url()?>description"><i class="fa fa-files-o"></i>Add New Description</a></li>
                       <li>
-                        <a href="#"><i class="fa fa-sitemap"></i>Search<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-search-plus"></i>Search<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="<?php echo base_url()?>search/quotation_search">by Quotation #</a></li>
                             <li><a href="<?php echo base_url()?>search/company_search">by Company</a></li>
                             <li><a href="<?php echo base_url()?>search/sr_search">by Service report</a></li>
                         </ul>
                     </li>
+                         <li>
+                        <a href="#"><i class="fa fa-sitemap"></i>Generate Report<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="<?php echo base_url()?>report/generate_report">Rejected Quotation</a></li>
+                            <li><a href="<?php echo base_url()?>search/company_search">Job Compete</a></li>
+                        </ul>
+                    </li>
                     <li>
-                        <a href="#"><i class="fa fa-sitemap"></i>Manage User<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-user"></i>Manage User<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="#">Add New User</a></li>
                             <li><a href="#">Update</a></li>

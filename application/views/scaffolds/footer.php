@@ -7,16 +7,48 @@
     <script src="<?php echo base_url();?>assets/js/morris/raphael-2.1.0.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/morris/morris.js"></script>
     <script src="<?php echo base_url();?>assets/js/custom-scripts.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/js/jquery-ui-1.10.4.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.counterup.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script> 
  
   <script>
   $(function() {
-    $( "#datepicker" ).datepicker();
+    $( "#datepicker" ).datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                dateFormat: "yy-mm-dd",
+                onClose: function( selectedDate ) {
+                  $( "#to" ).datepicker( "option", "minDate", selectedDate );
+                }
+              });
+
   });
   </script>
+
+   <script type="text/javascript" language="javascript">
+     $(document).ready(function() {
+              jQuery( "#from" ).datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                dateFormat: "yy-mm-dd",
+                onClose: function( selectedDate ) {
+                  $( "#to" ).datepicker( "option", "minDate", selectedDate );
+                }
+              });
+              jQuery( "#to" ).datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths:1,
+                dateFormat: "yy-mm-dd",
+                onClose: function( selectedDate ) {
+                  jQuery( "#from" ).datepicker( "option", "maxDate", selectedDate );
+                }
+              });
+          });
+   </script>
 
 <script type="text/javascript">
 $(document).ready(function () 
