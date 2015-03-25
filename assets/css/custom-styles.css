@@ -42,6 +42,9 @@ body {
      font-weight: bold;
 
 }
+.none{
+    display: none;
+}
 .submit_container{
     float: right;
 }
@@ -644,6 +647,9 @@ font-weight: bold;
     background: #424242; /* Old browsers */
     float: right;
     margin-right:5px;  
+}
+.print-search{
+    position:relative;
 }
 
 .table-style td{

@@ -22,7 +22,22 @@
                       <div class="col-lg-12">
                       <div class="result-search">
                               <h5>Result</h5>
-                         
+
+
+                      <table class = "from_to">
+                       <tr>
+                         <td><span class = "to_from">FROM</span>&nbsp;&nbsp;&nbsp;<?php $new_from = date("d-m-Y", strtotime($date_from));  if($new_from === ''){ echo '-';}else{ echo $new_from;} ?></td>
+                         <td><span class = "to_from">TO</span><?php $new_to = date("d-m-Y", strtotime($date_to)); echo  $new_to; ?></td>
+                       </tr>
+                      </table><br>
+
+                      <table class = "from_to">
+                       <tr>
+                          <td><span class = "print-search"><a href = "<?php echo base_url();?>create_pdf/search_report_rejected/<?php echo $date_from; ?>/<?php echo $date_to; ?>" class = "link_button" target = "_blank"><i class="fa fa-print"></i></a>     </span>                              
+                          </td>
+                       </tr>
+                      </table><br>
+                
                             <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover table-style" id = "resultTable">
                                            <thead>
@@ -50,20 +65,13 @@
                                             <td><?php echo $value->job_description; ?></td>
                                             <td><?php echo $value->grand_total; ?></td>
                                             <td><?php echo $value->remarks; ?></td>
-                                                  <td><a href = "<?php echo base_url();?>create_pdf/print_pending_quotation/<?php echo $value->quotation_id ?>" class = "link_button" target = "_blank"><i class="fa fa-print"></i></a></td>                                      
+                                            <td><a href = "<?php echo base_url();?>create_pdf/print_pending_quotation/<?php echo $value->quotation_id ?>" class = "link_button" target = "_blank"><i class="fa fa-print"></i></a></td>                                      
 
                                           </tr>
                                         <?php  endforeach; ?>
                                       
                                         </tbody>
                                     </table>
-
-                                       <table class = "from_to">
-                     <tr>
-                     <td><span class = "to_from">FROM</span>&nbsp;&nbsp;&nbsp;<?php $new_from = date("d-m-Y", strtotime($date_from));  if($new_from === ''){ echo '-';}else{ echo $new_from;} ?></td>
-                     <td><span class = "to_from">TO</span><?php $new_to = date("d-m-Y", strtotime($date_to)); echo  $new_to; ?></td>
-                     </tr>
-                     </table><br><br>   
                                 </div>
                               </div>
                            </div>

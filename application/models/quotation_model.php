@@ -184,8 +184,6 @@ class quotation_model extends CI_Model
         $this->db->from('quotation');
         $this->db->join('company', 'company.company_id = quotation.company_id');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
-       // $this->db->join('invoice', 'invoice.quotation_id = quotation.quotation_id');
-        //$this->db->join('service_report', 'service_report.quotation_id = quotation.quotation_id');
         $this->db->where('quotation_details.quotation_id', $quotation_id);
         $this->db->group_by('quotation.quotation_id');
         $q      = $this->db->get();
@@ -215,7 +213,6 @@ class quotation_model extends CI_Model
         $this->db->join('company', 'company.company_id = quotation.company_id');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
         $this->db->join('jobwork', 'jobwork.quotation_id = quotation.quotation_id');
-      //  $this->db->join('invoice', 'invoice.quotation_id = quotation.quotation_id');
         $this->db->where('quotation_details.quotation_id', $quotation_id);
         $this->db->group_by('quotation.quotation_id');
         $q      = $this->db->get();
@@ -251,6 +248,7 @@ class quotation_model extends CI_Model
         $result = $q->result();
         return $result;
     }
+
       function total1($quotation_id)
     {
         $this->db->select('SUM(amount) as total', FALSE);
@@ -296,9 +294,7 @@ class quotation_model extends CI_Model
         $tel_num              = $this->input->post('tel_num');
         $fax_num              = $this->input->post('fax_num');
         $email                = $this->input->post('email');
-     //   $date_in              = $this->input->post('date_in');
-     
-        
+          
         $term_payment    = $this->input->post('term_payment');
         $validity_period = $this->input->post('validity_period');
         $job_description = $this->input->post('job_description');
@@ -327,10 +323,7 @@ class quotation_model extends CI_Model
                 'unit_price' => $unit_price[$i],
                 'amount' => $amount[$i]
             );
-    
-     
-            
-            
+             
             if ($q->num_rows() > 0) {
                 $this->db->from('quotation_details');
                 $this->db->join('quotation_quote_total', 'quotation_details.quotation_id = quotation_quote_total.quotation_id');
@@ -348,9 +341,9 @@ class quotation_model extends CI_Model
          $this->db->update('quotation_quote_total', $row2);
          
          
-        $cal_date   = $date_in;
-        $format     = strtotime($cal_date);
-        $mysql_date = date('Y-m-d H:i:s', $format);
+         $cal_date   = $date_in;
+         $format     = strtotime($cal_date);
+         $mysql_date = date('Y-m-d H:i:s', $format);
 
          $row3 = array(
             'job_description' =>  $job_description,
@@ -365,8 +358,8 @@ class quotation_model extends CI_Model
             
         }
   
-      $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
-      redirect('quotation/individual_details/' . $quotation_id);
+        $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
+        redirect('quotation/individual_details/' . $quotation_id);
     }
 
     /*---  update submitted quotation for quotation -----*/
@@ -859,8 +852,7 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         $this->db->join('company', 'company.company_id = quotation.company_id');
         $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
-        $this->db->like('quotation.quotation_id', $quotation_id);
-     //   $this->db->where('status', 5);
+        $this->db->like('quotation.quotation_id', $quotation_id)->group_by('quotation.quotation_id');
         $query = $this->db->get();
         return $result = $query->result();
    } 
@@ -873,7 +865,7 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         $this->db->join('company', 'company.company_id = quotation.company_id');
         $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
-        $this->db->like('company.company_name', $company_name);
+        $this->db->like('company.company_name', $company_name)->group_by('quotation.quotation_id');
         $this->db->where('status', 5);
         $query = $this->db->get();
         return $result = $query->result();
@@ -892,6 +884,9 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         $query = $this->db->get();
         return $result = $query->result();
    } 
+
+  
+
 
 
 }

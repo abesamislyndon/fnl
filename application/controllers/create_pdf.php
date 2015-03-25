@@ -9,6 +9,7 @@ class Create_pdf extends CI_Controller
        parent::__construct();
        $this->load->model("jobwork_model");
        $this->load->model("quotation_model");
+      $this->load->model("report_model");
 
      }
 
@@ -76,6 +77,26 @@ public function invoice_details()
            redirect('login', 'refresh');
         }
 }
+
+
+
+public function search_report_rejected(){
+    if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1'){
+       
+         $from = $this->uri->segment(3);
+         $to = $this->uri->segment(4);
+
+         $data['from'] = $from;
+         $data['to'] = $to;
+
+         $data['result'] = $this->report_model->show_search_rejected($from , $to);
+         $this->load->view('pages/report_search_rejected', $data);
+        }
+   
+       else {
+           redirect('login', 'refresh');
+        }
+   }
   
 }
 /* End of file create_pdf.php */

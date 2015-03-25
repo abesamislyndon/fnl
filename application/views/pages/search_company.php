@@ -27,8 +27,8 @@
                                             <tr>
                                                 <th style = "width:8%;">Quotation #</th>
                                                 <th style = "width:7%;">Date</th>
-                                                <th>Company Name</th>
-                                                <th>Address</th>
+                                                <th style = "width:15%;">Company Name</th>
+                                                <th style = "width:15%;">Address</th>
                                                 <th>Tel no.</th>
                                                 <th>JobWork Description</th>
                                                 <th style = "width:7%;">Cost</th>
