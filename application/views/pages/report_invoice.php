@@ -67,7 +67,7 @@
                                             <td><?php echo $value->address; ?></td>
                                             <td><?php echo $value->tel_num; ?></td>
                                             <td><?php echo $value->job_description; ?></td>
-                                            <td><?php echo $value->grand_total; ?></td>
+                                            <td><?php echo number_format($value->grand_total,2); ?></td>
                                             <td><?php echo $value->remarks; ?></td>
                                             <td><a href = "<?php echo base_url();?>create_pdf/invoice_details/<?php echo $value->quotation_id ?>" class = "link_button" target = "_blank"><i class="fa fa-print"></i></a></td>                                      
 
@@ -81,7 +81,7 @@
                                            foreach($result as $details):
                                            $sum+=$details->grand_total;
                                            endforeach; 
-                                            echo $sum; }?>&nbsp;sgd</span>
+                                            echo number_format($sum,2); }?>&nbsp;sgd</span>
 
                                            <?php }else{?>
                                              <tr>

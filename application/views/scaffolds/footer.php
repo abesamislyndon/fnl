@@ -18,6 +18,8 @@
                 defaultDate: "+1w",
                 changeMonth: true,
                 numberOfMonths: 1,
+                changeYear:true,
+                yearRange: "2005:2015",
                 dateFormat: "yy-mm-dd",
                 onClose: function( selectedDate ) {
                   $( "#to" ).datepicker( "option", "minDate", selectedDate );
@@ -33,6 +35,8 @@
                 defaultDate: "+1w",
                 changeMonth: true,
                 numberOfMonths: 1,
+                changeYear:true,
+                yearRange: "2005:2015",
                 dateFormat: "yy-mm-dd",
                 onClose: function( selectedDate ) {
                   $( "#to" ).datepicker( "option", "minDate", selectedDate );
@@ -42,6 +46,8 @@
                 defaultDate: "+1w",
                 changeMonth: true,
                 numberOfMonths:1,
+                changeYear:true,
+                yearRange: "2005:2015",
                 dateFormat: "yy-mm-dd",
                 onClose: function( selectedDate ) {
                   jQuery( "#from" ).datepicker( "option", "maxDate", selectedDate );

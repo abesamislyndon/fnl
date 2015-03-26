@@ -4,8 +4,8 @@
         <div class="col-lg-12">
          <div class = "confirm-div"></div>
            <div class="panel panel-default">
-            <?php echo validation_errors(); ?>
-                <div class="panel-heading"><h3>Generate Report Rejected Quotation</h3></div>
+             <?php echo validation_errors(); ?>
+                <div class="panel-heading"><h3>Generate Report -  Rejected Quotation</h3></div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
@@ -18,11 +18,11 @@
                                         <button type="submit" class="button" id = "submit_id">Generate Report</button>
                                     </div>
                                 </form>
-                            </div>
+                         </div>
+                         
                       <div class="col-lg-12">
                       <div class="result-search">
-                              <h5>Result</h5>
-
+                      <h5>Result</h5>
 
                       <table class = "from_to">
                        <tr>
@@ -30,9 +30,7 @@
                          <td><span class = "to_from">&nbsp;&nbsp;&nbsp;TO&nbsp;&nbsp;&nbsp;</span><strong><?php $new_to = date("d-m-Y", strtotime($date_to)); echo  $new_to; ?></strong></td>
                        </tr>
                       </table><br>
-
-  
-                     
+                   
                       <table class = "from_to">
                        <tr>
                          <td><span class = "print-search"><a href = "<?php echo base_url();?>create_pdf/search_report_rejected/<?php echo $date_from; ?>/<?php echo $date_to; ?>" class = "link_button" target = "_blank"><i class="fa fa-print"></i></a></span></td>
@@ -70,7 +68,7 @@
                                         <?php  endforeach; ?>
 
                                         <span class = "total">TOTAL :&nbsp;&nbsp;<?php  
-                                        if(!empty($result)){
+                                          if(!empty($result)){
                                           $sum = 0; 
                                            foreach($result as $details):
                                               $sum+=$details->grand_total;
@@ -78,11 +76,9 @@
                                           echo number_format($sum,2);
                                          }?>&nbsp;sgd</span>
 
-                                  
                                          <?php }else{?>
                                            <tr>
                                              <td colspan = "9">NO RESULT</td>
-                                            
                                            </tr>
                                         <?php }?>
 
@@ -93,9 +89,9 @@
                               </div>
                            </div>
                         </div><!--end of row-->
-                 </div><!--end of panel body-->
-             </div><!--end of panel-default-->
-          </div><!--end of column 12-->
+                   </div><!--end of panel body-->
+               </div><!--end of panel-default-->
+           </div><!--end of column 12-->
        </div><!--end of row-->
     </div><!-- end of page inner-->
 </div><!--end of page-wrapper-->

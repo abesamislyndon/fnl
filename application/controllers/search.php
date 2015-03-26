@@ -112,7 +112,7 @@ class Search extends CI_Controller
           if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
                 
                 $config                     = array();
-                $config["base_url"]         = base_url() . 'quotation/quotationlist';
+                $config["base_url"]         = base_url() . 'search/sr_search';
                 $config["total_rows"]       = $this->quotation_model->record_count();
                 $config["per_page"]         = 12;
                 $config["uri_segment"]      = 3;
@@ -131,7 +131,6 @@ class Search extends CI_Controller
                 $config['last_tag_open']    = "<li>";
                 $config['last_tagl_close']  = "</li>";
 
-
                 $this->pagination->initialize($config);
                 $page                   = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
                 $data["quotation_list"] = $this->quotation_model->show_quotationlist($config["per_page"], $page);
@@ -140,7 +139,6 @@ class Search extends CI_Controller
                 $data['count_jobwork']  = $this->quotation_model->count_pending_jobwork();
                 $data['overdue']        = $this->quotation_model->count_overdue();
                 $data['service_report']        = $this->quotation_model->count_service_report();
-                //$data['total1']        = $this->quotation_model->total1(2);
                 $data['job_complete']        = $this->quotation_model->count_complete_jobwork();
         
                 $this->load->view('scaffolds/header');
@@ -290,7 +288,7 @@ class Search extends CI_Controller
         if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1'){
 
             $config                     = array();
-            $config["base_url"]         = base_url() . 'quotation/quotationlist';
+            $config["base_url"]         = base_url() . 'search/get_result_sr';
             $config["total_rows"]       = $this->quotation_model->record_count();
             $config["per_page"]         = 12;
             $config["uri_segment"]      = 3;

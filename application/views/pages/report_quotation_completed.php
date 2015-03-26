@@ -5,7 +5,7 @@
          <div class = "confirm-div"></div>
            <div class="panel panel-default">
             <?php echo validation_errors(); ?>
-                <div class="panel-heading"><h3>Generate Report Job Complete</h3></div>
+                <div class="panel-heading"><h3>Generate Report  - Job Complete</h3></div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
