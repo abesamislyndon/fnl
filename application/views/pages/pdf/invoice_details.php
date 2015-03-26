@@ -68,8 +68,8 @@
 </style>
   <?php if(!empty($quote_details) ) {foreach($quote_details as $details): ?>  
           <h4>INVOICE #:&nbsp;&nbsp;<?php echo $details->invoice_id;?></h4>
-         <h2>QUOTATION #:&nbsp;&nbsp;<?php echo $details->quotation_id;?></h2> 
-           <h6>SERVICE REPORT #:&nbsp;&nbsp;<?php echo $details->quotation_id;?></h6> 
+          <h2>QUOTATION #:&nbsp;&nbsp;<?php echo $details->quotation_id;?></h2> 
+           <h6>SERVICE REPORT #:&nbsp;&nbsp;<?php echo $details->service_report_id;?></h6> 
     
         <span><b>Company name:</b>&nbsp;&nbsp;<?php echo $details->company_name;?></span><br>
         <span><b>Address:&nbsp;</b>&nbsp;&nbsp;<?php echo $details->address;?></span><br>

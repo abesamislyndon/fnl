@@ -33,6 +33,14 @@
         text-align: center;
         margin:8px; 
     }
+
+    h2{
+        text-align:right;
+        margin: 0px;
+        font-size:16px;
+        position: absolute; 
+    }
+
     h3{
         text-align: center;
         margin: 0px;
@@ -62,7 +70,17 @@
 <h6>From:&nbsp;&nbsp;&nbsp; <?php echo date("d-m-Y", strtotime($from));?>&nbsp;&nbsp;&nbsp; To&nbsp;&nbsp;&nbsp; <?php echo date("d-m-Y", strtotime($to)); ?>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; REJECTED QUOTATION</h6>
 </div>
 
-<table cellspacing="0" style="width: 0%; border: none; text-align: center; font-size: 9pt; padding:4px;margin-left:-25px;">
+   <?php  
+         if(!empty($result)){
+             $sum = 0; 
+             foreach($result as $details):
+              $sum+=$details->grand_total;
+             endforeach; 
+         }?>
+                     
+        <h2>TOTAL:&nbsp;&nbsp;&nbsp;&nbsp;<?php echo number_format($sum,2);?></h2>
+
+<table cellspacing="0" style="width: 0%; border: none; text-align: center; font-size: 8pt; padding:4px;margin-left:-25px;">
         <thead>
         <tr>
             <th style="width: 1%; border: solid 1px black;font-weight:bold; font-style:italic;font-size:9px;">QUOTATION ID</th>
@@ -75,19 +93,19 @@
         </tr>
         </thead>
         <tbody>
-            <?php 
-                if(!empty($result) ) {
-               foreach($result as $details): ?>  
-            <tr>
-             <td style="width: 10px; border: solid 1px #000;"><?php echo $details->quotation_id ?></td>
-             <td style="width: 60px; border: solid 1px #000;"><?php echo date("d-m-Y", strtotime($details->date_of_quote)); ?></td>
-             <td style="width: 90px; border: solid 1px #000;"><?php echo $details->company_name ?></td>
-             <td style="width: 90px; border: solid 1px #000;"><?php echo $details->address ?></td>
-             <td style="width: 30px; border: solid 1px #000;"><?php echo $details->tel_num ?></td>
-             <td style="width: 160px; border: solid 1px #000;"><?php echo $details->job_description ?></td>
-              <td style="width: 20px; border: solid 1px #000;font-weight:bold;color:red;font-size:12px;font-style:italic;text-align:center;"><?php echo $details->grand_total ?></td>
-            </tr>
+            <?php  if(!empty($result) ) { foreach($result as $details): ?>  
+              <tr>
+                 <td style="width: 10px; border: solid 1px #000;"><?php echo $details->quotation_id ?></td>
+                 <td style="width: 60px; border: solid 1px #000;"><?php echo date("d-m-Y", strtotime($details->date_of_quote)); ?></td>
+                 <td style="width: 90px; border: solid 1px #000;"><?php echo $details->company_name ?></td>
+                 <td style="width: 90px; border: solid 1px #000;"><?php echo $details->address ?></td>
+                 <td style="width: 30px; border: solid 1px #000;"><?php echo $details->tel_num ?></td>
+                 <td style="width: 140px; border: solid 1px #000;"><?php echo $details->job_description ?></td>
+                  <td style="width: 40px; border: solid 1px #000;font-weight:bold;color:red;font-size:12px;font-style:italic;text-align:center;"><?php echo number_format($details->grand_total,2); ?></td>
+                </tr>
              <?php endforeach; }?>
+                     
+                      
         </tbody>
      
     </table>

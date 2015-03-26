@@ -99,6 +99,9 @@ body {
 .result-search{
         margin-top: 20px;
 }
+.nav-second-level{
+    background:#37474F !important;
+}
 
 h1, .h1, h2, .h2, h3, .h3 {
 margin-top: 7px;
@@ -800,6 +803,17 @@ font-size: 19px;
 box-shadow: 3px 6px 5px 0px rgba(0,0,0,0.35);
 }
 
+.total{
+    color:#fff;
+    float:right;
+    position: relative;
+    margin-top:-80px;
+    margin-bottom:20px;
+    font-weight: bolder;
+    font-size:15px;
+    padding:10px 20px;
+    background:#ef5350; 
+}
 
 
 

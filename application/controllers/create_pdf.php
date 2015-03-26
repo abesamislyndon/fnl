@@ -97,6 +97,25 @@ public function search_report_rejected(){
            redirect('login', 'refresh');
         }
    }
+
+
+   public function search_report_complete(){
+    if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1'){
+       
+         $from = $this->uri->segment(3);
+         $to = $this->uri->segment(4);
+
+         $data['from'] = $from;
+         $data['to'] = $to;
+
+         $data['result'] = $this->report_model->show_search_complete($from , $to);
+         $this->load->view('pages/report_search_complete', $data);
+        }
+   
+       else {
+           redirect('login', 'refresh');
+        }
+   }
   
 }
 /* End of file create_pdf.php */

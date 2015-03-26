@@ -177,6 +177,26 @@ class quotation_model extends CI_Model
         }
         return false;
     }
+
+      function show_invoice_list($limit, $start)
+    {
+        $this->db->from('quotation');
+        $this->db->join('company', 'company.company_id = quotation.company_id');
+        $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
+        $this->db->join('service_report', 'service_report.quotation_id = quotation.quotation_id ');
+        $this->db->where('service_report.remarks','checkout with invoice');
+        $this->db->group_by('quotation.quotation_id');
+        $this->db->limit($limit, $start);
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+    }
     
     function show_quotation_individual($quotation_id)
     {
@@ -732,12 +752,22 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         $this->db->where('quotation_id', $quotation_id);
         $this->db->update('quotation', $row);
 
+       $row2 = array(
+            'quotation_id' => $quotation_id,
+            'jobwork_id' => $jobwork_id,
+            'sales_exe' => $sales_exe,
+            'sr_date'=>date('Y-m-d H:i:s'),
+        );
+
+
         $row1 = array(
             'quotation_id' => $quotation_id,
             'jobwork_id' => $jobwork_id,
-            'sales_exe' => $sales_exe    
+            'sales_exe' => $sales_exe,
+            'sr_date'=>date('Y-m-d H:i:s'),
+            'remarks'=>'checkout with invoice'    
         );
-        $this->db->insert('job_complete', $row1);
+        $this->db->insert('job_complete', $row2);
         $this->db->insert('service_report', $row1);
 
         $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
@@ -885,7 +915,23 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         return $result = $query->result();
    } 
 
-  
+
+   function fetch_search_invoice($service_report){
+    
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->join('company', 'company.company_id = quotation.company_id');
+        $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
+        $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
+        $this->db->join('service_report', 'service_report.quotation_id = quotation.quotation_id');
+        $this->db->where('service_report.remarks','checkout with invoice');
+        $this->db->like('service_report.service_report_id', $service_report)->group_by('service_report.quotation_id');
+        $this->db->where('status', 5);
+        $query = $this->db->get();
+        return $result = $query->result();
+   } 
+
+
 
 
 

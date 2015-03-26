@@ -8,12 +8,11 @@
             <?php echo validation_errors(); ?>
                 <div class="panel-heading">Form Details</div>
                     <div class="panel-body">
-                            <div class="row">
-
-                                <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Date :</label>
-                                            <input type = "text" name = "quotation_date_in" id  = "datepicker" class="form-control" required/>
+                                            <input type = "text" name = "quotation_date_in" id  = "datepicker" class="form-control" readonly="readonly" required />
                                         </div>
                                       <div class="form-group">
                                             <label>Company Name :</label>
@@ -111,8 +110,8 @@
                                 </table>
                                <a href="javascript:void(0);" id="addCF" class = "add_button">+</a>
                             </div>
-                        </div>
-                     </div>
+                         </div>
+                       </div>
                      <div class = "submit_container">
                         <input type = "submit" value ="submit" name = "submit" class = "submit">
                      </div>
