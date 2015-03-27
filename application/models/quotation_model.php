@@ -488,8 +488,10 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         $sub_total   = $this->input->post('sub_total');
         $gst_total   = $this->input->post('gst_total');
         $grand_total = $this->input->post('grand_total');
-        
+   
         $row_count = count($sub_description);
+
+
         
         for ($i = 0; $i < $row_count; $i++) {
             $q = $this->db->select('quotation_details_id')->from('quotation_details')->where('quotation_details_id', $quotation_details_id[$i])->get();
@@ -542,6 +544,7 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
          
         }
   
+  
       $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
       redirect('checkout/individual_details/' . $quotation_id);
     }
@@ -583,6 +586,7 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
             
         
         $row_count = count($sub_description);
+
         
         for ($i = 0; $i < $row_count; $i++) {
             $q    = $this->db->select('quotation_details_id')->from('quotation_details')->where('quotation_details_id', $quotation_details_id[$i])->get();
@@ -598,7 +602,7 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
             
             $this->db->where('quotation_id', $quotation_id);
             $this->db->insert('quotation_details', $row1);
-            
+
         }
         
         $row5 = array(
@@ -610,6 +614,10 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         
         $this->db->where('quotation_id', $quotation_id);
         $this->db->update('quotation_quote_total', $row5);
+
+
+
+
               
         $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
         redirect('quotation/individual_details/' . $quotation_id);
