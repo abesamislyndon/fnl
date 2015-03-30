@@ -40,14 +40,22 @@
                                             <label>Term of Payment :</label>
                                             <input type = "text" name = "term_payment" class="form-control" required/>
                                         </div>
-                                           <div class="form-group">
+                                        
+                                        <div class="form-group">
                                             <label>Validity Period :</label>
                                             <input type = "text"  name = "validity_period" class="form-control" required/>
                                         </div>
+
                                          <div class="form-group">
                                             <label>Job Description</label>
                                             <textarea class="form-control" name = "job_description" rows="3"></textarea>
                                         </div>
+
+                                         <div class="form-group">
+                                            <label>Sales Executive :</label>
+                                            <input type = "text"  name = "sales_exe" class="form-control red" required/>
+                                        </div>
+                                        
                                 </div><!--end of coloumn 6-->
                             </div><!--end of row-->
                         </div><!--end of panel body-->

@@ -134,14 +134,11 @@
                                         </tr>
                                    <?php endforeach; ?> 
                                 </table>
-                               <a href="javascript:void(0);" id="addCF" class = "add_button">+</a>
+                    
                             </div>
                         </div>
                     </div>
-                     <div class = "submit_container">
-                        <input type = "submit" value ="ADD NEW DESCRIPTION" name = "add_desc" class = "submit">
-                     </div>
-                </form>
+                   </form>
                <?php endforeach; ?> 
                      <!-- End  Kitchen Sink -->
                 </div>

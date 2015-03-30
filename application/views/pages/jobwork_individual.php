@@ -62,7 +62,9 @@
                                         </div>
                                             <div class="form-group">
                                             <label>SALES EXECUTIVE</label>
+                                            <?php foreach($sales_exe_details as $individual):?> 
                                             <input type = "text"  name = "sales_exe" class="form-control red" value = "<?php echo $individual->sales_exe ?>" required/>
+                                          <?php endforeach; ?>  
                                         </div>
                                 </div><!--end of coloumn 6-->
                             </div><!--end of row-->
@@ -140,7 +142,7 @@
                     </div>
                      <div class = "submit_container">
                         <input type = "submit" value ="ADD NEW DESCRIPTION" name = "add_desc" class = "submit">
-                        <input type = "submit" value ="UPDATE INFORMATION" name = "update" class = "submit">
+                        <input type = "submit" value ="UPDATE INFORMATION" name = "update1" class = "submit">
                         <input type = "submit" value ="JOB COMPLETE" name = "complete" class = "submit">
                      </div>
                 </form>

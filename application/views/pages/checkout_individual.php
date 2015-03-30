@@ -57,7 +57,7 @@
                                             <textarea class="form-control red" name = "job_description" rows="3"><?php echo $individual->job_description ?></textarea>
                                         </div>
 
-                                             <div class="form-group">
+                                        <div class="form-group">
                                             <label>SALES EXECUTIVE</label>
                                             <input type = "text"  name = "sales_exe" class="form-control red" value = "<?php echo $individual->sales_exe?> " required/>
                                         </div>
@@ -138,7 +138,7 @@
                         </div>
                     </div>
                      <div class = "submit_container">
-                        <input type = "submit" value ="UPDATE INFORMATION" name = "update1" class = "submit">
+                        <input type = "submit" value ="UPDATE INFORMATION" name = "update2" class = "submit">
                         <input type = "submit" value ="CHECKOUT" name = "checkout" class = "submit">
                      </div>
                 </form>

@@ -4,7 +4,7 @@ if (!defined('BASEPATH'))
 class quotation_model extends CI_Model
 {
     
-    function add_quotation($company_name, $address, $tel_num, $fax_num, $email, $date_in, $term_payment, $validity_period, $job_description, $sub_description, $sn, $quantity, $uom, $unit_price, $amount, $sub_total, $gst_total, $grand_total, $user_id)
+    function add_quotation($company_name, $address, $tel_num, $fax_num, $email, $date_in, $term_payment, $validity_period, $job_description, $sub_description, $sn, $quantity, $uom, $unit_price, $amount, $sub_total, $gst_total, $grand_total, $user_id, $sales_exe)
     {
         
         $cal_date   = $date_in;
@@ -33,7 +33,8 @@ class quotation_model extends CI_Model
                 'validity_period' => $validity_period,
                 'job_description' => $job_description,
                 'date_of_quote' => $mysql_date,
-                'status' => 1
+                'status' => 1,
+                'sales_exe' => $sales_exe
                 
             );
             
@@ -50,7 +51,8 @@ class quotation_model extends CI_Model
                     'quantity' => $quantity[$i],
                     'uom' => $uom[$i],
                     'unit_price' => $unit_price[$i],
-                    'amount' => $amount[$i]
+                    'amount' => $amount[$i],
+                    'sales_exe' => $sales_exe
                 );
             }
 
@@ -79,7 +81,8 @@ class quotation_model extends CI_Model
                 'validity_period' => $validity_period,
                 'job_description' => $job_description,
                 'date_of_quote' => $mysql_date,
-                'status' => 1
+                'status' => 1,
+                'sales_exe' => $sales_exe
             );
             
             $this->db->insert('quotation', $row3);
@@ -94,7 +97,8 @@ class quotation_model extends CI_Model
                     'quantity' => $quantity[$i],
                     'uom' => $uom[$i],
                     'unit_price' => $unit_price[$i],
-                    'amount' => $amount[$i]
+                    'amount' => $amount[$i],
+                    'sales_exe' => $sales_exe
                 );
             }
             $this->db->insert_batch('quotation_details', $row4);
@@ -112,15 +116,23 @@ class quotation_model extends CI_Model
         
         
         if ($user_id == '1') {
-            $data = '<i class="fa fa-info-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;JOB WORK SUCCESSFUL SEND';
+            $data = '<i class="fa fa-info-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;JOB WORK SUCCESSFULLY SEND';
             $this->session->set_flashdata('msg', $data);
             redirect('quotation/form');
         } else {
-            $data = '<i class="fa fa-info-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;JOB WORK SUCCESSFUL SEND';
+            $data = '<i class="fa fa-info-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;JOB WORK SUCCESSFULLY SEND';
             $this->session->set_flashdata('msg', $data);
             redirect('quotation/form_surveyor');
         }
         
+    }
+
+    function check_double_entry(){
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->insert_id();
+        $query = $this->db->get();
+        return $result = $query->result();
     }
     
     function company_exist_check()
@@ -288,6 +300,17 @@ class quotation_model extends CI_Model
         $this->db->from('quotation');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
         $this->db->where('quotation_details.quotation_id', $quotation_id);
+        $q      = $this->db->get();
+        $result = $q->result();
+        return $result;
+        
+    }
+        function show_sales_individual($quotation_id){
+
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
+        $this->db->where('quotation_details.quotation_id', $quotation_id)->group_by('quotation.quotation_id');
         $q      = $this->db->get();
         $result = $q->result();
         return $result;
@@ -546,9 +569,93 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
   
   
       $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
-      redirect('checkout/individual_details/' . $quotation_id);
+      redirect('quotation/individual_details_with_jobwork/' . $quotation_id);
     }
 
+
+function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
+        
+        $quotation_details_id = $this->input->post('quotation_details_id');
+        $company_name         = $this->input->post('company_name');
+        $address              = $this->input->post('address');
+        $tel_num              = $this->input->post('tel_num');
+        $fax_num              = $this->input->post('fax_num');
+        $email                = $this->input->post('email');
+    
+        $term_payment    = $this->input->post('term_payment');
+        $validity_period = $this->input->post('validity_period');
+        $job_description = $this->input->post('job_description');
+        
+        $sub_description = $this->input->post('sub_description');
+        $sn              = $this->input->post('sn');
+        $quantity        = $this->input->post('quantity');
+        $uom             = $this->input->post('uom');
+        $unit_price      = $this->input->post('unit_price');
+        $amount          = $this->input->post('amount');
+        
+        $sub_total   = $this->input->post('sub_total');
+        $gst_total   = $this->input->post('gst_total');
+        $grand_total = $this->input->post('grand_total');
+   
+        $row_count = count($sub_description);
+
+
+        
+        for ($i = 0; $i < $row_count; $i++) {
+            $q = $this->db->select('quotation_details_id')->from('quotation_details')->where('quotation_details_id', $quotation_details_id[$i])->get();
+            
+            $row = array(
+                'sn' => $sn[$i],
+                'sub_description' => $sub_description[$i],
+                'quantity' => $quantity[$i],
+                'uom' => $uom[$i],
+                'unit_price' => $unit_price[$i],
+                'amount' => $amount[$i]
+            );
+    
+            if ($q->num_rows() > 0) {
+                $this->db->from('quotation_details');
+                $this->db->join('quotation_quote_total', 'quotation_details.quotation_id = quotation_quote_total.quotation_id');
+                $this->db->join('quotation', 'quotation.quotation_id = quotation_details.quotation_id');
+                $this->db->where('quotation_details_id', $quotation_details_id[$i]);
+                $this->db->update('quotation_details', $row);
+            }
+        
+         $row2 = array(
+            'sub_total' => $sub_total,
+            'gst_total' => $gst_total,
+            'grand_total' => $grand_total);
+
+         $this->db->where('quotation_id', $quotation_id);
+         $this->db->update('quotation_quote_total', $row2);
+         
+         $cal_date   = $date_in;
+         $format     = strtotime($cal_date);
+         $mysql_date = date('Y-m-d H:i:s', $format);
+
+         $row3 = array(
+            'job_description' =>  $job_description,
+            'validity_period' => $validity_period,
+            'date_of_quote'=>$mysql_date,
+            'term_payment' =>$term_payment
+            );
+         
+         $this->db->where('quotation_id', $quotation_id);
+         $this->db->update('quotation', $row3);
+
+         $row4 = array(
+            'sales_exe' =>  $sales_exe,
+            );
+         
+         $this->db->where('quotation_id', $quotation_id);
+         $this->db->update('job_complete', $row4);
+         
+        }
+  
+  
+      $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
+      redirect('checkout/individual_details/' . $quotation_id);
+    }
 
 
     function add_quotation_desc($quotation_id){
@@ -616,12 +723,85 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         $this->db->update('quotation_quote_total', $row5);
 
 
+              
+        $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
+        redirect('quotation/individual_details_with_jobwork/' . $quotation_id);
+    }
+
+
+
+    function add_quotation_desc1($quotation_id){
+        
+        $quotation_details_id = $this->input->post('quotation_details_id');
+        $company_name         = $this->input->post('company_name');
+        $address              = $this->input->post('address');
+        $tel_num              = $this->input->post('tel_num');
+        $fax_num              = $this->input->post('fax_num');
+        $email                = $this->input->post('email');
+        $date_in              = $this->input->post('date_in');
+        $count                = $this->input->post('count');
+        
+        $term_payment    = $this->input->post('term_payment');
+        $validity_period = $this->input->post('validity_period');
+        $job_description = $this->input->post('job_description');
+        
+        $sub_description = $this->input->post('sub_description');
+        $sn              = $this->input->post('sn');
+        $quantity        = $this->input->post('quantity');
+        $uom             = $this->input->post('uom');
+        $unit_price      = $this->input->post('unit_price');
+        $amount          = $this->input->post('amount');
+        
+        $sub_description = $this->input->post('sub_description1');
+        $sn              = $this->input->post('sn1');
+        $quantity        = $this->input->post('quantity1');
+        $uom             = $this->input->post('uom1');
+        $unit_price      = $this->input->post('unit_price1');
+        $amount          = $this->input->post('amount1');
+        
+        $sub_total   = $this->input->post('sub_total');
+        $gst_total   = $this->input->post('gst_total');
+        $grand_total = $this->input->post('grand_total');
+            
+        
+        $row_count = count($sub_description);
+
+        
+        for ($i = 0; $i < $row_count; $i++) {
+            $q    = $this->db->select('quotation_details_id')->from('quotation_details')->where('quotation_details_id', $quotation_details_id[$i])->get();
+            $row1 = array(
+                'quotation_id' => $quotation_id,
+                'sn' => $sn[$i],
+                'sub_description' => $sub_description[$i],
+                'quantity' => $quantity[$i],
+                'unit_price' => $unit_price[$i],
+                'uom' => $uom[$i],   
+                'amount' => $amount[$i]
+            );
+            
+            $this->db->where('quotation_id', $quotation_id);
+            $this->db->insert('quotation_details', $row1);
+
+        }
+        
+        $row5 = array(
+            'quotation_id' => $quotation_id,
+            'sub_total' => $sub_total,
+            'gst_total' => $gst_total,
+            'grand_total' => $grand_total
+        );
+        
+        $this->db->where('quotation_id', $quotation_id);
+        $this->db->update('quotation_quote_total', $row5);
 
 
               
         $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
         redirect('quotation/individual_details/' . $quotation_id);
     }
+
+
+
     
     
     function del_sub_desc($quotation_sub_id, $quotation_id){
@@ -630,7 +810,7 @@ function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         $this->db->delete('quotation_details');
         
         $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
-        redirect('quotation/individual_details/' . $quotation_id);
+        redirect('quotation/individual_details_with_jobwork/' . $quotation_id);
         
     }
       

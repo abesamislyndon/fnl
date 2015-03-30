@@ -74,8 +74,8 @@ class Jobwork extends CI_Controller
            $data['quotation_list_individual'] = $this->quotation_model->show_quotation_individual_jobwork($quotation_id);
            $data['sub_description_individual'] = $this->quotation_model->show_subquotation_individual($quotation_id);
            $data['overall_total_details'] = $this->quotation_model->show_overall_total($quotation_id);
-           $data['overall_total_details'] = $this->quotation_model->show_overall_total($quotation_id);
 
+           
 
            $this->load->view('scaffolds/header');
 	         $this->load->view('scaffolds/sidebar');
@@ -98,7 +98,6 @@ class Jobwork extends CI_Controller
            $data['quotation_list_individual'] = $this->quotation_model->show_quotation_individual($quotation_id);
            $data['sub_description_individual'] = $this->quotation_model->show_subquotation_individual($quotation_id);
            $data['overall_total_details'] = $this->quotation_model->show_overall_total($quotation_id);
-
 
            $this->load->view('scaffolds/header');
 	         $this->load->view('scaffolds/sidebar');

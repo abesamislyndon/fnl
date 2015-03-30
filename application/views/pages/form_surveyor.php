@@ -17,37 +17,43 @@
                                         </div>
                                       <div class="form-group">
                                             <label>Company Name :</label>
-                                            <input type = "text" name = "company_name" id = "company_name" class="form-control">
+                                            <input type = "text" name = "company_name" id = "company_name" class="form-control" required />
                                         </div>
                                           <div class="form-group">
                                             <label>Address :</label>
-                                            <input type = "text"  name = "address" id = "address" class="form-control">
+                                            <input type = "text"  name = "address" id = "address" class="form-control" required />
                                         </div>
                                           <div class="form-group">
                                             <label>Tel :</label>
-                                            <input type = "text"  name = "tel_num" id = "tel_num" class="form-control">
+                                            <input type = "text"  name = "tel_num" id = "tel_num" class="form-control" required />
                                         </div>
                                           <div class="form-group">
                                             <label>Fax :</label>
-                                            <input type = "text"  name = "fax_num" id = "fax_num" class="form-control">
+                                            <input type = "text"  name = "fax_num" id = "fax_num" class="form-control" required />
                                         </div>
                                         
                           
                                        <div class="form-group">
                                             <label>Email :</label>
-                                            <input type = "text"  name = "email" id = "email" class="form-control">
+                                            <input type = "text"  name = "email" id = "email" class="form-control" required />
                                         </div>
                                         <div class="form-group">
                                             <label>Term of Payment :</label>
-                                            <input type = "text" name = "term_payment" class="form-control red">
+                                            <input type = "text" name = "term_payment" class="form-control red" required />
                                         </div>
                                            <div class="form-group">
                                             <label>Validity Period :</label>
-                                            <input type = "text"  name = "validity_period" class="form-control red ">
+                                            <input type = "text"  name = "validity_period" class="form-control red " required />
                                         </div>
                                          <div class="form-group">
                                             <label>Job Description</label>
                                             <textarea class="form-control red" name = "job_description" rows="3"></textarea>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label>SALES EXECUTIVE</label>
+                                            <input type = "text"  name = "sales_exe" class="form-control red" value = "" required/>
                                         </div>
                                 </div><!--end of coloumn 6-->
                             </div><!--end of row-->
@@ -82,12 +88,12 @@
 
                                     <tbody>
                                        <tr id="customFields" class = "targetfields">
-                                            <td><input type = "text" name = "sn[]" id = "sn" class="form-input sn"></td>
+                                            <td><input type = "text" name = "sn[]" id = "sn" class="form-input sn" required /></td>
                                             <td><textarea  name = "sub_description[]" id = "sub_description" class="form-input sub_description"></textarea></td>
-                                            <td><input type = "text" name = "quantity[]" class="form-input quantity"></td>
+                                            <td><input type = "text" name = "quantity[]" class="form-input quantity" required /></td>
                                             <td><input type = "text" name = "uom[]" class="form-input"></td>
-                                            <td><input type = "text" name = "unit_price[]" class="form-input unit_price"></td>
-                                            <td><input type = "text"  name = "amount[]" class="form-input subtotal res"></td>
+                                            <td><input type = "text" name = "unit_price[]" class="form-input unit_price" required /></td>
+                                            <td><input type = "text"  name = "amount[]" class="form-input subtotal res" required /></td>
                                         </tr>
                                     </tbody>
                                         <tr class = "total_info">
