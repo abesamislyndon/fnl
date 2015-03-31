@@ -511,6 +511,15 @@ textarea.form-input{
     font-size:11px;
       padding:15px; 
 }
+.textarea{
+    background:none; 
+    width:100%;
+    height:90px;
+    border:none;  
+    resize:none;
+    font-size:11px;
+    padding:15px; 
+}
 
 input[type = "text"].form-input{
     background:none; 
@@ -820,6 +829,58 @@ box-shadow: 3px 6px 5px 0px rgba(0,0,0,0.35);
     background:#ef5350; 
 }
 
+
+
+
+  #loading
+    {
+        display:none;
+        position:fixed;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.9);
+        z-index:1000;
+        color:#fff; 
+    }
+  
+    #loadingcontent
+    {
+        display:table;
+        position:fixed;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+    }
+  
+    #loadingspinner
+    {
+        display: table-cell;
+        vertical-align:middle;
+        width: 100%;
+        text-align: center;
+        font-size:larger;
+        padding-top:80px;
+    }
+.dropdown{
+    color:red !important; 
+}
+    
+
+::-webkit-input-placeholder::before {
+ font-family: fontAwesome; content:'\f071  '; color:#EF6C00;
+}
+::-moz-placeholder::before  { 
+    font-family: fontAwesome; content:'\f002  '; color:#EF6C00
+} /* firefox 19+ */
+:-ms-input-placeholder::before  { 
+    font-family: fontAwesome; content:'\f002  '; color:#EF6C00
+    } /* ie */
+input:-moz-placeholder::before  { 
+    font-family: fontAwesome; content:'\f002  '; color:#EF6C00;
+}
 
 
 

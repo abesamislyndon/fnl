@@ -1,4 +1,11 @@
 <div id="page-wrapper" >
+<div id="loading">
+    <div id="loadingcontent">
+        <p id="loadingspinner">
+           Sending Site Survey - Please Wait
+        </p>
+    </div>
+</div>
  <?php echo form_open_multipart('quotation/do_add_quotation');?>  
    <div id="page-inner">
      <div class="row">
@@ -12,48 +19,47 @@
                             <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Date :</label>
-                                            <input type = "text" name = "quotation_date_in" id  = "datepicker" class="form-control" readonly="readonly" required />
-                                        </div>
+                                            <input type = "text" name = "quotation_date_in" id  = "datepicker" class="form-control required" />
+                                        </div> 
                                       <div class="form-group">
                                             <label>Company Name :</label>
-                                            <input type = "text" name = "company_name" id = "company_name" class="form-control" required/>
-                                        </div>
+                                            <input type = "text" name = "company_name" id = "company_name" class="form-control required" />
                                           <div class="form-group">
                                             <label>Address :</label>
-                                            <input type = "text"  name = "address" id = "address" class="form-control" required/>
+                                            <input type = "text"  name = "address" id = "address" class="form-control required" />
                                         </div>
                                           <div class="form-group">
                                             <label>Tel :</label>
-                                            <input type = "text"  name = "tel_num" id = "tel_num" class="form-control" required/>
+                                            <input type = "text"  name = "tel_num" id = "tel_num" class="form-control required" />
                                         </div>
                                           <div class="form-group">
                                             <label>Fax :</label>
-                                            <input type = "text"  name = "fax_num" id = "fax_num" class="form-control" required/>
+                                            <input type = "text"  name = "fax_num" id = "fax_num" class="form-control required" />
                                         </div>
                                         
                         
                                        <div class="form-group">
                                             <label>Email :</label>
-                                            <input type = "text"  name = "email" id = "email" class="form-control" required/>
+                                            <input type = "text"  name = "email" id = "email" class="form-control required" /> 
                                         </div>
                                         <div class="form-group">
                                             <label>Term of Payment :</label>
-                                            <input type = "text" name = "term_payment" class="form-control" required/>
+                                            <input type = "text" name = "term_payment" class="form-control required" />
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>Validity Period :</label>
-                                            <input type = "text"  name = "validity_period" class="form-control" required/>
+                                            <input type = "text"  name = "validity_period" class="form-control required" />    
                                         </div>
 
                                          <div class="form-group">
                                             <label>Job Description</label>
-                                            <textarea class="form-control" name = "job_description" rows="3"></textarea>
+                                            <textarea class="form-control required" name = "job_description" rows="3"></textarea>
                                         </div>
 
                                          <div class="form-group">
                                             <label>Sales Executive :</label>
-                                            <input type = "text"  name = "sales_exe" class="form-control red" required/>
+                                            <input type = "text"  name = "sales_exe" class="form-control required" />
                                         </div>
                                         
                                 </div><!--end of coloumn 6-->
@@ -89,12 +95,12 @@
 
                                     <tbody>
                                        <tr id="customFields" class = "targetfields">
-                                            <td><input type = "text" name = "sn[]" id = "sn" class="form-input sn" required /></td>
-                                            <td><textarea  name = "sub_description[]" id = "sub_description" class="form-input sub_description"></textarea></td>
-                                            <td><input type = "text" name = "quantity[]" class="form-input quantity" required/></td>
-                                            <td><input type = "text" name = "uom[]" class="form-input"></td>
-                                            <td><input type = "text" name = "unit_price[]" class="form-input unit_price" required/></td>
-                                            <td><input type = "text"  name = "amount[]" class="form-input subtotal res" required/></td>
+                                            <td><input type = "text" name = "sn[]" id = "sn" class="form-input sn required" /></td>
+                                            <td><textarea  name = "sub_description[]" id = "sub_description" class="form-input sub_description required"></textarea></td>
+                                            <td><input type = "text" name = "quantity[]" class="form-input quantity required" /></td>
+                                            <td><input type = "text" name = "uom[]" class="form-input required" /></td>
+                                            <td><input type = "text" name = "unit_price[]" class="form-input unit_price required" /></td>
+                                            <td><input type = "text"  name = "amount[]" class="form-input subtotal res required" /></td>
                                         </tr>
                                     </tbody>
                                         <tr class = "total_info">
@@ -119,7 +125,7 @@
                          </div>
                        </div>
                      <div class = "submit_container">
-                        <input type = "submit" value ="submit" name = "submit" class = "submit">
+                        <input type = "submit" value ="submit" name = "submit" class = "submit" id = "submitbtn">
                      </div>
                     </form>
                    <!-- End  Kitchen Sink -->
@@ -130,5 +136,5 @@
      </div><!--end of row-->
    </div><!-- end of page inner-->
 </div><!--end of page-wrapper-->
-j03_2015
+
 
