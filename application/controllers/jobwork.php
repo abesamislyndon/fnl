@@ -27,7 +27,7 @@ class Jobwork extends CI_Controller
         $config = array();
         $config["base_url"] = base_url().'jobwork/jobwork_list';
         $config["total_rows"] = $this->jobwork_model->record_count();
-        $config["per_page"] = 12;
+        $config["per_page"] = 15;
         $config["uri_segment"] = 3;
         $config['full_tag_open'] = "<ul class='pagination'>";
     		$config['full_tag_close'] ="</ul>";
@@ -89,6 +89,26 @@ class Jobwork extends CI_Controller
 
     }
 
+
+   public function jobwork_complete_success()
+    {
+        if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
+        
+            $data['count_quote']    = $this->quotation_model->count_pending_quote();
+            $data['count_jobwork']  = $this->quotation_model->count_pending_jobwork();
+            $data['overdue']        = $this->quotation_model->count_overdue();
+            $data['service_report'] = $this->quotation_model->count_service_report();
+            $data['job_complete']   = $this->quotation_model->count_complete_jobwork();
+
+            $this->load->view('scaffolds/header');
+            $this->load->view('scaffolds/sidebar', $data);
+            $this->load->view('pages/success_jobwork_complete');
+            $this->load->view('scaffolds/footer');
+        } else {
+            redirect('login', 'refresh');
+        }
+        
+    }
 
     public function individual_details_approved()
     {

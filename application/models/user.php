@@ -123,7 +123,7 @@ Class User extends CI_Model
        {
         $this->db->insert('users', $data);
         $this->session->set_flashdata('msg', 'SUCCESFULLY ADDED USER');
-         redirect('manageUser/add_user');
+         redirect('manage_user_accounts/add_user');
       
        }
        else
@@ -133,7 +133,7 @@ Class User extends CI_Model
       }else
       {
         $this->session->set_flashdata('msg', 'Password does not Match');
-                 redirect('manageUser/add_user');
+                 redirect('manage_user_accounts/add_user');
       } 
     }
      

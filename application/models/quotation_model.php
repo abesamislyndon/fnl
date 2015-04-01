@@ -118,11 +118,11 @@ class quotation_model extends CI_Model
         if ($user_id == '1') {
             $data = '<i class="fa fa-info-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;JOB WORK SUCCESSFULLY SEND';
             $this->session->set_flashdata('msg', $data);
-            redirect('quotation/form');
+            redirect('quotation/form_success_admin');
         } else {
             $data = '<i class="fa fa-info-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;JOB WORK SUCCESSFULLY SEND';
             $this->session->set_flashdata('msg', $data);
-            redirect('quotation/form_surveyor');
+            redirect('quotation/form_success');
         }
         
     }
@@ -834,7 +834,7 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
         $this->db->insert('jobwork', $row1);
         
         $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
-        redirect('quotation/individual_details_approved/' . $quotation_id);
+        redirect('quotation/quotation_approved_success');
         
     }
 
@@ -865,7 +865,7 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
         $this->db->insert('service_report', $row1);
 
         $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
-        redirect('service_report/service_report_list/' );
+        redirect('quotation/quotation_reject_success' );
         
     }
 
@@ -959,7 +959,7 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
         $this->db->insert('service_report', $row1);
 
         $this->session->set_flashdata('msg', 'quotation SUCCESFULLY APPROVED FOR QUOTATION');
-        redirect('quotation/jobwork_complete_success/' . $quotation_id);
+        redirect('jobwork/jobwork_complete_success');
         
     }
     

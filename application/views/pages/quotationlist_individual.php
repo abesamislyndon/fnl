@@ -8,7 +8,7 @@
            <div class="panel panel-default">
             <?php echo validation_errors(); ?>
                         <div class="panel-heading">
-                           <h4>DETAILS</h4> 
+                           <h4>QUOTATION DETAILS</h4> 
                            <ul class = "upper-mini-menu">
                             <li><span class = "print1">QUOTATION # <?php echo $individual->quotation_id?></span></li>
                                <li>

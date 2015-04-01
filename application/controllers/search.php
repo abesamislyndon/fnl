@@ -15,7 +15,7 @@ class Search extends CI_Controller
       if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
             
             $config                     = array();
-            $config["base_url"]         = base_url() . 'quotation/quotationlist';
+            $config["base_url"]         = base_url() . 'search/quotation_search';
             $config["total_rows"]       = $this->quotation_model->record_count();
             $config["per_page"]         = 12;
             $config["uri_segment"]      = 3;
@@ -203,7 +203,7 @@ class Search extends CI_Controller
         if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1'){
 
             $config                     = array();
-            $config["base_url"]         = base_url() . 'quotation/quotationlist';
+            $config["base_url"]         = base_url() . 'search/quotation_search';
             $config["total_rows"]       = $this->quotation_model->record_count();
             $config["per_page"]         = 12;
             $config["uri_segment"]      = 3;

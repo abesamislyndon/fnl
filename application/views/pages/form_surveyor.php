@@ -18,7 +18,7 @@
                             <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Date :</label>
-                                            <input type = "text" name = "quotation_date_in" id  = "datepicker" class="form-control required" />
+                                            <input type = "text" name = "quotation_date_in" id  = "datepicker" class="form-control required cal-icon-style" readonly="readonly" />
                                         </div> 
                                       <div class="form-group">
                                             <label>Company Name :</label>

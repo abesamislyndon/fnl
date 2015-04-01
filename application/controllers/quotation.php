@@ -52,6 +52,81 @@ class Quotation extends CI_Controller
         }
         
     }
+
+   public function form_success_admin()
+    {
+        if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
+        
+            $data['count_quote']    = $this->quotation_model->count_pending_quote();
+            $data['count_jobwork']  = $this->quotation_model->count_pending_jobwork();
+            $data['overdue']        = $this->quotation_model->count_overdue();
+            $data['service_report'] = $this->quotation_model->count_service_report();
+            $data['job_complete']   = $this->quotation_model->count_complete_jobwork();
+
+            $this->load->view('scaffolds/header');
+            $this->load->view('scaffolds/sidebar', $data);
+            $this->load->view('pages/success_insert_form_admin');
+            $this->load->view('scaffolds/footer');
+        } else {
+            redirect('login', 'refresh');
+        }
+        
+    }
+       public function form_success()
+    {
+        if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '2') {
+        
+            $this->load->view('scaffolds/header_onsite');
+            $this->load->view('pages/success_insert_form');
+            $this->load->view('scaffolds/footer');
+        } else {
+            redirect('login', 'refresh');
+        }
+        
+    }
+
+
+    public function quotation_approved_success()
+    {
+        if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
+        
+            $data['count_quote']    = $this->quotation_model->count_pending_quote();
+            $data['count_jobwork']  = $this->quotation_model->count_pending_jobwork();
+            $data['overdue']        = $this->quotation_model->count_overdue();
+            $data['service_report'] = $this->quotation_model->count_service_report();
+            $data['job_complete']   = $this->quotation_model->count_complete_jobwork();
+
+            $this->load->view('scaffolds/header');
+            $this->load->view('scaffolds/sidebar', $data);
+            $this->load->view('pages/success_quotation_approved');
+            $this->load->view('scaffolds/footer');
+        } else {
+            redirect('login', 'refresh');
+        }
+        
+    }
+
+      public function quotation_reject_success()
+    {
+        if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
+        
+            $data['count_quote']    = $this->quotation_model->count_pending_quote();
+            $data['count_jobwork']  = $this->quotation_model->count_pending_jobwork();
+            $data['overdue']        = $this->quotation_model->count_overdue();
+            $data['service_report'] = $this->quotation_model->count_service_report();
+            $data['job_complete']   = $this->quotation_model->count_complete_jobwork();
+
+            $this->load->view('scaffolds/header');
+            $this->load->view('scaffolds/sidebar', $data);
+            $this->load->view('pages/success_quotation_reject');
+            $this->load->view('scaffolds/footer');
+        } else {
+            redirect('login', 'refresh');
+        }
+        
+    }
+
+
     
     public function do_add_quotation()
     {
@@ -102,7 +177,7 @@ class Quotation extends CI_Controller
             $config                     = array();
             $config["base_url"]         = base_url() . 'quotation/quotationlist';
             $config["total_rows"]       = $this->quotation_model->record_count();
-            $config["per_page"]         = 12;
+            $config["per_page"]         = 15;
             $config["uri_segment"]      = 3;
             $config['full_tag_open']    = "<ul class='pagination'>";
             $config['full_tag_close']   = "</ul>";

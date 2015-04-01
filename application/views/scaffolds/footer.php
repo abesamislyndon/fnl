@@ -171,6 +171,10 @@
       {
       $("ul#main-menu li:eq(8)").addClass('selected');
       }  
+      else if (current_page.match(/quotation_search/)) 
+      {
+      $("ul#main-menu li:eq(9)").addClass('selected');
+      }  
 
      else { // don't mark any nav links as selected
         $("ul#navigation li").removeClass('selected');
@@ -303,6 +307,10 @@ $(document).ready(function() {
                 var spinner = new Spinner(opts).spin(target);
     });
 });
+</script>
+<script src="<?php echo base_url(); ?>assets/js/wow.min.js"></script>
+<script>
+ new WOW().init();
 </script>
   </body>
 </html>
