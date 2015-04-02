@@ -58,29 +58,21 @@ class Manage_user_accounts extends CI_Controller {
 
 
 
-
-     public function user_account_list()
+     public function account_list()
     {
        if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
        {  
-        $this->load->model('user');
-         $session_data = $this->session->userdata('logged_in');
-         $data['username'] = $session_data['username'];
-         $data['result_list'] = $this->user->user_all_list();
-      
-         if ($this->session->userdata['logged_in']['role_code'] == '1') 
-          {
-            $this->load->view('scaffolds/header', $data);
-            $this->load->view('pages/user_account_list', $data);
-            $this->load->view('scaffolds/footer', $data);
-          }
-          else
-          {
-            $this->load->view('scaffolds/header_normal', $data);
-            $this->load->view('pages/user_account_list', $data);
-            $this->load->view('scaffolds/footer', $data);
-          }
+            $data['count_quote']   = $this->quotation_model->count_pending_quote();
+            $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
+            $data['overdue']        = $this->quotation_model->count_overdue();
+            $data['service_report']        = $this->quotation_model->count_service_report();
+            $data['job_complete']        = $this->quotation_model->count_complete_jobwork();
+            $data['list'] = $this->user->user_all_list();
 
+            $this->load->view('scaffolds/header');
+            $this->load->view('scaffolds/sidebar', $data);
+            $this->load->view('pages/user_list');
+            $this->load->view('scaffolds/footer');
        }
         else
         {
@@ -89,29 +81,25 @@ class Manage_user_accounts extends CI_Controller {
 
     }
 
+  
     public function update_user()
     {
        if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
        {  
-         $this->load->model('user');
-         $session_data = $this->session->userdata('logged_in');
-         $data['username'] = $session_data['username'];
-         $id = $this->input->get('id');
-         $data['result_list'] = $this->user->user_update_individual($id);
+            $id = $this->uri->segment(3);
 
-      
-         if ($this->session->userdata['logged_in']['role_code'] == '1') 
-          {
-            $this->load->view('scaffolds/header', $data);
-            $this->load->view('pages/update_user', $data);
-            $this->load->view('scaffolds/footer', $data);
-          }
-          else
-          {
-            $this->load->view('scaffolds/header_normal', $data);
-            $this->load->view('pages/update_user', $data);
-            $this->load->view('scaffolds/footer', $data);
-          }
+
+            $data['count_quote']   = $this->quotation_model->count_pending_quote();
+            $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
+            $data['overdue']        = $this->quotation_model->count_overdue();
+            $data['service_report']        = $this->quotation_model->count_service_report();
+            $data['job_complete']        = $this->quotation_model->count_complete_jobwork();
+            $data['individual'] = $this->user->user_update_individual($id);
+
+            $this->load->view('scaffolds/header');
+            $this->load->view('scaffolds/sidebar', $data);
+            $this->load->view('pages/update_user',$data);
+            $this->load->view('scaffolds/footer');
 
        }
         else
@@ -120,31 +108,38 @@ class Manage_user_accounts extends CI_Controller {
        }
 
     }
-    public function update_user_pwd()
+
+       function  do_update_user(){
+
+      if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
+       {   
+            if($this->input->post('submit')) 
+            {
+             $this->user->do_user_update_individual();
+            }
+        }else{
+         redirect('login', 'refresh');
+       }     
+
+       }
+       
+ 
+   public function update_user_pwd()
     {
        if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
        {  
-       
-         $this->load->model('user');
-         $session_data = $this->session->userdata('logged_in');
-         $data['username'] = $session_data['username'];
-         $id = $this->input->get('id');
-         $data['result_list'] = $this->user->user_update_individual($id);
+       $id = $this->uri->segment(3);
+            $data['count_quote']   = $this->quotation_model->count_pending_quote();
+            $data['count_jobwork'] = $this->quotation_model->count_pending_jobwork();
+            $data['overdue']        = $this->quotation_model->count_overdue();
+            $data['service_report']        = $this->quotation_model->count_service_report();
+            $data['job_complete']        = $this->quotation_model->count_complete_jobwork();
+            $data['individual'] = $this->user->user_update_individual($id);
 
-      
-         if ($this->session->userdata['logged_in']['role_code'] == '1') 
-          {
-            $this->load->view('scaffolds/header', $data);
-            $this->load->view('pages/update_pwd', $data);
-            $this->load->view('scaffolds/footer', $data);
-          }
-          else
-          {
-            $this->load->view('scaffolds/header_normal', $data);
-            $this->load->view('pages/update_pwd', $data);
-            $this->load->view('scaffolds/footer', $data);
-          }
-
+            $this->load->view('scaffolds/header');
+            $this->load->view('scaffolds/sidebar', $data);
+            $this->load->view('pages/update_password',$data);
+            $this->load->view('scaffolds/footer');
        }
         else
         {
@@ -152,15 +147,13 @@ class Manage_user_accounts extends CI_Controller {
        }
 
     }
+
 
   public function do_update_user_pwd()
     {
        if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
        {  
-         $this->load->model('user');
-         $session_data = $this->session->userdata('logged_in');
-         $data['username'] = $session_data['username'];
-
+  
          $id = $this->input->post('id');
          $password = $this->input->post('password');
          $new_password = $this->input->post('new_password');
@@ -179,33 +172,6 @@ class Manage_user_accounts extends CI_Controller {
     }
 
 
-    public function update_user_details()
-    {
-       if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
-       {  
-         $this->load->model('user');
-         $session_data = $this->session->userdata('logged_in');
-         $data['username'] = $session_data['username'];
-
-         $id = $this->input->post('id');
-         $full_name = $this->input->post('full_name');
-         $tel_no = $this->input->post('tel_no');
-         $password = $this->input->post('password');
-         $username = $this->input->post('username');
-         $role_code = $this->input->post('role_code');
-        
-        if ($this->input->post('submit')) 
-        {
-         $this->user->do_user_update_individual($id , $full_name, $tel_no, $username, $password, $role_code);
-        }
-       } 
-        else
-        {
-         redirect('login', 'refresh');
-       }
-
-    }
-
     public function add_user_account()
     {  
         $this->load->model('user');  
@@ -219,19 +185,8 @@ class Manage_user_accounts extends CI_Controller {
 
     public function del_user()
     {   
-        $id = $this->input->post('id');
-        $this->load->model('user');  
-      
-
+        $id = $this->uri->segment(3);
         $delete =  $this->user->do_user_del($id);
-        if($delete)
-         {
-           echo "Success";
          }
-         else
-        {
-          echo "Error";
-        }
-    }
 
   }

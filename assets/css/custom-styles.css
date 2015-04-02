@@ -107,9 +107,9 @@
     .nav-second-level{
         background:#37474F !important;
         box-shadow: inset 0px 10px 11px -1px #303B40;
--webkit-box-shadow: inset 0px 10px 11px -1px #303B40;
--moz-box-shadow: inset 0px 10px 11px -1px #303B40;
--o-box-shadow: inset 0px 10px 11px -1px #303B40;
+        -webkit-box-shadow: inset 0px 10px 11px -1px #303B40;
+        -moz-box-shadow: inset 0px 10px 11px -1px #303B40;
+        -o-box-shadow: inset 0px 10px 11px -1px #303B40;
     }
 
     h1, .h1, h2, .h2, h3, .h3 {
@@ -493,7 +493,7 @@
 
     .nav-second-level li,
     .nav-third-level li {
-        border-bottom: none !important;
+        border-bottom: 1px solid #3c4c54 !important;
     }
 
     .nav-second-level li a {
@@ -1037,4 +1037,12 @@
         color:#546E7A; 
     }
 
-
+ .button3 {
+    background:#0277BD;
+    border: none;
+    padding:5px 10px; 
+    color:1px; 
+ }
+ .caret{
+    color: #fff;
+ }
