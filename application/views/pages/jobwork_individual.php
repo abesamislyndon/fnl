@@ -88,7 +88,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table id="customFields" class="table table-striped table-bordered table-hover">
+                                <table id="customFields" class="table table-striped table-bordered table-hover update">
                                     <thead>
                                         <tr>
                                             <th style = "width:10%;">SN</th>

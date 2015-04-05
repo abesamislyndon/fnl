@@ -1048,6 +1048,6 @@
  }
 
 
-table.table > tbody > tr:first-child > td:last-child  {
+table.update > tbody > tr:first-child > td:last-child {
     display:none !important;
 }
