@@ -34,7 +34,7 @@
                 <a href="#"><i class="fa fa-sitemap"></i>Generate Report<span class="fa arrow arrow1"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?php echo base_url()?>report/generate_report_reject">Rejected Quotation</a></li>
-                    <li><a href="<?php echo base_url()?>report/generate_report_complete">Job Compete</a></li>
+                    <li><a href="<?php echo base_url()?>report/generate_report_complete">Job Complete</a></li>
                     <li><a href="<?php echo base_url()?>report/generate_report_invoice">Invoice</a></li>
                 </ul>
             </li>

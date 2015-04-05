@@ -115,6 +115,44 @@ class Description extends CI_Controller
         $delete = $this->description_model->do_desc_del($id);
     }
     
+  
+  public function update_description_individual(){
+
+    $id     = $this->uri->segment(3);
+    $data['count_quote']    = $this->quotation_model->count_pending_quote();
+    $data['count_jobwork']  = $this->quotation_model->count_pending_jobwork();
+    $data['overdue']        = $this->quotation_model->count_overdue();
+    $data['service_report'] = $this->quotation_model->count_service_report();
+    $data['job_complete']   = $this->quotation_model->count_complete_jobwork();
+    $data['desc_list'] = $this->description_model->show_description($id);
+    
+    $this->load->view('scaffolds/header');
+    $this->load->view('scaffolds/sidebar', $data);
+    $this->load->view('pages/update_description');
+    $this->load->view('scaffolds/footer');
+
+
+  }  
+
+
+ public function do_update_description()
+    {
+        if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
+            
+            
+            if ($this->input->post('submit_desc')) {
+                
+                $sub_description = $this->input->post('sub_description');
+                
+                $this->description_model->do_update_desc($sub_description);
+                
+            }
+            
+        } else {
+            redirect('login', 'refresh');
+        }
+    } 
+
 
 
 }

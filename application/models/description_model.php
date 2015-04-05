@@ -56,7 +56,34 @@ class  Description_model extends CI_Model
 
       $this->session->set_flashdata('msg', 'SUCCESSFULLY DELETE');
       redirect('description/description_list');
-    }     
+    }   
+
+
+  function show_description($id){
+
+      $this->db->select('*');
+      $this->db->from('description');
+      $this->db->where('sn', $id);
+      $query = $this->db->get();
+      return $result = $query->result();
+  }
+
+
+
+    function do_update_desc($id){
+
+       $id = $this->input->post('sn');
+       $sub_description = strip_tags($this->input->post('sub_description'));
+      
+       $data = array(
+       'sub_description'=>$sub_description,
+      );
+
+      $this->db->where('sn', $id);
+      $this->db->update('description', $data);
+      $this->session->set_flashdata('msg', 'SUCCESFULLY UPDATED USER');
+      redirect('description/update_description_individual/'. $id);
+    }  
 
 
 }
