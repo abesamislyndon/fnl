@@ -96,7 +96,7 @@
                                     <tbody>
                                        <tr id="customFields" class = "targetfields">
                                             <td><input type = "text" name = "sn[]" id = "sn" class="form-input sn required" /></td>
-                                            <td><textarea  name = "sub_description[]" id = "sub_description" class="form-input sub_description required "></textarea></td>
+                                            <td><textarea  name = "sub_description[]" id = "sub_description" class="form-input sub_description required"></textarea></td>
                                             <td><input type = "text" name = "quantity[]" class="form-input quantity required" /></td>
                                             <td><input type = "text" name = "uom[]" class="form-input required" /></td>
                                             <td><input type = "text" name = "unit_price[]" class="form-input unit_price required" /></td>

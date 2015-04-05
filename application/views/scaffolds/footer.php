@@ -95,6 +95,15 @@
   </script>
 
    <script type="text/javascript"> 
+    $(document).ready(function(){
+     $('confirm.div').hide();
+      <?php if($this->session->flashdata('msg')){ ?>
+      $('.confirm-div').html('<?php echo "<p "."&nbsp;&nbsp;&nbsp;".$this->session->flashdata('msg');"</p>" ?>').fadeIn( "slow").fadeOut(4500);
+      });
+      <?php } ?>
+   </script>
+
+   <script type="text/javascript"> 
                   jQuery(document).ready(function(){
                       $('#company_name').autocomplete({
                                  source:'<?php echo base_url();?>jobwork/get_company', minLength:1,
@@ -282,7 +291,7 @@ $(document).ready(function() {
         if (isValid == false) 
             e.preventDefault();
         else 
-              $("#loading").fadeIn();
+                    $("#loading").fadeIn();
                 var opts = {
                     lines: 12, // The number of lines to draw
                     length: 7, // The length of each line
@@ -299,52 +308,9 @@ $(document).ready(function() {
     });
 });
 </script>
-  <script src="<?php echo base_url(); ?>assets/js/wow.min.js"></script>
-  <script>
-      new WOW().init();
-    </script>
-   
-   <script type="text/javascript"> 
-    $(document).ready(function(){
-     $('confirm.div').hide();
-      <?php if($this->session->flashdata('msg')){ ?>
-      $('.confirm-div').html('<?php echo "<p "."&nbsp;&nbsp;&nbsp;".$this->session->flashdata('msg');"</p>" ?>').fadeIn( "slow").fadeOut(4500);
-      });
-      <?php } ?>
-   </script>
-
-
-    <script>
-    $(document).ready(function(){
-      $("#sn").keyup(function(){
-            if($("#sn").val().length >= 1)
-            {
-             $.ajax({
-                type: "POST",
-                url: "<?php echo base_url(); ?>checkIn/check_service_num",
-                data: "name="+$("#service_num").val(),
-                success: function(msg)
-                {
-                    if(msg=="true")
-                    {
-                        $("#usr_verify").css({ "background-image": "url('<?php echo base_url();?>assets/img/yes.png')" });
-                    }
-                    else
-                    {
-                        $("#usr_verify").css({ "background-image": "url('<?php echo base_url();?>assets/img/no.png')" });
-                    }
-                }
-             });
-         
-            }
-             else 
-            {
-                $("#usr_verify").css({ "background-image": "none" });
-            }
-        });
-      });
-    </script>
-
-
+<script src="<?php echo base_url(); ?>assets/js/wow.min.js"></script>
+<script>
+ new WOW().init();
+</script>
   </body>
 </html>

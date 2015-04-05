@@ -11,16 +11,15 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/animate.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <script src="<?php echo base_url();?>assets/js/jquery-1.10.2.js"></script>
-    <script src="<?php echo base_url();?>assets/tiny_mce/tiny_mce.js"></script>
+      <script src="<?php echo base_url();?>assets/tiny_mce/tiny_mce.js"></script>
+  
     <script type="text/javascript">
     tinyMCE.init({
-         mode : "specific_textareas",
-         editor_selector : "myTextEditor",
+        mode : "specific_textareas",
+        editor_selector : "myTextEditor",
         theme : "simple"
     });
   </script>
-<!-- /TinyMCE -->
-
     <script>
      $(document).ready(function() {
      var FieldCount = 1;
