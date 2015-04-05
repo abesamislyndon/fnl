@@ -54,10 +54,7 @@ Class User extends CI_Model
 
   function do_user_update_individual()
    {
-<<<<<<< HEAD
-=======
 
->>>>>>> efe2a20064dea28d6c6eb294fe3caad2f59304aa
          $id = $this->input->post('id');
          $full_name = $this->input->post('full_name');
          $username = $this->input->post('username');

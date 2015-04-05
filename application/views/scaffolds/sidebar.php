@@ -43,7 +43,7 @@
                 <a href="#"><i class="fa fa-user"></i>Manage User<span class="fa arrow arrow1"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?php echo base_url()?>manage_user_accounts/add_user">Add New User</a></li>
-                    <li><a href="<?php echo base_url()?>Manage_user_accounts/account_list">User List</a></li>
+                    <li><a href="<?php echo base_url()?>manage_user_accounts/account_list">User List</a></li>
                 </ul>
             </li>
             <li><a href="<?php echo base_url();?>login/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>

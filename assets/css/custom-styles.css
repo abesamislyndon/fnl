@@ -1046,3 +1046,8 @@
  .caret{
     color: #fff;
  }
+
+
+table.table > tbody > tr:first-child > td:last-child  {
+    display:none !important;
+}
