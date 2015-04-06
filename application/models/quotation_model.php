@@ -810,10 +810,20 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
         $this->db->delete('quotation_details');
         
         $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
+        redirect('quotation/individual_details/' . $quotation_id);
+        
+    }
+
+     function del_sub_desc_jobwork($quotation_sub_id, $quotation_id){
+
+        $this->db->where('quotation_details_id', $quotation_sub_id);
+        $this->db->delete('quotation_details');
+        
+        $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
         redirect('quotation/individual_details_with_jobwork/' . $quotation_id);
         
     }
-      
+
     function approved_quotation($quotation_id){
 
         $remarks = 'approved';

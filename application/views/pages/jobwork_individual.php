@@ -91,7 +91,7 @@
                                 <table id="customFields" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th style = "width:10%;">SN</th>
+                                            <th style = "width:10%;">SN / CODE</th>
                                             <th>Description</th>
                                             <th style = "width:10%;">Quantity</th>
                                             <th style = "width:10%;">UOM</th>
@@ -114,7 +114,7 @@
                                             <td><input type = "text" name = "uom[]" class="form-input" value = "<?php echo $individual->uom?>"></td>
                                             <td><input type = "text" name = "unit_price[]" class="form-input unit_price" value = "<?php echo $individual->unit_price?>"></td>
                                             <td><input type = "text"  name = "amount[]" class="form-input subtotal res"  value = "<?php echo $individual->amount?>"></td>
-                                            <td><a id="simpleConfirm" href="<?php echo base_url(); ?>quotation/delete_sub_desc/<?php echo $individual->quotation_id ?>/<?php echo $individual->quotation_details_id ?>" class="link_button1" onclick="return confirm('Are your sure? If yes After delete please click UPDATE INFORMATION BUTTON')"><i class="fa fa-trash-o"></i></a></td>
+                                            <td><a id="simpleConfirm" href="<?php echo base_url(); ?>quotation/delete_sub_desc_jobwork/<?php echo $individual->quotation_id ?>/<?php echo $individual->quotation_details_id ?>" class="link_button1" onclick="return confirm('Are your sure? If yes After delete please click UPDATE INFORMATION BUTTON')"><i class="fa fa-trash-o"></i></a></td>
                                         </tr>
                                         <?php endforeach; ?>   
                                     </tbody>

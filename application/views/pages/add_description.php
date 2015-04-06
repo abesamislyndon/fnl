@@ -11,15 +11,17 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Sn:</label>
-                                            <input type = "text" name = "sn"  id = "sn" class="form-control">
+                                          <span id="usr_verify" class="verify" ></span>
+                                          <br><br>
+                                            <label>Sn / CODE:</label>
+                                            <input type = "text" name = "sn"  id = "sn" class="form-control" autocomplete="off" required/>
                                         </div>
                               </div>
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Job Description</label>
-                                            <textarea class="form-control" name = "sub_description" rows="3"></textarea>
+                                            <textarea class="form-control myTextEditor" name = "sub_description" rows="3"></textarea>
                                         </div>
                                 </div><!--end of coloumn 6-->
                             </div><!--end of row-->

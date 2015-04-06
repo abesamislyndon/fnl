@@ -84,10 +84,10 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table id="customFields" class="table table-striped table-bordered table-hover">
+                                <table id="customFields" class="table table-striped table-bordered table-hover update">
                                     <thead>
                                         <tr>
-                                            <th style = "width:10%;">SN</th>
+                                            <th style = "width:10%;">SN / CODE</th>
                                             <th>Description</th>
                                             <th style = "width:10%;">Quantity</th>
                                             <th style = "width:10%;">UOM</th>
@@ -133,12 +133,12 @@
                                         </tr>
                                    <?php endforeach; ?> 
                                 </table>
-                               <a href="javascript:void(0);" id="addCF" class = "add_button">+</a>
+                               <!-- <a href="javascript:void(0);" id="addCF" class = "add_button">+</a> -->
                             </div>
                         </div>
                     </div>
                      <div class = "submit_container">
-                        <input type = "submit" value ="UPDATE INFORMATION" name = "update2" class = "submit">
+                       <!-- <input type = "submit" value ="UPDATE INFORMATION" name = "update2" class = "submit"> -->
                         <input type = "submit" value ="CHECKOUT" name = "checkout" class = "submit">
                      </div>
                 </form>

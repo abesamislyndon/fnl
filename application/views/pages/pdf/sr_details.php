@@ -78,7 +78,7 @@
     <table cellspacing="0" style="text-align: center; font-size: 9pt; padding:1px; border-collapse: collapse;">
      <tbody>
     <tr>
-        <th style="width:9%; border: solid 1px black;font-weight:bold; font-style:italic;border-collapse: collapse;">S/No</th>
+        <th style="width:9%; border: solid 1px black;font-weight:bold; font-style:italic;border-collapse: collapse;">SN / CODE</th>
         <th style="width:40%;border: solid 1px black;font-weight:bold; font-style:italic;border-collapse: collapse;">DESCRIPTION</th>
         <th style="width:9%; border: solid 1px black;font-weight:bold; font-style:italic;border-collapse: collapse;">QUANTITY</th>
         <th style="width:9%; border: solid 1px black;font-weight:bold; font-style:italic;border-collapse: collapse;">UOM</th>

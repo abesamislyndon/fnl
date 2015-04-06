@@ -12,6 +12,15 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.counterup.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script> 
  
+   <script type="text/javascript"> 
+    $(document).ready(function(){
+     $('confirm.div').hide();
+      <?php if($this->session->flashdata('msg')){ ?>
+      $('.confirm-div').html('<?php echo "<p "."&nbsp;&nbsp;&nbsp;".$this->session->flashdata('msg');"</p>" ?>').fadeIn( "slow").fadeOut(4500);
+      });
+      <?php } ?>
+   </script>
+ 
   <script>
   $(function() {
     $( "#datepicker" ).datepicker({
@@ -93,15 +102,6 @@
      });
    });
   </script>
-
-   <script type="text/javascript"> 
-    $(document).ready(function(){
-     $('confirm.div').hide();
-      <?php if($this->session->flashdata('msg')){ ?>
-      $('.confirm-div').html('<?php echo "<p "."&nbsp;&nbsp;&nbsp;".$this->session->flashdata('msg');"</p>" ?>').fadeIn( "slow").fadeOut(4500);
-      });
-      <?php } ?>
-   </script>
 
    <script type="text/javascript"> 
                   jQuery(document).ready(function(){
@@ -312,5 +312,40 @@ $(document).ready(function() {
 <script>
  new WOW().init();
 </script>
+
+   <script>
+    $(document).ready(function(){
+      $("#sn").keyup(function(){
+            if($("#sn").val().length >= 1)
+            {
+             $.ajax({
+                type: "POST",
+                url: "<?php echo base_url(); ?>description/check_sn",
+                data: "name="+$("#sn").val(),
+                success: function(msg)
+                {
+                    if(msg=="true")
+                    {
+                        $("#usr_verify").css({ "background-image": "url('<?php echo base_url();?>assets/img/yes.png')" });
+                    }
+                    else
+                    {
+                        $("#usr_verify").css({ "background-image": "url('<?php echo base_url();?>assets/img/no.png')" });
+                    }
+                }
+             });
+         
+            }
+             else 
+            {
+                $("#usr_verify").css({ "background-image": "none" });
+            }
+        });
+      });
+    </script>
+
+
+
+
   </body>
 </html>

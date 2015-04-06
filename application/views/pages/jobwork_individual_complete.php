@@ -89,7 +89,7 @@
                                 <table id="customFields" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th style = "width:10%;">SN</th>
+                                            <th style = "width:10%;">SN / CODE</th>
                                             <th>Description</th>
                                             <th style = "width:10%;">Quantity</th>
                                             <th style = "width:10%;">UOM</th>

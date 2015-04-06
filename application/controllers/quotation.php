@@ -409,6 +409,19 @@ class Quotation extends CI_Controller
             redirect('login', 'refresh');
         }
     }
+
+        public function delete_sub_desc_jobwork(){
+
+        if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
+            $quotation_id     = $this->uri->segment(3);
+            $quotation_sub_id = $this->uri->segment(4);
+            $this->quotation_model->del_sub_desc_jobwork($quotation_sub_id, $quotation_id);
+            
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
+    
     
 
     /* -------------------------over due quotation function ---------------------*/
