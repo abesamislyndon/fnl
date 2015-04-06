@@ -1,3 +1,9 @@
+<style>
+    h3{
+        color:#1565C0; 
+    }
+</style>
+
 <page backtop="40mm" backbottom="15mm" backleft="3mm" backright="10mm" >
     <page_header>
     <h3>F & L  Reinstatement Pte Ltd</h3>

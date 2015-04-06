@@ -1096,3 +1096,12 @@ span.verify
     height: 32px;
   
 }
+
+.msg1{
+    background: #fff;
+    position: absolute;
+    font-size:30px;
+    margin:auto;
+    margin-left:50%;
+    margin-right:50%;   
+ }

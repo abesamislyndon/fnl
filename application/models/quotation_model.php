@@ -983,6 +983,17 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
         return $result = $query->result();
         
     }
+
+    function update_count(){
+        
+        $this->db->select('status, COUNT(status) as total');
+        $this->db->where('status', 1);
+        $this->db->from('quotation');
+        $this->db->order_by('total', 'desc');
+        $query = $this->db->get();
+        return $result = $query->result();
+        
+    }
     
     function count_pending_jobwork(){
 

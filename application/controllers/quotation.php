@@ -473,6 +473,21 @@ class Quotation extends CI_Controller
      
     }
     
+
+    public function new_quotation(){
+
+         $data['count_quote1']    =  $this->quotation_model->update_count();
+         foreach ($data['count_quote1'] as  $value) {
+            $result =  $value->total;
+            echo $result;
+         }
+
+
+    
+
+        
+ 
+    }
     
     
 }

@@ -95,7 +95,7 @@
        <?php foreach($sub_desc as $sub_details): ?>
          <tr>
             <td style=" border: solid 1px black; font-style:italic;border-collapse: collapse;"><?php echo $details->sn ?></td>
-            <td style="width:350px;height:120px;border: solid 1px black;font-style:italic;border-collapse: collapse; text-align:left;">SCOPE OF WORK:<br><br><?php echo $sub_details->sub_description ?></td>
+            <td style="width:315px;height:120px;border: solid 1px black;font-style:italic;border-collapse: collapse; text-align:left;">SCOPE OF WORK:<br><br><?php echo $sub_details->sub_description ?></td>
             <td style=" border: solid 1px black;font-style:italic;border-collapse: collapse;"><?php echo $sub_details->quantity ?></td>
             <td style=" border: solid 1px black; font-style:italic;border-collapse: collapse;"><?php echo $sub_details->uom ?></td>
             <td style=" border: solid 1px black; font-style:italic;border-collapse: collapse;"><?php echo $sub_details->unit_price ?></td>

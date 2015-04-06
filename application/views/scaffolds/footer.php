@@ -344,8 +344,24 @@ $(document).ready(function() {
       });
     </script>
 
+<!--   short pooling sample
+<script>
+  $(function() {
+    setInterval(function() {
+        $.ajax({
+            type: "GET",
 
+            url: "<?php echo base_url();?>quotation/new_quotation",
+            success: function(html) {
+                 // html is a string of all output of the server script.
+                $("#element").html(html).fadeOut(9500);
+           }
 
+        })
+    }, 1000);
+});
+</script>
+-->
 
   </body>
 </html>
