@@ -43,7 +43,7 @@ class  Description_model extends CI_Model
         return false;
     }
 
-    public function record_count()
+   function record_count()
     {
         return $this->db->count_all("quotation");
     }
@@ -68,8 +68,6 @@ class  Description_model extends CI_Model
       return $result = $query->result();
   }
 
-
-
     function do_update_desc($id){
 
        $id = $this->input->post('sn');
@@ -84,8 +82,6 @@ class  Description_model extends CI_Model
       $this->session->set_flashdata('msg', 'SUCCESFULLY UPDATED USER' ,true);
       redirect('description/update_description_individual/'. $id);
     }  
-
-
 
     function check_sn_details($serviceNum)
         {
