@@ -61,6 +61,7 @@ class Description extends CI_Controller
             
         } else {
             redirect('login', 'refresh');
+
         }
         
     }
@@ -122,10 +123,15 @@ class Description extends CI_Controller
             $this->load->view('scaffolds/footer');
         } else {
             redirect('login', 'refresh');
+
         }
         
     }
     
+
+
+    
+
     public function del_desc()
     {
         $id     = $this->uri->segment(3);
@@ -149,9 +155,14 @@ class Description extends CI_Controller
     $this->load->view('scaffolds/footer');
 
 
+
   }  
 
 
+
+
+
+ 
  public function do_update_description()
     {
         if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {

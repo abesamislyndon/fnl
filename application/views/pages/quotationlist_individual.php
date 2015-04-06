@@ -84,6 +84,7 @@
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table id="customFields" class="table table-striped table-bordered table-hover ">
+
                                     <thead>
                                         <tr>
                                             <th style = "width:10%;">SN / CODE</th>

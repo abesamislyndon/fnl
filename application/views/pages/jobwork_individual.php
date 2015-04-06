@@ -10,10 +10,10 @@
                         <div class="panel-heading">
                            <h4>DETAILS</h4> 
                            <ul class = "upper-mini-menu">
-                            <li><span class = "print1">QUOTATION # <?php echo $individual->quotation_id?></span></li>
-                              <li><span class = "print1">JOB ORDER # <?php echo $individual->jobwork_id?>&nbsp;&nbsp;&nbsp;&nbsp;|</span></li>
+                            <li><span class = "print">QUOTATION # <?php echo $individual->quotation_id?></span></li>
+                              <li><span class = "print">JOB ORDER # <?php echo $individual->jobwork_id?>&nbsp;&nbsp;&nbsp;&nbsp;|</span></li>
                                <li>
-                                <a href = "<?php echo base_url();?>create_pdf/print_joborder/<?php echo $individual->quotation_id ?>" class = "print" target = "_blank"><i class="fa fa-print"></i></a>
+                                <a href = "<?php echo base_url();?>create_pdf/print_joborder/<?php echo $individual->quotation_id ?>" class = "print" target = "_blank"><i class="fa fa-print"></i>&nbsp;</a>
                             </li>
                                
                            </ul>
@@ -88,7 +88,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table id="customFields" class="table table-striped table-bordered table-hover">
+                                <table id="customFields" class="table table-striped table-bordered table-hover update">
                                     <thead>
                                         <tr>
                                             <th style = "width:10%;">SN / CODE</th>

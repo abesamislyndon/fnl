@@ -12,6 +12,7 @@
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>SN / CODE</label>
+
                                             <?php foreach ($desc_list as  $value): ?>
                                             <input type = "hidden" name = "sn"  id = "sn" value = "<?php echo $value->sn ?>">
                                             <input type = "text" name = "sn"  id = "sn" class="form-control" value = "<?php echo $value->sn_id ?>" disabled>
