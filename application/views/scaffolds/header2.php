@@ -21,86 +21,117 @@
                     this.form.sub_description.value = ui.item.sub_description;
                 }
               };
-
+              
              var autocomp_opt1 = {
-               source: "<?php echo base_url();?>description/get_description",
-               minLength:1,
-               select:function(evt, ui)
-               {
-                    this.form.sub_description2.value = ui.item.sub_description;
-                }
-              };
+                 source: "<?php echo base_url();?>description/get_description",
+                 minLength: 1,
+                 select: function(evt, ui) {
+                     this.form.sub_description2.value = ui.item.sub_description;
+                 }
+             };
 
              var autocomp_opt2 = {
-               source: "<?php echo base_url();?>description/get_description",
-               minLength:1,
-               select:function(evt, ui)
-               {
-                    this.form.sub_description3.value = ui.item.sub_description;
-                }
-              };
+                 source: "<?php echo base_url();?>description/get_description",
+                 minLength: 1,
+                 select: function(evt, ui) {
+                     this.form.sub_description3.value = ui.item.sub_description;
+                 }
+             };
              var autocomp_opt3 = {
-               source: "<?php echo base_url();?>description/get_description",
-               minLength:1,
-               select:function(evt, ui)
-               {
-                    this.form.sub_description4.value = ui.item.sub_description;
-                }
-              };
+                 source: "<?php echo base_url();?>description/get_description",
+                 minLength: 1,
+                 select: function(evt, ui) {
+                     this.form.sub_description4.value = ui.item.sub_description;
+                 }
+             };
 
              var autocomp_opt4 = {
-               source: "<?php echo base_url();?>description/get_description",
-               minLength:1,
-               select:function(evt, ui)
-               {
-                    this.form.sub_description5.value = ui.item.sub_description;
-                }
-              };
+                 source: "<?php echo base_url();?>description/get_description",
+                 minLength: 1,
+                 select: function(evt, ui) {
+                     this.form.sub_description5.value = ui.item.sub_description;
+                 }
+             };
 
              var autocomp_opt5 = {
-               source: "<?php echo base_url();?>description/get_description",
-               minLength:1,
-               select:function(evt, ui)
-               {
-                    this.form.sub_description6.value = ui.item.sub_description;
-                }
-              };
+                 source: "<?php echo base_url();?>description/get_description",
+                 minLength: 1,
+                 select: function(evt, ui) {
+                     this.form.sub_description6.value = ui.item.sub_description;
+                 }
+             };
              var autocomp_opt6 = {
-               source: "<?php echo base_url();?>description/get_description",
-               minLength:1,
-               select:function(evt, ui)
-               {
-                    this.form.sub_description7.value = ui.item.sub_description;
-                }
-              };
-     
-             $(document).on("keydown", ".sn", function () { 
-             $(this).autocomplete(autocomp_opt);
+                 source: "<?php echo base_url();?>description/get_description",
+                 minLength: 1,
+                 select: function(evt, ui) {
+                     this.form.sub_description7.value = ui.item.sub_description;
+                 }
+             };
+              var autocomp_opt7 = {
+                 source: "<?php echo base_url();?>description/get_description",
+                 minLength: 1,
+                 select: function(evt, ui) {
+                     this.form.sub_description8.value = ui.item.sub_description;
+                 }
+             };
+             
+             var autocomp_opt8 = {
+                 source: "<?php echo base_url();?>description/get_description",
+                 minLength: 1,
+                 select: function(evt, ui) {
+                     this.form.sub_description9.value = ui.item.sub_description;
+                 }
+             };
+
+             var autocomp_opt9 = {
+                 source: "<?php echo base_url();?>description/get_description",
+                 minLength: 1,
+                 select: function(evt, ui) {
+                     this.form.sub_description10.value = ui.item.sub_description;
+                 }
+             };
+
+
+             $(document).on("keydown", ".sn", function() {
+                 $(this).autocomplete(autocomp_opt);
              });
 
-             $(document).on("keydown", ".sn2", function () { 
-              $(this).autocomplete(autocomp_opt1);
+             $(document).on("keydown", ".sn2", function() {
+                 $(this).autocomplete(autocomp_opt1);
              });
 
-             $(document).on("keydown", ".sn3", function () { 
-              $(this).autocomplete(autocomp_opt2);
+             $(document).on("keydown", ".sn3", function() {
+                 $(this).autocomplete(autocomp_opt2);
              });
 
-              $(document).on("keydown", ".sn4", function () { 
-              $(this).autocomplete(autocomp_opt3);
+             $(document).on("keydown", ".sn4", function() {
+                 $(this).autocomplete(autocomp_opt3);
              });
 
-             $(document).on("keydown", ".sn5", function () { 
-              $(this).autocomplete(autocomp_opt4);
+             $(document).on("keydown", ".sn5", function() {
+                 $(this).autocomplete(autocomp_opt4);
              });
 
-              $(document).on("keydown", ".sn6", function () { 
-              $(this).autocomplete(autocomp_opt5);
+             $(document).on("keydown", ".sn6", function() {
+                 $(this).autocomplete(autocomp_opt5);
              });
 
-             $(document).on("keydown", ".sn7", function () { 
-              $(this).autocomplete(autocomp_opt6);
+             $(document).on("keydown", ".sn7", function() {
+                 $(this).autocomplete(autocomp_opt6);
              });
+              $(document).on("keydown", ".sn8", function() {
+                 $(this).autocomplete(autocomp_opt7);
+             });
+              
+             $(document).on("keydown", ".sn9", function() {
+              $(this).autocomplete(autocomp_opt8);
+             });
+
+              
+             $(document).on("keydown", ".sn10", function() {
+              $(this).autocomplete(autocomp_opt9);
+             });
+
 
             $(".add_button").click(function (e) { //on add input button click
               FieldCount++;

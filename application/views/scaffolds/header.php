@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/animate.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <script src="<?php echo base_url();?>assets/js/jquery-1.10.2.js"></script>
+    <script src="<?php echo base_url();?>assets/js/Chart.min.js"></script>
     <script src="<?php echo base_url();?>assets/tiny_mce/tiny_mce.js"></script>
     <script type="text/javascript">
     tinyMCE.init({
@@ -75,6 +76,30 @@
              this.form.sub_description7.value = ui.item.sub_description;
          }
      };
+      var autocomp_opt7 = {
+         source: "<?php echo base_url();?>description/get_description",
+         minLength: 1,
+         select: function(evt, ui) {
+             this.form.sub_description8.value = ui.item.sub_description;
+         }
+     };
+     
+     var autocomp_opt8 = {
+         source: "<?php echo base_url();?>description/get_description",
+         minLength: 1,
+         select: function(evt, ui) {
+             this.form.sub_description9.value = ui.item.sub_description;
+         }
+     };
+
+     var autocomp_opt9 = {
+         source: "<?php echo base_url();?>description/get_description",
+         minLength: 1,
+         select: function(evt, ui) {
+             this.form.sub_description10.value = ui.item.sub_description;
+         }
+     };
+
 
      $(document).on("keydown", ".sn", function() {
          $(this).autocomplete(autocomp_opt);
@@ -103,6 +128,19 @@
      $(document).on("keydown", ".sn7", function() {
          $(this).autocomplete(autocomp_opt6);
      });
+      $(document).on("keydown", ".sn8", function() {
+         $(this).autocomplete(autocomp_opt7);
+     });
+      
+     $(document).on("keydown", ".sn9", function() {
+      $(this).autocomplete(autocomp_opt8);
+     });
+
+      
+     $(document).on("keydown", ".sn10", function() {
+      $(this).autocomplete(autocomp_opt9);
+     });
+
 
      $(".add_button").click(function(e) { //on add input button click
          FieldCount++;

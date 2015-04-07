@@ -34,8 +34,7 @@ class quotation_model extends CI_Model
                 'job_description' => $job_description,
                 'date_of_quote' => $mysql_date,
                 'status' => 1,
-                'sales_exe' => $sales_exe
-                
+                'sales_exe' => $sales_exe 
             );
             
             $this->db->insert('quotation', $row2);
@@ -190,7 +189,7 @@ class quotation_model extends CI_Model
         return false;
     }
 
-      function show_invoice_list($limit, $start)
+    function show_invoice_list($limit, $start)
     {
         $this->db->from('quotation');
         $this->db->join('company', 'company.company_id = quotation.company_id');
@@ -223,7 +222,7 @@ class quotation_model extends CI_Model
         return $result;
     }
 
-        function show_invoice_details($quotation_id)
+    function show_invoice_details($quotation_id)
     {
         $this->db->select('*');
         $this->db->from('quotation');
@@ -252,7 +251,7 @@ class quotation_model extends CI_Model
         return $result;
     }
 
-     function show_jobwork_with_sales_exe($quotation_id)
+    function show_jobwork_with_sales_exe($quotation_id)
     {
         $this->db->select('*');
         $this->db->from('quotation');
@@ -267,7 +266,7 @@ class quotation_model extends CI_Model
         return $result;
     }
 
-     function total($quotation_id)
+    function total($quotation_id)
     {
         $this->db->select('SUM(amount) as total', FALSE);
         $this->db->from('quotation');
@@ -281,7 +280,7 @@ class quotation_model extends CI_Model
         return $result;
     }
 
-      function total1($quotation_id)
+    function total1($quotation_id)
     {
         $this->db->select('SUM(amount) as total', FALSE);
         $this->db->from('quotation');
@@ -830,7 +829,8 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
 
         $row = array(
             'status' => 2,
-            'remarks'=>$remarks
+            'remarks'=>$remarks,
+            'date_of_approved'=>date('Y-m-d H:i:s')
         );
         
         $this->db->select('*');
@@ -856,7 +856,8 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
       
         $row = array(
             'status' => 4,
-            'remarks'=>$remarks
+            'remarks'=>$remarks,
+            'date_of_reject'=>date('Y-m-d H:i:s')
         );
         
         $this->db->select('*');
@@ -1124,7 +1125,6 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
         return $result = $query->result();
    } 
 
-
    function fetch_search_invoice($service_report){
     
         $this->db->select('*');
@@ -1139,6 +1139,9 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
         $query = $this->db->get();
         return $result = $query->result();
    } 
+
+
+
 
 
 

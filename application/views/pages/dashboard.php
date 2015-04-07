@@ -61,25 +61,19 @@
         </div>
 
         <div class="row">
-            <div class="col-md-9 col-sm-12 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                       Latest Pending Quotation List
+                       Bar Graph - Reject and Approved Quotation for the year of 2015
                     </div>
                     <div class="panel-body">
-                     
+                          <div class = "chart">
+                       <canvas id="canvas" height="110" width="600"></canvas>
+                    </div>
+ 
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-12 col-xs-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Chart
-                    </div>
-                    <div class="panel-body">
-                    
-                    </div>
-                </div>
-            </div>
+      
         </div>
   </div>
