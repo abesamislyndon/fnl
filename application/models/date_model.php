@@ -3,8 +3,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 class  Date_model extends CI_Model
 {
 
-
-
   function reject_jan($date){
 
         $from = $date.'-01-01';
@@ -18,7 +16,6 @@ class  Date_model extends CI_Model
         $this->db->order_by('total', 'desc');
         $query = $this->db->get();
         return $result = $query->result();
-
   
   }
 
@@ -44,7 +41,7 @@ class  Date_model extends CI_Model
         $from = $date.'-03-01';
         $to =   $date.'-03-31';
 
-        $this->db->select('status, COUNT(status) as total');
+        $this->db->select('date_of_reject, COUNT(date_of_reject) as total');
         $this->db->where('remarks','reject' );
         $this->db->where('quotation.date_of_reject >=',  $from);
         $this->db->where('quotation.date_of_reject <=',  $to);
@@ -53,15 +50,14 @@ class  Date_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result();
 
-  
   }
 
   function reject_april($date){
 
         $from = $date.'-04-01';
-        $to =   $date.'-04-31';
+        $to =   $date.'-04-30';
 
-        $this->db->select('status, COUNT(status) as total');
+        $this->db->select('date_of_reject, COUNT(date_of_reject) as total');
         $this->db->where('remarks','reject' );
         $this->db->where('quotation.date_of_reject >=',  $from);
         $this->db->where('quotation.date_of_reject <=',  $to);
@@ -120,7 +116,6 @@ class  Date_model extends CI_Model
         $this->db->order_by('total', 'desc');
         $query = $this->db->get();
         return $result = $query->result();
-
   
   }
 
@@ -210,7 +205,7 @@ class  Date_model extends CI_Model
   }
 
 
-
+/*   for approved  report chart  */
 
     function aprov_jan($date){
 
@@ -310,7 +305,6 @@ class  Date_model extends CI_Model
         $this->db->order_by('total', 'desc');
         $query = $this->db->get();
         return $result = $query->result();
-
   
   }
 
@@ -328,7 +322,6 @@ class  Date_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result();
 
-  
   }
 
   function aprov_aug($date){
@@ -345,7 +338,6 @@ class  Date_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result();
 
-  
   }
 
   function aprov_sept($date){
@@ -361,7 +353,6 @@ class  Date_model extends CI_Model
         $this->db->order_by('total', 'desc');
         $query = $this->db->get();
         return $result = $query->result();
-
   
   }
 
@@ -378,7 +369,6 @@ class  Date_model extends CI_Model
         $this->db->order_by('total', 'desc');
         $query = $this->db->get();
         return $result = $query->result();
-
   
   }
 
@@ -396,7 +386,6 @@ class  Date_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result();
 
-  
   }
 
   function aprov_dec($date){
@@ -412,7 +401,6 @@ class  Date_model extends CI_Model
         $this->db->order_by('total', 'desc');
         $query = $this->db->get();
         return $result = $query->result();
-
   
   }
 

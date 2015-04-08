@@ -12,9 +12,9 @@ class  Report_model extends CI_Model
        $this->db->join('company', 'company.company_id = quotation.company_id');
        $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
        $this->db->where('quotation.remarks', 'reject');
-       $this->db->where('quotation.date_of_quote >=',  $from);
-       $this->db->where('quotation.date_of_quote <=',  $to);
-       $this->db->order_by('quotation.date_of_quote','ASC');
+       $this->db->where('quotation.date_of_reject >=',  $from);
+       $this->db->where('quotation.date_of_reject <=',  $to);
+       $this->db->order_by('quotation.date_of_reject','ASC');
 
        $query = $this->db->get();
        return $result = $query->result();
@@ -31,9 +31,9 @@ class  Report_model extends CI_Model
        $this->db->join('company', 'company.company_id = quotation.company_id');
        $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
        $this->db->where('quotation.remarks', 'approved');
-       $this->db->where('quotation.date_of_quote >=',  $from);
-       $this->db->where('quotation.date_of_quote <=',  $to);
-       $this->db->order_by('quotation.date_of_quote','ASC');
+       $this->db->where('quotation.date_of_approved >=',  $from);
+       $this->db->where('quotation.date_of_approved <=',  $to);
+       $this->db->order_by('quotation.date_of_approved','ASC');
 
        $query = $this->db->get();
        return $result = $query->result();

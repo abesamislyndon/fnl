@@ -482,11 +482,6 @@ class Quotation extends CI_Controller
             echo $result;
          }
 
-
-    
-
-        
- 
     }
     
     

@@ -15,13 +15,11 @@
         </div>
         </div><!--end of column 12-->
   
-
         <div class="col-lg-6">
             <div class="checkout_style">
                <div class="form-group success">
                   <p>Please choose your next options</p><br>
                     <br><hr>
-                  
                      <ul class = "create_new">
                        <li><a href="<?php echo base_url(); ?>quotation/quotationlist" class = "create"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;&nbsp;GO TO → QUOTATION LIST</a></li>
                        <li><a href="<?php echo base_url(); ?>jobwork/jobwork_list" class = "create"><i class="fa fa-fw fa-file"></i></i>&nbsp;&nbsp;&nbsp;GO TO → JOBWORKLIST</a></li>

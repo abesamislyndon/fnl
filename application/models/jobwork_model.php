@@ -206,7 +206,6 @@ class jobwork_model extends CI_Model
         $result = $q->result();
         return $result;
     }
-
     
 }
 /* End of file jobwork_model.php */

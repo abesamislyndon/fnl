@@ -11,8 +11,6 @@ class Manage_user_accounts extends CI_Controller {
     
 /* *************************** Notification Controller ************************* */
 
-
- 
     public function add_user()
     {
        if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1'){  

@@ -85,9 +85,6 @@ class Checkout extends CI_Controller
             }
     }
 
-
-
-   
 }
 
 /* End of file jobwork.php */

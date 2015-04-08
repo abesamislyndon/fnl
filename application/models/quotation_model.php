@@ -115,11 +115,11 @@ class quotation_model extends CI_Model
         
         
         if ($user_id == '1') {
-            $data = '<i class="fa fa-info-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;JOB WORK SUCCESSFULLY SEND';
+            $data = '<i class="fa fa-info-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;SUCCESSFULLY SEND';
             $this->session->set_flashdata('msg', $data);
             redirect('quotation/form_success_admin');
         } else {
-            $data = '<i class="fa fa-info-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;JOB WORK SUCCESSFULLY SEND';
+            $data = '<i class="fa fa-info-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;SUCCESSFULLY SEND';
             $this->session->set_flashdata('msg', $data);
             redirect('quotation/form_success');
         }
@@ -1139,13 +1139,6 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
         $query = $this->db->get();
         return $result = $query->result();
    } 
-
-
-
-
-
-
-
 
 }
 /* End of file quotation_model.php */

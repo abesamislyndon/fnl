@@ -24,9 +24,6 @@ class Notify extends CI_Controller
         }
         
     }
-
-
-
    
 }
 

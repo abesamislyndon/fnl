@@ -9,6 +9,7 @@
     <link href="<?php echo base_url();?>assets/css/custom-styles.css" rel="stylesheet" />
     <link type="text/css" href="<?php echo base_url(); ?>assets/css/css/jquery-ui-1.10.4.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/animate.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/stacktable.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <script src="<?php echo base_url();?>assets/js/jquery-1.10.2.js"></script>
     <script src="<?php echo base_url();?>assets/js/Chart.min.js"></script>

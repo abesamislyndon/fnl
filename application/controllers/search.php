@@ -58,7 +58,7 @@ class Search extends CI_Controller
         }
      }
 
-       public function company_search(){
+    public function company_search(){
 
       if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1') {
             
@@ -366,8 +366,6 @@ class Search extends CI_Controller
             redirect('login', 'refresh');
         }  
      }
-
-
 
 }
 

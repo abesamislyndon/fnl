@@ -1,4 +1,3 @@
-				<footer></footer>
             </div>
         </div>
     </div>
@@ -10,6 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/js/jquery-ui-1.10.4.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.counterup.min.js"></script>
+     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/stacktable.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script> 
  
    <script type="text/javascript"> 
@@ -423,6 +423,17 @@ $(document).ready(function() {
   }
   </script>
 
+
+<script>
+  $(document).on('click', '#run', function(e) {
+    e.preventDefault();
+    $('#simple-example-table').stacktable({hideOriginal:true});
+    $(this).replaceWith('<span>ran</span>');
+  });
+  $('#responsive-example-table').stacktable({myClass:'stacktable small-only'});
+  $('#card-table').cardtable({myClass:'stacktable small-only' });
+  $('#agenda-example').stackcolumns({myClass:'stacktable small-only' });
+</script>
 
   </body>
 </html>

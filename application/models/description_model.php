@@ -96,11 +96,7 @@ class  Description_model extends CI_Model
             return false;
             }
         }
-
-
+        
 }
 /* End of file category_model.php */
 /* Location: ./application/models/crud_model.php */
-
-  
-

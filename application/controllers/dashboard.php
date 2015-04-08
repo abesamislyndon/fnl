@@ -14,8 +14,8 @@ class Dashboard extends CI_Controller
 	{	
 	 if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
      {
-        $date = "2015";
-
+        $date =  date("Y"); 
+     
      	$data['count_quote']    = $this->quotation_model->count_pending_quote();
         $data['count_jobwork']  = $this->quotation_model->count_pending_jobwork();
         $data['overdue']        = $this->quotation_model->count_overdue();
@@ -59,8 +59,6 @@ class Dashboard extends CI_Controller
 		}	
 	 
    }
-
-
 
 }
 

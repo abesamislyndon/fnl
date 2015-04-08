@@ -51,7 +51,7 @@ class Description extends CI_Controller
         }
     }
     
-    public function get_description()
+   public function get_description()
     {
         if ($this->session->userdata('logged_in') && $this->session->userdata['logged_in']['role_code'] == '1' or $this->session->userdata['logged_in']['role_code'] == '2') {
             $keyword = $_GET['term'];
@@ -67,7 +67,7 @@ class Description extends CI_Controller
     }
 
 
-    public function  check_sn()
+   public function  check_sn()
    {
             $this->load->library('form_validation');
 
@@ -128,11 +128,7 @@ class Description extends CI_Controller
         
     }
     
-
-
-    
-
-    public function del_desc()
+  public function del_desc()
     {
         $id     = $this->uri->segment(3);
         $delete = $this->description_model->do_desc_del($id);
@@ -154,13 +150,7 @@ class Description extends CI_Controller
     $this->load->view('pages/update_description');
     $this->load->view('scaffolds/footer');
 
-
-
   }  
-
-
-
-
 
  
  public function do_update_description()
@@ -180,8 +170,6 @@ class Description extends CI_Controller
             redirect('login', 'refresh');
         }
     } 
-
-
 
 }
 

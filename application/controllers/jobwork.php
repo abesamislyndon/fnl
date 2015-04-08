@@ -153,13 +153,8 @@ class Jobwork extends CI_Controller
            redirect('login', 'refresh');
         }
 
-
-
-
     }
 
-
-   
 }
 
 /* End of file jobwork.php */
