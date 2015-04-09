@@ -83,7 +83,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table id="customFields" class="table table-striped table-bordered table-hover ">
+                                <table id="customFields" class="table table-striped table-bordered table-hover " >
 
                                     <thead>
                                         <tr>
@@ -97,8 +97,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                           <?php 
+                                           $count = 0;
+                                           $count++; ?>
                                       <?php foreach($sub_description_individual as $individual):?> 
+                                        
                                        <tr id="customFields" class = "targetfields">
+                                        <input type="hidden" name = "count" value = "<?php echo $count; ?>">
                                             <input type = "hidden" name = "quotation_id"   value = "<?php echo $individual->quotation_id ?>"> 
                                             <input type = "hidden" name = "quotation_details_id[]"   value = "<?php echo $individual->quotation_details_id ?>">
                                             <td><input type = "text" name = "sn[]" id = "sn" class="form-input sn" value = "<?php echo $individual->sn?>"></td>
@@ -109,6 +114,7 @@
                                             <td><input type = "text"  name = "amount[]" class="form-input subtotal res"  value = "<?php echo $individual->amount?>"></td>
                                             <td><a id="simpleConfirm" href="<?php echo base_url(); ?>quotation/delete_sub_desc/<?php echo $individual->quotation_id ?>/<?php echo $individual->quotation_details_id ?>" class="link_button1" onclick="return confirm('Are your sure? If yes After delete please click UPDATE INFORMATION BUTTON')"><i class="fa fa-trash-o"></i></a></td>
                                         </tr>
+
                                         <?php endforeach; ?>   
                                     </tbody>
                                   <?php foreach($total1 as $individual): ?>
@@ -134,8 +140,8 @@
                         </div>
                     </div>
                      <div class = "submit_container">
-                        <input type = "submit" value ="ADD NEW DESCRIPTION" name = "add_desc" class = "submit">
-                        <input type = "submit" value ="UPDATE INFORMATION" name = "update" class = "submit">
+                        <input type = "submit" value ="CONFIRM NEW DESCRIPTION" name = "add_desc" class = "submit1">
+                        <input type = "submit" value ="UPDATE INFORMATION DESTAILS" name = "update" class = "submit">
                         <input type = "submit" value ="REJECT" name = "reject" class = "submit">
                         <input type = "submit" value ="APPROVED" name = "approved" class = "submit">
                      </div>

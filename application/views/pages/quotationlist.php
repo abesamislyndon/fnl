@@ -30,7 +30,7 @@
                                                 <td ><?php echo $individual->company_name?></td>
                                                 <td ><?php echo $individual->address?></td>
                                                 <td ><?php echo $individual->tel_num?></td>
-                                                <td><?php echo $individual->job_description?></td>
+                                                <td style = "font-weight:bold;text-align:center;"><?php echo $individual->job_description?></td>
                                                  <?php
                                                   $CI =& get_instance();
                                                   $CI->load->model('quotation_model');

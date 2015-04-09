@@ -362,7 +362,66 @@ $(document).ready(function() {
 });
 </script>
 -->
+<script>
 
+  var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+  var barChartData = {
+    labels : ["January","February","March","April","May","June","July","August","September","October","November","December"],
+    datasets : [
+      {
+        fillColor : "rgba(220,220,220,0.5)",
+        strokeColor : "rgba(220,220,220,0.8)",
+        highlightFill: "rgba(220,220,220,0.75)",
+        highlightStroke: "rgba(220,220,220,1)",
+        <?php foreach ($jan_reject as $value) { $jan =  $value->total; } ?>
+        <?php foreach ($feb_reject as $value) { $feb =  $value->total; } ?>
+        <?php foreach ($march_reject as $value) { $march =  $value->total; } ?>
+        <?php foreach ($april_reject as $value) { $april =  $value->total; } ?>
+        <?php foreach ($may_reject as $value) { $may =  $value->total; } ?>
+        <?php foreach ($jun_reject as $value) { $jun =  $value->total; } ?>
+        <?php foreach ($july_reject as $value) { $july =  $value->total; } ?>
+        <?php foreach ($aug_reject as $value) { $aug =  $value->total; } ?>
+        <?php foreach ($sept_reject as $value) { $sept =  $value->total; } ?>
+        <?php foreach ($oct_reject as $value) { $oct =  $value->total; } ?>
+        <?php foreach ($nov_reject as $value) { $nov =  $value->total; } ?>
+        <?php foreach ($dec_reject as $value) { $dec =  $value->total; } ?>
+        
+        data: [<?php echo $jan; ?>,<?php echo $feb; ?>, <?php echo $march; ?>, <?php echo $april; ?>, <?php echo $may; ?>, <?php echo $jun; ?>, <?php echo $july; ?>,<?php echo $aug; ?>,<?php echo $sept; ?>,<?php echo $oct; ?>,<?php echo $nov; ?>, <?php echo $dec; ?>]
+ 
+      },
+
+    
+      {
+        fillColor : "rgba(151,187,205,0.5)",
+        strokeColor : "rgba(151,187,205,0.8)",
+        highlightFill : "rgba(151,187,205,0.75)",
+        highlightStroke : "rgba(151,187,205,1)",
+        <?php foreach ($jan_aprov as $value) { $jan =  $value->total; } ?>
+        <?php foreach ($feb_aprov as $value) { $feb =  $value->total; } ?>
+        <?php foreach ($march_aprov as $value) { $march =  $value->total; } ?>
+        <?php foreach ($april_aprov as $value) { $april =  $value->total; } ?>
+        <?php foreach ($may_aprov as $value) { $may =  $value->total; } ?>
+        <?php foreach ($jun_aprov as $value) { $jun =  $value->total; } ?>
+        <?php foreach ($july_aprov as $value) { $july =  $value->total; } ?>
+        <?php foreach ($aug_aprov as $value) { $aug =  $value->total; } ?>
+        <?php foreach ($sept_aprov as $value) { $sept =  $value->total; } ?>
+        <?php foreach ($oct_aprov as $value) { $oct =  $value->total; } ?>
+        <?php foreach ($nov_aprov as $value) { $nov =  $value->total; } ?>
+        <?php foreach ($dec_aprov as $value) { $dec =  $value->total; } ?>
+
+
+        data: [<?php echo $jan; ?>,<?php echo $feb; ?>, <?php echo $march; ?>, <?php echo $april; ?>, <?php echo $may; ?>, <?php echo $jun; ?>, <?php echo $july; ?>,<?php echo $aug; ?>,<?php echo $sept; ?>,<?php echo $oct; ?>,<?php echo $nov; ?>, <?php echo $dec; ?>]
+ 
+      }
+    ]
+  }
+  window.onload = function(){
+    var ctx = document.getElementById("canvas").getContext("2d");
+    window.myBar = new Chart(ctx).Bar(barChartData, {
+      responsive : true
+    });
+  }
+  </script>
 
 
 <script>

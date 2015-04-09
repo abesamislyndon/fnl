@@ -65,7 +65,10 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                       Bar Graph - Reject and Approved Quotation for the year of <?php echo date("Y"); ?>
+                       Bar Graph - Reject And Approved by month <?php echo date("Y"); ?><br><br>
+                       <span>legend - </span>
+                       <span class = "gray-bar">reject</span>
+                       <span class = "blue-bar">approved</span><br><br>
                     </div>
                     <div class="panel-body">
                           <div class = "chart">

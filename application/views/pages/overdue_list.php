@@ -7,7 +7,7 @@
                             </div> 
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover table-style">
+                                    <table class="table table-striped table-bordered table-hover table-style" id="card-table">
                                         <thead>
                                             <tr>
                                                 <th style = "width:8%;">Quotation #</th>

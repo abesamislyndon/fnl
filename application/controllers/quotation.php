@@ -327,7 +327,7 @@ class Quotation extends CI_Controller
             if ($this->input->post('add_desc')) {
                 $this->quotation_model->add_quotation_desc1($quotation_id);
             }
-            
+
             if ($this->input->post('approved')) {
                 $this->quotation_model->approved_quotation($quotation_id);
             }
@@ -345,7 +345,8 @@ class Quotation extends CI_Controller
             if ($this->input->post('delete_sub')) {
                 $quotation_id     = $this->input->post('quotation_id');
                 $quotation_sub_id = $this->input->post('quotation_details_id');
-                $this->quotation_model->del_sub_desc($quotation_sub_id, $quotation_id);
+                $count = $this->input->post('count');
+                $this->quotation_model->del_sub_desc($quotation_sub_id, $quotation_id, $count);
             }
             
         } else {

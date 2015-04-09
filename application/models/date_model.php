@@ -33,7 +33,6 @@ class  Date_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result();
 
-  
   }
 
   function reject_march($date){
@@ -83,7 +82,6 @@ class  Date_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result();
 
-  
   }
 
   function reject_jun($date){

@@ -51,7 +51,7 @@ class Dashboard extends CI_Controller
 	    $this->load->view('scaffolds/header');
 	    $this->load->view('scaffolds/sidebar',$data);
 		$this->load->view('pages/dashboard',$data);
-		$this->load->view('scaffolds/footer');
+		$this->load->view('scaffolds/footer_dashboard');
         
      }else
 		{

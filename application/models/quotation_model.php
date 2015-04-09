@@ -4,7 +4,7 @@ if (!defined('BASEPATH'))
 class quotation_model extends CI_Model
 {
     
-    function add_quotation($company_name, $address, $tel_num, $fax_num, $email, $date_in, $term_payment, $validity_period, $job_description, $sub_description, $sn, $quantity, $uom, $unit_price, $amount, $sub_total, $gst_total, $grand_total, $user_id, $sales_exe)
+    public function add_quotation($company_name, $address, $tel_num, $fax_num, $email, $date_in, $term_payment, $validity_period, $job_description, $sub_description, $sn, $quantity, $uom, $unit_price, $amount, $sub_total, $gst_total, $grand_total, $user_id, $sales_exe)
     {
         
         $cal_date   = $date_in;
@@ -126,7 +126,7 @@ class quotation_model extends CI_Model
         
     }
 
-    function check_double_entry(){
+    public function check_double_entry(){
         $this->db->select('*');
         $this->db->from('quotation');
         $this->db->insert_id();
@@ -134,7 +134,7 @@ class quotation_model extends CI_Model
         return $result = $query->result();
     }
     
-    function company_exist_check()
+    public function company_exist_check()
     {
         $company_name = $this->input->post('company_name');
         $this->db->select('*');
@@ -144,7 +144,7 @@ class quotation_model extends CI_Model
         return $result = $query->result();
     }
     
-    function do_get_company($keyword)
+    public function do_get_company($keyword)
     {
         $this->db->select('*');
         $this->db->like('company_name', $keyword, 'after');
@@ -168,7 +168,7 @@ class quotation_model extends CI_Model
         return $this->db->count_all("quotation");
     }
       
-    function show_quotationlist($limit, $start)
+    public function show_quotationlist($limit, $start)
     {
         
         $this->db->from('quotation');
@@ -189,7 +189,7 @@ class quotation_model extends CI_Model
         return false;
     }
 
-    function show_invoice_list($limit, $start)
+    public function show_invoice_list($limit, $start)
     {
         $this->db->from('quotation');
         $this->db->join('company', 'company.company_id = quotation.company_id');
@@ -209,7 +209,7 @@ class quotation_model extends CI_Model
         return false;
     }
     
-    function show_quotation_individual($quotation_id)
+    public function show_quotation_individual($quotation_id)
     {
         $this->db->select('*');
         $this->db->from('quotation');
@@ -222,7 +222,7 @@ class quotation_model extends CI_Model
         return $result;
     }
 
-    function show_invoice_details($quotation_id)
+    public function show_invoice_details($quotation_id)
     {
         $this->db->select('*');
         $this->db->from('quotation');
@@ -237,7 +237,7 @@ class quotation_model extends CI_Model
         return $result;
     }
 
-    function show_quotation_individual_jobwork($quotation_id)
+    public function show_quotation_individual_jobwork($quotation_id)
     {
         $this->db->select('*');
         $this->db->from('quotation');
@@ -251,7 +251,7 @@ class quotation_model extends CI_Model
         return $result;
     }
 
-    function show_jobwork_with_sales_exe($quotation_id)
+    public function show_jobwork_with_sales_exe($quotation_id)
     {
         $this->db->select('*');
         $this->db->from('quotation');
@@ -266,7 +266,7 @@ class quotation_model extends CI_Model
         return $result;
     }
 
-    function total($quotation_id)
+    public function total($quotation_id)
     {
         $this->db->select('SUM(amount) as total', FALSE);
         $this->db->from('quotation');
@@ -280,7 +280,7 @@ class quotation_model extends CI_Model
         return $result;
     }
 
-    function total1($quotation_id)
+    public function total1($quotation_id)
     {
         $this->db->select('SUM(amount) as total', FALSE);
         $this->db->from('quotation');
@@ -293,7 +293,7 @@ class quotation_model extends CI_Model
         return $result;
     }
     
-    function show_subquotation_individual($quotation_id){
+    public function show_subquotation_individual($quotation_id){
 
         $this->db->select('*');
         $this->db->from('quotation');
@@ -304,7 +304,8 @@ class quotation_model extends CI_Model
         return $result;
         
     }
-        function show_sales_individual($quotation_id){
+    
+    public function show_sales_individual($quotation_id){
 
         $this->db->select('*');
         $this->db->from('quotation');
@@ -316,7 +317,7 @@ class quotation_model extends CI_Model
         
     }
     
-    function show_overall_total($quotation_id){
+    public function show_overall_total($quotation_id){
 
         $this->db->select('*');
         $this->db->from('quotation');
@@ -328,7 +329,7 @@ class quotation_model extends CI_Model
     }
     
     /*---  update submitted quotation for quotation -----*/
-    function update_quotation_quotation($quotation_id, $date_in){
+    public function update_quotation_quotation($quotation_id, $date_in){
         
         $quotation_details_id = $this->input->post('quotation_details_id');
         $company_name         = $this->input->post('company_name');
@@ -405,7 +406,7 @@ class quotation_model extends CI_Model
     }
 
     /*---  update submitted quotation for quotation -----*/
-    function update_jobwork($quotation_id, $date_in, $sales_exe){
+    public function update_jobwork($quotation_id, $date_in, $sales_exe){
         
         $quotation_details_id = $this->input->post('quotation_details_id');
         $company_name         = $this->input->post('company_name');
@@ -487,7 +488,7 @@ class quotation_model extends CI_Model
     }
      
 
-function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
+   public function update_jobwork_checkout($quotation_id, $date_in, $sales_exe){
         
         $quotation_details_id = $this->input->post('quotation_details_id');
         $company_name         = $this->input->post('company_name');
@@ -805,8 +806,40 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
     
     function del_sub_desc($quotation_sub_id, $quotation_id){
 
-        $this->db->where('quotation_details_id', $quotation_sub_id);
-        $this->db->delete('quotation_details');
+       // check number of quotation sub details
+
+        $this->db->select('quotation_id, COUNT(quotation_id) as total');
+        $this->db->where('quotation_id', $quotation_id);
+        $this->db->from('quotation_details');
+        $this->db->order_by('total', 'desc');
+        $query = $this->db->get();
+        $result = $query->result();
+     
+        foreach ($result as $value) {
+
+         if ($value->total > 1) {
+             $this->db->where('quotation_details_id', $quotation_sub_id);
+             $this->db->delete('quotation_details');
+             
+             $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
+             redirect('quotation/individual_details/' . $quotation_id);
+
+            }
+
+         if ($value->total == 1) {
+             $this->db->where('quotation_id', $quotation_id);
+             $this->db->delete('quotation');
+
+             $this->db->where('quotation_details_id', $quotation_sub_id);
+             $this->db->delete('quotation_details');
+
+              $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
+             redirect('quotation/quotationlist');
+             
+          }
+
+     }
+
         
         $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
         redirect('quotation/individual_details/' . $quotation_id);
