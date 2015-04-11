@@ -304,6 +304,20 @@ class quotation_model extends CI_Model
         return $result;
         
     }
+   
+   public function show_subquotation_total($quotation_id){
+
+        $this->db->select('*');
+        $this->db->from('quotation');
+        $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
+        $this->db->where('quotation_details.quotation_id', $quotation_id);
+        $q      = $this->db->get();
+        $result = $q->result();
+        return $result;
+        
+    }
+    
+
     
     public function show_sales_individual($quotation_id){
 
@@ -820,6 +834,8 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
          if ($value->total > 1) {
              $this->db->where('quotation_details_id', $quotation_sub_id);
              $this->db->delete('quotation_details');
+
+ 
              
              $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
              redirect('quotation/individual_details/' . $quotation_id);

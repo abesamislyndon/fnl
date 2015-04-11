@@ -74,7 +74,7 @@
         <th style="width:9%; border: solid 1px black;font-weight:bold; font-style:italic;border-collapse: collapse;">UNIT PRICE</th>
         <th style="width:13%; border: solid 1px black;font-weight:bold; font-style:italic;border-collapse: collapse;">AMOUNT</th>
     </tr>
-      
+      <?php $subtotal = 0; ?>
        <?php foreach($sub_desc as $sub_details): ?>
          <tr>
             <td style=" border: solid 1px black; font-style:italic;border-collapse: collapse;"><?php echo $details->sn ?></td>
@@ -83,28 +83,35 @@
             <td style=" border: solid 1px black; font-style:italic;border-collapse: collapse;"><?php echo $sub_details->uom ?></td>
             <td style=" border: solid 1px black; font-style:italic;border-collapse: collapse;"><?php echo $sub_details->unit_price ?></td>
             <td style=" border: solid 1px black;font-style:italic;border-collapse: collapse;"><?php echo $sub_details->amount?></td> 
+            <?php $subtotal+=$sub_details->amount; ?>
           </tr>  
         <?php endforeach; ?>
+        <?php 
+             $percentage = 7; 
+             $totalsub = $subtotal; 
+             $gst = ($percentage / 100) * $totalsub; 
+
+             $grand_total = $gst + $subtotal;
+
+        ?>
         </tbody>
     </table>
 
 
  <table cellspacing="0" style="width: 100%;text-align: center; font-size: 9pt;padding:4px;margin-top:-6px;margin-left:90px;border-collapse: collapse;">
-        <?php foreach($total as $quotation_subtotal) : ?>  
         <tr style="font-size: 8pt;">
         <td style="width: 8%; border: none;">&nbsp;</td>
         <td style="width: 59%; border: none;">&nbsp;</td>
         <td style="background-color:#e9e6e6; width: 0%; height:1px;border: solid 1px black;font-weight:bold;font-size:10pt;font-style:italic;border-collapse: collapse;"><b>SUB TOTAL</b></td>
-        <td style="background-color:#e9e6e6; width: 10%; border: solid 1px black;font-size:10pt;font-style:italic;border-collapse: collapse;"><b><?php echo number_format($quotation_subtotal->sub_total, 2) ?></b></td>
+        <td style="background-color:#e9e6e6; width: 10%; border: solid 1px black;font-size:10pt;font-style:italic;border-collapse: collapse;"><b><?php echo number_format($subtotal, 2) ?></b></td>
         </tr>
-        <?php endforeach; ?>    
         <tr>
         <td colspan="2" align="left">
         <span style="font-size: 8pt; font-weight: normal;">
         </span>
         </td>
         <td style="background-color:#e9e6e6; border: solid 1px black;font-weight:bold;font-size:10pt;font-style:italic; " align="center"><b>7% GST</b></td>
-        <td style="background-color:#e9e6e6; border: solid 1px black;font-weight:bold;font-size:10pt;font-style:italic; " align="center"><b><?php echo number_format($quotation_subtotal->gst_total, 2) ?></b></td>
+        <td style="background-color:#e9e6e6; border: solid 1px black;font-weight:bold;font-size:10pt;font-style:italic; " align="center"><b><?php echo number_format($gst, 2) ?></b></td>
         </tr>
         <tr>
         <td colspan="2" align="left">
@@ -112,7 +119,7 @@
         </span>
         </td>
         <td style="background-color:#ccc; border: solid 1px black;font-weight:bold;  font-size:13px;" align="center"><b>TOTAL SGD</b></td>
-        <td style="background-color:#ccc; border: solid 1px black;font-size:13px;" align="center"><b><?php echo number_format($quotation_subtotal->grand_total, 2) ?></b></td>
+        <td style="background-color:#ccc; border: solid 1px black;font-size:13px;" align="center"><b><?php echo number_format($grand_total, 2) ?></b></td>
         </tr>
         <tr>
         <td colspan="4">&nbsp;</td>

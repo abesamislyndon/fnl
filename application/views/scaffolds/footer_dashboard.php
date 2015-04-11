@@ -430,9 +430,9 @@ $(document).ready(function() {
     $('#simple-example-table').stacktable({hideOriginal:true});
     $(this).replaceWith('<span>ran</span>');
   });
-  $('#responsive-example-table').stacktable({myClass:'stacktable small-only'});
-  $('#card-table').cardtable({myClass:'stacktable small-only' });
-  $('#agenda-example').stackcolumns({myClass:'stacktable small-only' });
+   $('#responsive-example-table').stacktable({myClass:'stacktable small-only'});
+   $('#card-table').cardtable({myClass:'stacktable small-only' });
+   $('#agenda-example').stackcolumns({myClass:'stacktable small-only' });
 </script>
 
   </body>

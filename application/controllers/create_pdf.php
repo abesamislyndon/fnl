@@ -22,6 +22,7 @@ public function print_pending_quotation()
          $id = $this->uri->segment(3);
          $data['quote_details'] = $this->quotation_model->show_quotation_individual($id);
          $data['sub_desc'] = $this->quotation_model->show_subquotation_individual($id);
+         $data['sub_desc_total'] = $this->quotation_model->show_subquotation_total($id);
          $data['total'] = $this->quotation_model->show_overall_total($id);
          $this->load->view('pages/pending_pdf_quotation', $data);
         }

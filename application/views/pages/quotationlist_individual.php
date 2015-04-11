@@ -10,7 +10,7 @@
                         <div class="panel-heading">
                            <h4>QUOTATION DETAILS</h4> 
                            <ul class = "upper-mini-menu">
-                            <li><a href = "<?php echo base_url();?>create_pdf/print_pending_quotation/<?php echo $individual->quotation_id ?>"><span class = "print">QUOTATION # <?php echo $individual->quotation_id?></span></a></li>
+                            <li><a href = "<?php echo base_url();?>create_pdf/print_pending_quotation/<?php echo $individual->quotation_id ?>" target = "_blank"><span class = "print">QUOTATION # <?php echo $individual->quotation_id?></span></a></li>
                             <li>
                                 <a href = "<?php echo base_url();?>create_pdf/print_pending_quotation/<?php echo $individual->quotation_id ?>" class = "print" target = "_blank"><i class="fa fa-print"></i></a>
                             </li>

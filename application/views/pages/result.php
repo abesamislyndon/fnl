@@ -1,4 +1,4 @@
-<table 
+<table id="card-table"> 
 <?php if($res == true){ ?>
 <?php foreach ($res as  $value) {?>
 	<tr>
