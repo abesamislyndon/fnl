@@ -44,12 +44,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Term of Payment :</label>
-                                            <input type = "text" name = "term_payment" class="form-control required" />
+                                            <input type = "text" name = "term_payment" class="form-control required" autocomplete = "off"/>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>Validity Period :</label>
-                                            <input type = "text"  name = "validity_period" class="form-control required" />    
+                                            <input type = "text"  name = "validity_period" class="form-control required" autocomplete = "off"/>    
                                         </div>
 
                                          <div class="form-group">
@@ -59,7 +59,7 @@
 
                                          <div class="form-group">
                                             <label>Sales Executive :</label>
-                                            <input type = "text"  name = "sales_exe" class="form-control required" />
+                                            <input type = "text"  name = "sales_exe" class="form-control required" autocomplete = "off"/>
                                         </div>
                                         
                                 </div><!--end of coloumn 6-->
@@ -83,7 +83,7 @@
                                 <table id="customFields" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th style = "width:10%;">SN</th>
+                                            <th style = "width:10%;">SN / CODE</th>
                                             <th>Description</th>
                                             <th style = "width:10%;">Quantity</th>
                                             <th style = "width:10%;">UOM</th>

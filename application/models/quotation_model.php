@@ -707,6 +707,10 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
             
         
         $row_count = count($sub_description);
+        if ($amount == '') {
+             $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
+             redirect('quotation/individual_details_with_jobwork/' . $quotation_id);
+        }else{
 
         
         for ($i = 0; $i < $row_count; $i++) {
@@ -736,7 +740,7 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
         $this->db->where('quotation_id', $quotation_id);
         $this->db->update('quotation_quote_total', $row5);
 
-
+           }
               
         $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
         redirect('quotation/individual_details_with_jobwork/' . $quotation_id);
@@ -940,12 +944,12 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
         $this->db->where('quotation_id', $quotation_id);
         $this->db->update('quotation', $row);
  
-        $row1 = array(
+        /*$row1 = array(
             'quotation_id' => $quotation_id,
             'jobwork_id' => $jobwork_id
         );
         $this->db->insert('service_report', $row1);
-
+*/
 
         $row2 = array(
             'quotation_id' => $quotation_id,
@@ -1168,8 +1172,9 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
         $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
         $this->db->join('service_report', 'service_report.quotation_id = quotation.quotation_id');
-        $this->db->like('service_report.service_report_id', $service_report)->group_by('service_report.quotation_id');
-        $this->db->where('status', 5);
+        //$this->db->like('service_report.service_report_id', $service_report)->group_by('service_report.quotation_id');
+        $this->db->where('service_report.service_report_id', $service_report);
+        //$this->db->where('remarks', 'checkout with invoice');
         $query = $this->db->get();
         return $result = $query->result();
    } 
@@ -1182,8 +1187,9 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
         $this->db->join('quotation_quote_total', 'quotation_quote_total.quotation_id = quotation.quotation_id ');
         $this->db->join('quotation_details', 'quotation_details.quotation_id = quotation.quotation_id');
         $this->db->join('service_report', 'service_report.quotation_id = quotation.quotation_id');
-        $this->db->where('service_report.remarks','checkout with invoice');
-        $this->db->like('service_report.service_report_id', $service_report)->group_by('service_report.quotation_id');
+        $this->db->join('invoice', 'invoice.quotation_id = quotation.quotation_id');
+ //       $this->db->where('service_report.remarks','checkout with invoice');
+        $this->db->like('invoice.invoice_id', $service_report)->group_by('service_report.quotation_id');
         $this->db->where('status', 5);
         $query = $this->db->get();
         return $result = $query->result();

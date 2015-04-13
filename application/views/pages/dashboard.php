@@ -54,7 +54,7 @@
                         <h3 class = "counter"><?php foreach($job_complete as $complete_jobwork){ echo $complete_jobwork->total; } ?></h3>
                     </div>
                     <div class="panel-footer back-footer-red style-font wow bounceInUp center" data-wow-delay="0.5s">
-                       <p><a href="<?php echo base_url();?>service_report/service_report_list">PENDING SERVICE OUT</a></p> 
+                       <p><a href="<?php echo base_url();?>service_report/service_report_list">PENDING INVOICE </a></p> 
 
                     </div>
                 </div>

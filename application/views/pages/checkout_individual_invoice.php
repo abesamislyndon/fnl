@@ -8,7 +8,7 @@
             <br><br><br><hr><br>
    					 <?php foreach($quotation_list_individual as $individual):?>
    					  <ul class = "create_new">
-   						<li><a href = "<?php echo base_url();?>create_pdf/service_report/<?php echo $individual->quotation_id ?>" class = "print" target = "_blank"><i class="fa fa-print">&nbsp;&nbsp;SERVICE REPORT</i></a></li>
+   						<li><a href = "<?php echo base_url();?>create_pdf/service_report/<?php echo $individual->quotation_id ?>" class = "print" target = "_blank"><i class="fa fa-print"></i>&nbsp;&nbsp;SERVICE REPORT</a></li>
    						<li><a href = "<?php echo base_url();?>create_pdf/invoice_details/<?php echo $individual->quotation_id ?>" class = "print" target = "_blank"><i class="fa fa-print"></i>&nbsp;&nbsp;INVOICE</a></li>
    					</ul>	
    				<?php endforeach; ?>

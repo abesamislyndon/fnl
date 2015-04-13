@@ -13,7 +13,7 @@
                                 <form role="form" method="get" class="form-search" id = "process_invoice">
                                     <div class="input-append">
                                         <input type="text" class="span2 search" id = "search" name = "search_input">
-                                        <button type="submit" class="button" id = "submit_id">Search</button>
+                                        <button type="submit" class="button-search" id = "submit_id">Search</button>
                                     </div>
                                 </form>
                             </div>

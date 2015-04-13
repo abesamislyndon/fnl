@@ -88,7 +88,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table id="customFields" class="table table-striped table-bordered table-hover update">
+                                <table id="customFields" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th style = "width:10%;">SN / CODE</th>
@@ -114,11 +114,11 @@
                                             <td><input type = "text" name = "uom[]" class="form-input" value = "<?php echo $individual->uom?>"></td>
                                             <td><input type = "text" name = "unit_price[]" class="form-input unit_price" value = "<?php echo $individual->unit_price?>"></td>
                                             <td><input type = "text"  name = "amount[]" class="form-input subtotal res"  value = "<?php echo $individual->amount?>"></td>
-                                            <td><a id="simpleConfirm" href="<?php echo base_url(); ?>quotation/delete_sub_desc_jobwork/<?php echo $individual->quotation_id ?>/<?php echo $individual->quotation_details_id ?>" class="link_button1" onclick="return confirm('Are your sure? If yes After delete please click UPDATE INFORMATION BUTTON')"><i class="fa fa-trash-o"></i></a></td>
+                                            <td class = "td-hide"><a id="simpleConfirm" href="<?php echo base_url(); ?>quotation/delete_sub_desc_jobwork/<?php echo $individual->quotation_id ?>/<?php echo $individual->quotation_details_id ?>" class="link_button1" onclick="return confirm('Are your sure? If yes After delete please click UPDATE INFORMATION BUTTON')"><i class="fa fa-trash-o"></i></a></td>
                                         </tr>
                                         <?php endforeach; ?>   
                                     </tbody>
-                                  <?php foreach($total as $individual): ?>
+                                   <?php foreach($total as $individual): ?>
                                          <tr>
                                              <td colspan = "4"></td>
                                              <td class = "strong">SUBTOTAL</td>
@@ -141,7 +141,7 @@
                         </div>
                     </div>
                      <div class = "submit_container">
-                        <input type = "submit" value ="ADD NEW DESCRIPTION" name = "add_desc" class = "submit">
+                        <input type = "submit" value ="CONFIRM NEW DESCRIPTION" name = "add_desc" class = "submit1">
                         <input type = "submit" value ="UPDATE INFORMATION" name = "update1" class = "submit">
                         <input type = "submit" value ="JOB COMPLETE" name = "complete" class = "submit">
                      </div>

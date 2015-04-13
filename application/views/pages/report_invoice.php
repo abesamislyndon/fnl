@@ -15,7 +15,7 @@
                                         <input type="text"  id  = "from" name = "from" class="span2 search1">
                                         <span>To</span>
                                          <input type="text"  id  = "to"  name = "to" class="span2 search1">
-                                        <button type="submit" class="button" id = "submit_id">Generate Report</button>
+                                        <button type="submit" class="button-search" id = "submit_id">Generate Report</button>
                                     </div>
                                 </form>
                             </div>

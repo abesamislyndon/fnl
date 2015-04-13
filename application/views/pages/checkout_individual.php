@@ -84,7 +84,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table id="customFields" class="table table-striped table-bordered table-hover update">
+                                <table id="customFields" class="table table-striped table-bordered table-hover ">
                                     <thead>
                                         <tr>
                                             <th style = "width:10%;">SN / CODE</th>
@@ -111,7 +111,7 @@
                                             <td><input type = "text" name = "uom[]" class="form-input" value = "<?php echo $individual->uom?>"></td>
                                             <td><input type = "text" name = "unit_price[]" class="form-input unit_price" value = "<?php echo $individual->unit_price?>"></td>
                                             <td><input type = "text"  name = "amount[]" class="form-input subtotal res"  value = "<?php echo $individual->amount?>"></td>
-                                            <td><a id="simpleConfirm" href="<?php echo base_url(); ?>quotation/delete_sub_desc/<?php echo $individual->quotation_id ?>/<?php echo $individual->quotation_details_id ?>" class="link_button1" onclick="return confirm('Are your sure? If yes After delete please click UPDATE INFORMATION BUTTON')"><i class="fa fa-trash-o"></i></a></td>
+                                            <td class = "td-hide"><a id="simpleConfirm" href="<?php echo base_url(); ?>quotation/delete_sub_desc/<?php echo $individual->quotation_id ?>/<?php echo $individual->quotation_details_id ?>" class="link_button1" onclick="return confirm('Are your sure? If yes After delete please click UPDATE INFORMATION BUTTON')"><i class="fa fa-trash-o"></i></a></td>
                                         </tr>
                                         <?php endforeach; ?>   
                                     </tbody>
@@ -139,7 +139,7 @@
                     </div>
                      <div class = "submit_container">
                        <!-- <input type = "submit" value ="UPDATE INFORMATION" name = "update2" class = "submit"> -->
-                        <input type = "submit" value ="CHECKOUT" name = "checkout" class = "submit">
+                        <input type = "submit" value ="CHECKOUT INVOICE" name = "checkout" class = "submit">
                      </div>
                 </form>
                <?php endforeach; ?> 

@@ -8,7 +8,7 @@
                     <br><hr><br><br>
                     <p>Please choose your next options</p><br>
                     <ul class = "create_new">
-                       <li><a href="<?php echo base_url(); ?>service_report/service_report_list" class = "create"><i class="fa fa-fw fa-file"></i>&nbsp;&nbsp;&nbsp;GO TO → CHECKOUT LIST</a></li>
+                       <li><a href="<?php echo base_url(); ?>service_report/service_report_list" class = "create"><i class="fa fa-fw fa-file"></i>&nbsp;&nbsp;&nbsp;GO TO → INVOICE LIST</a></li>
                        <li><a href="<?php echo base_url(); ?>quotation/quotationlist" class = "create"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;&nbsp;GO TO → QUOTATION LIST</a></li>
                        <li><a href="<?php echo base_url(); ?>jobwork/jobwork_list" class = "create"><i class="fa fa-fw fa-file"></i>&nbsp;&nbsp;&nbsp;GO TO → JOBWORKLIST</a></li>
                        <li><a href="<?php echo base_url(); ?>dashboard" class = "create"><i class="fa fa-tachometer"></i>&nbsp;&nbsp;&nbsp;GO TO → DASHBOARD</a></li>

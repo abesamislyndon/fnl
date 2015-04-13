@@ -141,11 +141,29 @@
         border:1px solid #ccc;
     }
     .button{
-        position:absolute;
-        display: inline;
+          position:absolute;
+          display: inline;
           height:40px;
           margin-left:-1px;
           margin-top:0px; 
+    }
+    textarea,
+input[type="text"],
+input[type="button"],
+input[type="submit"] {
+     -webkit-appearance: none;
+     border-radius: 0;
+}
+    .button-search{
+          position:absolute;
+          display: inline;
+          height:40px;
+          margin-left:-1px;
+          margin-top:0px; 
+          background:#86bf3e;
+          color:#fff;
+          font-weight: bold;
+          border: 1px solid #000; 
     }
     .result-search{
             margin-top: 20px;
@@ -808,6 +826,7 @@
         float: right;
         margin-right:5px;  
     }
+    
     .print1{
         padding:3px 12px;
         margin-top: -35px;
@@ -1063,6 +1082,9 @@ table.update > tbody > tr  > td:last-child {
 table.update > thead > tr  > th:last-child {
     display:none !important;
 }
+.td-hide{
+    display:none; 
+} 
 
 
 a.tooltips {

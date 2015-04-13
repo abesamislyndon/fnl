@@ -18,7 +18,6 @@
             <tr>
                 <td style="text-align: left; width: 50% ; border: none;">&nbsp; <img src="<?php echo base_url();?>assets/img/bizsafe.png" alt=""></td>
                 <td style="text-align: right; width: 50%; border: none;">page [[page_cu]]/[[page_nb]]</td>
-
             </tr>
         </table>
     </page_footer>
