@@ -31,6 +31,7 @@ public function print_pending_quotation()
            redirect('login', 'refresh');
         }
 }
+
 public function print_joborder()
 {
     if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
@@ -79,8 +80,6 @@ public function invoice_details()
         }
 }
 
-
-
 public function search_report_rejected(){
     if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1'){
        
@@ -100,7 +99,7 @@ public function search_report_rejected(){
    }
 
 
-   public function search_report_complete(){
+ public function search_report_complete(){
     if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1'){
        
          $from = $this->uri->segment(3);

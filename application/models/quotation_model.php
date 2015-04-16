@@ -784,7 +784,10 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
         
         $row_count = count($sub_description);
 
-        
+        if ($sn == "") {
+                $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
+                redirect('quotation/individual_details/' . $quotation_id);
+        }else{
         for ($i = 0; $i < $row_count; $i++) {
             $q    = $this->db->select('quotation_details_id')->from('quotation_details')->where('quotation_details_id', $quotation_details_id[$i])->get();
             $row1 = array(
@@ -811,11 +814,11 @@ function update_jobwork_checkout1($quotation_id, $date_in, $sales_exe){
         
         $this->db->where('quotation_id', $quotation_id);
         $this->db->update('quotation_quote_total', $row5);
-
-
               
         $this->session->set_flashdata('msg', 'JOB WORK SUCCESFULLY UPDATED');
         redirect('quotation/individual_details/' . $quotation_id);
+
+       } 
     }
 
 

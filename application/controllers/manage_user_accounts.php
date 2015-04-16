@@ -185,6 +185,6 @@ class Manage_user_accounts extends CI_Controller {
     {   
         $id = $this->uri->segment(3);
         $delete =  $this->user->do_user_del($id);
-         }
+    }
 
   }

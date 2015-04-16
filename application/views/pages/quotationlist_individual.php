@@ -147,7 +147,7 @@
                      </div>
                 </form>
                <?php endforeach; ?> 
-                     <!-- End  Kitchen Sink -->
+                     <!-- End  Kitchen Sink --> 
                 </div>
              </div><!--end of panel body-->
           </div><!--end of panel-default-->
