@@ -48,6 +48,7 @@ public function print_joborder()
         }
 }
 
+
 public function service_report()
 {
     if($this->session->userdata('logged_in')&&$this->session->userdata['logged_in']['role_code'] == '1')
